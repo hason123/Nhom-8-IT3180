@@ -18,7 +18,10 @@ public class UserController {
           this.userService = userService;
           this.userRepository = userRepository;
      }
-
+//     @RequestMapping("/home")
+//     public String getHomePage(){
+//          return "home";
+//     }
      @RequestMapping("/register")
      public String registerPage(Model model){
           model.addAttribute("newUser", new User());
