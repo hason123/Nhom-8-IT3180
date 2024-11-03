@@ -17,43 +17,25 @@
 </head>
 
 <body>
-
-<%--@elvariable id="newUser" type="vn.hoidanit.laptopshop.domain.User"--%>
-<form:form method="post" action="/user/save" modelAttribute="newUser">
+<%--@elvariable id="userdto" type=""--%>
+<form:form method="post" action="/user/login" modelAttribute="userdto">
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-12 mx-auto">
-                <h1>Create an user</h1>
+                <h1>Login</h1>
+                <c:if test="${not empty error}">
+                    <p style="color: red;">${error}</p>
+                </c:if>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
                     <form:input type="email" class="form-control" path="email"/>
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
-
-
                 <div class="mb-3">
                     <label class="form-label">Password</label>
                     <form:input type="password" class="form-control" path="password"/>
                 </div>
-
-
-                <div class="mb-3">
-                    <label class="form-label">Phone number</label>
-                    <form:input type="tel" class="form-control" path="phone"/>
-                </div>
-
-
-                <div class="mb-3">
-                    <label class="form-label">Fullname</label>
-                    <form:input type="text" class="form-control" path="fullName"/>
-                </div>
-
-
-                <div class="mb-3">
-                    <label class="form-label">Address</label>
-                    <form:input type="text" class="form-control" path="address"/>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </div>
         </div>
     </div>

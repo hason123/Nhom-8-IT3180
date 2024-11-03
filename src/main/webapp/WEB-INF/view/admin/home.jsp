@@ -5,11 +5,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Dangkythanhcong</title>
+    <title>HomePage</title>
 
 </head>
 
 <body>
-Chuc mung ban da dang ky thanh cong
+HOME
 </body>
 </html>
