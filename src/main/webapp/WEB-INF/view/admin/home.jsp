@@ -48,7 +48,9 @@
                 <!-- Sidebar -->
                 <div class="sidebar">
                     <a href="#"><i class="fas fa-home"></i> Trang chủ</a>
-                    <a href="#"><i class="fas fa-users"></i> Quản lý hộ khẩu</a>
+
+                    <a href="${pageContext.request.contextPath}/rooms"><i class="fas fa-users"></i> Quản lý hộ
+                        khẩu</a>
                     <a href="#"><i class="fas fa-user-friends"></i> Quản lý nhân khẩu</a>
                     <a href="#"><i class="fas fa-wallet"></i> Quản lý khoản phí</a>
                     <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>
@@ -63,10 +65,11 @@
                         <img src="${pageContext.request.contextPath}/resources/images/nhan_khau.webp" alt="Nhan_khau">
                         <p>Quản lý nhân khẩu</p>
                     </div>
-                    <div class="function">
+                    <a href="${pageContext.request.contextPath}/rooms" class="function">
                         <img src="${pageContext.request.contextPath}/resources/images/ho_khau.webp" alt="Ho_khau">
                         <p>Quản lý hộ khẩu</p>
-                    </div>
+                    </a>
+
                     <div class="function">
                         <img src="${pageContext.request.contextPath}/resources/images/phi.webp" alt="phi">
                         <p>Quản lý khoản phí</p>

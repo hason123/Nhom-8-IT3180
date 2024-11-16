@@ -16,38 +16,44 @@ public class UserController {
      private UserService userService;
      private UserRepository userRepository;
      private LoginService loginService;
-     public UserController(UserService userService, UserRepository userRepository, LoginService loginService)
-     {
+
+     public UserController(UserService userService, UserRepository userRepository, LoginService loginService) {
           this.userService = userService;
           this.userRepository = userRepository;
           this.loginService = loginService;
      }
 
      @RequestMapping("/register")
-     public String registerPage(Model model){
+     public String registerPage(Model model) {
           model.addAttribute("newUser", new User());
           return "admin/dangky";
      }
+
      @RequestMapping(value = "/user/save", method = RequestMethod.POST)
-     public String saveUser(Model model,@ModelAttribute("newUser") User user){
+     public String saveUser(Model model, @ModelAttribute("newUser") User user) {
           userRepository.save(user);
           return "admin/dangkythanhcong";
      }
 
      @RequestMapping("/login")
-     public String login(Model model){
+     public String login(Model model) {
           model.addAttribute("userdto", new UserLoginDto());
           return "admin/login";
      }
-     @RequestMapping(value = "/user/login",method = RequestMethod.POST)
-     public String loginPage(Model model,@ModelAttribute("userdto") UserLoginDto userdto){
-         if(loginService.login(userdto.getEmail(),userdto.getPassword())) {
+
+     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+     public String loginPage(Model model, @ModelAttribute("userdto") UserLoginDto userdto) {
+          if (loginService.login(userdto.getEmail(), userdto.getPassword())) {
                return "admin/home";
+          } else {
+               model.addAttribute("error", "Invalid username or password");
+               return "admin/login";
           }
-         else{
-              model.addAttribute("error", "Invalid username or password");
-              return "admin/login";
-         }
+     }
+
+     @RequestMapping("/home")
+     public String homePage() {
+          return "admin/home";
      }
 
 }

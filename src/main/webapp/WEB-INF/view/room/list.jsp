@@ -9,9 +9,42 @@
                 <title>Danh Sách Phòng</title>
                 <!-- Bootstrap CSS -->
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+                <link href="${pageContext.request.contextPath}/resources/css/sidebar.css" rel="stylesheet">
+                <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+                <script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
             </head>
 
             <body>
+
+                <!-- Header -->
+                <div class="header">
+                    <div style="display: flex; align-items: center;">
+                        <button class="menu-btn" onclick="toggleSidebar()">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                        <img src="${pageContext.request.contextPath}/resources/images/logo.webp" alt="Logo">
+                        <h1>BlueMoon</h1>
+                    </div>
+                    <button class="logout-btn" onclick="window.location.href='/logout'">Đăng xuất</button>
+                    <!-- Nút Đăng xuất -->
+                </div>
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <a href="${pageContext.request.contextPath}/home"><i class="fas fa-home"></i> Trang chủ</a>
+
+                    <a href="${pageContext.request.contextPath}/rooms"><i class="fas fa-users"></i> Quản lý hộ
+                        khẩu</a>
+                    <a href="#"><i class="fas fa-user-friends"></i> Quản lý nhân khẩu</a>
+                    <a href="#"><i class="fas fa-wallet"></i> Quản lý khoản phí</a>
+                    <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>
+                    <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
+
+                </div>
+
                 <div class="container mt-4">
                     <h2 class="text-center">Danh Sách Phòng</h2>
 
