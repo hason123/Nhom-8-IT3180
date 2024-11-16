@@ -24,6 +24,9 @@
                 <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
                 <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
                 <link href="${pageContext.request.contextPath}/resources/css/sidebar.css" rel="stylesheet">
+
+                <script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
+
             </head>
 
             <body>
@@ -48,7 +51,9 @@
                     <a href="#"><i class="fas fa-users"></i> Quản lý hộ khẩu</a>
                     <a href="#"><i class="fas fa-user-friends"></i> Quản lý nhân khẩu</a>
                     <a href="#"><i class="fas fa-wallet"></i> Quản lý khoản phí</a>
+                    <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>
                     <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
+
                 </div>
 
 
@@ -59,44 +64,22 @@
                         <p>Quản lý nhân khẩu</p>
                     </div>
                     <div class="function">
-                        <img src="${pageContext.request.contextPath}/resources/images/nhan_khau.webp" alt="Nhan_khau">
+                        <img src="${pageContext.request.contextPath}/resources/images/ho_khau.webp" alt="Ho_khau">
                         <p>Quản lý hộ khẩu</p>
                     </div>
                     <div class="function">
-                        <img src="${pageContext.request.contextPath}/resources/images/nhan_khau.webp" alt="Nhan_khau">
+                        <img src="${pageContext.request.contextPath}/resources/images/phi.webp" alt="phi">
                         <p>Quản lý khoản phí</p>
                     </div>
                     <div class="function">
-                        <img src="${pageContext.request.contextPath}/resources/images/nhan_khau.webp" alt="Nhan_khau">
+                        <img src="${pageContext.request.contextPath}/resources/images/tai_khoan.jpg" alt="tai_khoan">
                         <p>Quản lý tài khoản cá nhân</p>
                     </div>
                     <div class="function">
-                        <img src="${pageContext.request.contextPath}/resources/images/nhan_khau.webp" alt="Nhan_khau">
+                        <img src="${pageContext.request.contextPath}/resources/images/tra_cuu.jpg" alt="tra_cuu">
                         <p>Tra cứu và thống kê</p>
                     </div>
                 </div>
-
-
-                <script>
-                    function toggleSidebar() {
-                        const sidebar = document.querySelector('.sidebar');
-                        const container = document.querySelector('.container-m');
-
-                        // Kiểm tra trạng thái hiển thị của sidebar
-                        if (sidebar.style.display === 'block') {
-                            sidebar.style.display = 'none';
-                            container.classList.remove('expanded');
-                        } else {
-                            sidebar.style.display = 'block';
-                            container.classList.add('expanded');
-                        }
-                    }
-                </script>
-
-
-
-
-
             </body>
 
             </html>
