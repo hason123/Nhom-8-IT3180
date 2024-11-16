@@ -14,90 +14,17 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                <link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
 
-                <style>
-                    body {
-                        background: url('${pageContext.request.contextPath}/resources/images/background_3.webp') no-repeat center center fixed;
-                        background-size: cover;
-                        font-family: Arial, sans-serif;
-                        height: 100vh;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        margin: 0;
-                        position: relative;
-                    }
-
-
-                    .background-blur {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background: url('${pageContext.request.contextPath}/resources/images/background_3.webp') no-repeat center center fixed;
-                        background-size: cover;
-                        z-index: -1;
-
-                    }
-
-                    .background-blur::after {
-                        content: "";
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background-color: rgba(0, 0, 0, 0.5);
-                        z-index: 0;
-                    }
-
-                    .login-container {
-                        background-color: rgba(255, 255, 255, 0.9);
-                        border-radius: 10px;
-                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                        padding: 2rem;
-                        text-align: center;
-                        width: 100%;
-                        max-width: 400px;
-                    }
-
-                    .login-container img {
-                        width: 120px;
-                        height: 120px;
-                        border-radius: 50%;
-                        margin-bottom: 1rem;
-                    }
-
-                    .login-container h1 {
-                        color: #4682B4;
-                        font-weight: bold;
-                        margin-bottom: 1rem;
-                    }
-
-                    .btn-primary {
-                        background-color: #4682B4;
-                        border: none;
-                    }
-
-                    .btn-primary:hover {
-                        background-color: #1E90FF;
-                    }
-
-                    .form-label {
-                        color: #333;
-                    }
-
-                    #emailHelp {
-                        color: #6c757d;
-                    }
-                </style>
 
 
             </head>
 
-            <body>
-                <div class="background-blur"></div>
+            <body
+                style="background: url('${pageContext.request.contextPath}/resources/images/background_3.webp') no-repeat center center fixed;;">
+                <div class="background-blur"
+                    style="background: url('${pageContext.request.contextPath}/resources/images/background_3.webp') no-repeat center center fixed;">
+                </div>
                 <form:form method="post" action="/user/login" modelAttribute="userdto">
                     <div class="login-container">
                         <img src="${pageContext.request.contextPath}/resources/images/logo.webp" alt="Logo">

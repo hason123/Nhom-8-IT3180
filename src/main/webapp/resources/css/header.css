@@ -1,0 +1,70 @@
+.header {
+    background-color: white;
+    padding: 1rem;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+}
+
+.menu-btn {
+    background-color: rgb(237, 237, 237);
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 20px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+
+.menu-btn span {
+    display: block;
+    width: 80%;
+    height: 2px;
+    background-color: black;
+    border-radius: 2px;
+
+}
+
+
+
+.header img {
+    width: 35px;
+    height: 35px;
+    border-radius: 17.5px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.logout-btn {
+    background-color: #f44336;
+    /* Màu đỏ cho nút */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+    /* Đổi màu khi hover */
+}
