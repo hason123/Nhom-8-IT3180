@@ -17,7 +17,7 @@
 
                 <style>
                     body {
-                        background: url('${pageContext.request.contextPath}/resources/images/background_2.webp') no-repeat center center fixed;
+                        background: url('${pageContext.request.contextPath}/resources/images/background_3.webp') no-repeat center center fixed;
                         background-size: cover;
                         font-family: Arial, sans-serif;
                         height: 100vh;
@@ -26,22 +26,30 @@
                         justify-content: center;
                         margin: 0;
                         position: relative;
-                        /* Thêm thuộc tính này để định vị lớp phủ */
                     }
 
-                    /* Lớp phủ làm mờ ảnh nền */
+
                     .background-blur {
                         position: absolute;
                         top: 0;
                         left: 0;
                         right: 0;
                         bottom: 0;
-                        background: url('${pageContext.request.contextPath}/resources/images/background_2.webp') no-repeat center center fixed;
+                        background: url('${pageContext.request.contextPath}/resources/images/background_3.webp') no-repeat center center fixed;
                         background-size: cover;
-                        filter: blur(6px);
-                        /* Độ mờ (blur) của ảnh nền */
                         z-index: -1;
-                        /* Đảm bảo lớp phủ này không che khuất nội dung */
+
+                    }
+
+                    .background-blur::after {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: rgba(0, 0, 0, 0.5);
+                        z-index: 0;
                     }
 
                     .login-container {
@@ -89,7 +97,7 @@
             </head>
 
             <body>
-                <div class="background-blur"></div> <!-- Lớp phủ làm mờ ảnh nền -->
+                <div class="background-blur"></div>
                 <form:form method="post" action="/user/login" modelAttribute="userdto">
                     <div class="login-container">
                         <img src="${pageContext.request.contextPath}/resources/images/logo.webp" alt="Logo">
