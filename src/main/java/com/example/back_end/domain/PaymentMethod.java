@@ -3,7 +3,7 @@ package com.example.back_end.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "hinh_thuc_thanh_toan") // Chỉ định tên bảng
+@Table(name = "method") // Chỉ định tên bảng
 public class PaymentMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
