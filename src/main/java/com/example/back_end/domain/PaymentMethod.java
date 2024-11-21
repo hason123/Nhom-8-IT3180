@@ -7,26 +7,22 @@ import jakarta.persistence.*;
 public class PaymentMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // ID (Mã hình thức thanh toán)
+    private int idThanhToan; // ID (Mã hình thức thanh toán)
 
-    @Column(nullable = false)
     private String ten; // Tên hình thức thanh toán
 
-    @Column(nullable = false)
     private String loai; // Loại hình thanh toán (ví dụ: Tiền mặt, Chuyển khoản)
 
-    @Column
     private String noiDung; // Nội dung chi tiết (mô tả hình thức thanh toán)
 
-    @Column(nullable = false)
     private String trangThai; // Trạng thái (ví dụ: Hoạt động, Tạm ngừng)
 
-    public Long getId() {
-        return id;
+    public int getIdThanhToan() {
+        return idThanhToan;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdThanhToan(int idThanhToan) {
+        this.idThanhToan = idThanhToan;
     }
 
     public String getTen() {
@@ -64,7 +60,7 @@ public class PaymentMethod {
     @Override
     public String toString() {
         return "HinhThucThanhToan{" +
-                "id=" + id +
+                "idThanhToan=" + idThanhToan +
                 ", ten='" + ten + '\'' +
                 ", loai='" + loai + '\'' +
                 ", noiDung='" + noiDung + '\'' +

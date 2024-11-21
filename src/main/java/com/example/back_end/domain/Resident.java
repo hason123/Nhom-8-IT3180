@@ -7,21 +7,21 @@ import jakarta.persistence.*;
 public class Resident {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Mã hộ khẩu (ID)
+    private Long idHoKhau; // Mã hộ khẩu (ID)
 
-    @Column(nullable = false)
+
     private String fullName; // Họ tên
 
     @Column(nullable = false, unique = true)
     private String cccd; // CCCD (Căn cước công dân)
 
-    @Column(nullable = false)
+
     private String birthDate; // Ngày sinh (Dùng kiểu String để giữ định dạng ngày)
 
-    @Column(nullable = false)
+
     private String birthPlace; // Nơi sinh
 
-    @Column(nullable = false)
+
     private String dantoc; // Dân tộc
 
     private String occupation; // Nghề nghiệp
@@ -29,18 +29,18 @@ public class Resident {
     @Column(nullable = false)
     private String roomId; // Phòng (ID_Tên căn hộ)
 
-    @Column(nullable = false)
+
     private String status; // Trạng thái
 
-    @Column(nullable = false)
+
     private String permanentAddress; // Địa chỉ thường trú
 
-    public Long getId() {
-        return id;
+    public Long getIdHoKhau() {
+        return idHoKhau;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdHoKhau(Long idHoKhau) {
+        this.idHoKhau = idHoKhau;
     }
 
     public String getFullName() {
@@ -118,7 +118,7 @@ public class Resident {
     @Override
     public String toString() {
         return "Resident{" +
-                "id=" + id +
+                "IdHoKhau=" + idHoKhau +
                 ", fullName='" + fullName + '\'' +
                 ", cccd='" + cccd + '\'' +
                 ", birthDate='" + birthDate + '\'' +
