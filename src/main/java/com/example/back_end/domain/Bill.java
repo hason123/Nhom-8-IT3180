@@ -3,8 +3,8 @@ package com.example.back_end.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "payment") // Chỉ định tên bảng là "payment"
-public class Payment {
+@Table(name = "bill") // Chỉ định tên bảng là "payment"
+public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHoaDon; // ID
@@ -110,7 +110,7 @@ public class Payment {
 
     @Override
     public String toString() {
-        return "Payment{" +
+        return "Bill{" +
                 "idHoaDon=" + idHoaDon +
                 ", tieuDe='" + tieuDe + '\'' +
                 ", soTien=" + soTien +
