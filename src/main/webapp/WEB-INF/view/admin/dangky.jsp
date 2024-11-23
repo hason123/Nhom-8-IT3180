@@ -50,6 +50,12 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Sign up</button>
+                        <div class="text-center mt-3">
+                            <p>Already have an account?
+                                <a href="${pageContext.request.contextPath}/login" class="text-primary">Log in
+                                    now</a>
+                            </p>
+                        </div>
                     </div>
                 </form:form>
             </body>
