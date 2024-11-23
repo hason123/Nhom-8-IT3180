@@ -37,7 +37,7 @@
                         <img src="${pageContext.request.contextPath}/resources/images/logo.webp" alt="Logo">
                         <h1>BlueMoon</h1>
                     </div>
-                    <button class="logout-btn" onclick="window.location.href='/logout'">Đăng xuất</button>
+                    <button class="logout-btn" onclick="window.location.href='/login'">Đăng xuất</button>
                     <!-- Nút Đăng xuất -->
                 </div>
 

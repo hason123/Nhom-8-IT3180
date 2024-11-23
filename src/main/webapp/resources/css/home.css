@@ -1,3 +1,10 @@
+#successAlert {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+}
+
 .container-m {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

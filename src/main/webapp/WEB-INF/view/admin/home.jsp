@@ -30,6 +30,21 @@
             </head>
 
             <body>
+                <c:if test="${not empty successMessage}">
+                    <div id="successAlert" class="alert alert-success mt-3" role="alert">
+                        ${successMessage}
+                    </div>
+                    <script>
+
+                        setTimeout(function () {
+                            var alertElement = document.getElementById('successAlert');
+                            if (alertElement) {
+                                alertElement.style.display = 'none';
+                            }
+                        }, 3000);
+                    </script>
+                </c:if>
+
                 <!-- Header -->
                 <div class="header">
                     <div style="display: flex; align-items: center;">
@@ -41,7 +56,7 @@
                         <img src="${pageContext.request.contextPath}/resources/images/logo.webp" alt="Logo">
                         <h1>BlueMoon</h1>
                     </div>
-                    <button class="logout-btn" onclick="window.location.href='/logout'">Đăng xuất</button>
+                    <button class="logout-btn" onclick="window.location.href='/login'">Đăng xuất</button>
                     <!-- Nút Đăng xuất -->
                 </div>
 
@@ -59,8 +74,13 @@
                 </div>
 
 
+
+
                 <!-- Main content -->
                 <div class="container-m">
+
+
+
                     <div class="function">
                         <img src="${pageContext.request.contextPath}/resources/images/nhan_khau.webp" alt="Nhan_khau">
                         <p>Quản lý nhân khẩu</p>

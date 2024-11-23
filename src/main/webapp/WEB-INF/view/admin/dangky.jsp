@@ -22,15 +22,19 @@
                 <div class="background-blur"
                     style="background: url('${pageContext.request.contextPath}/resources/images/background_3.webp') no-repeat center center fixed;">
                 </div>
+
                 <form:form method="post" action="/user/save" modelAttribute="newUser">
                     <div class="login-container">
                         <img src="${pageContext.request.contextPath}/resources/images/logo.webp" alt="Logo"
                             class="mb-3">
                         <h1 class="mb-3">Sign up</h1>
+
+                        <!-- Hiển thị thông báo lỗi nếu có -->
                         <c:if test="${not empty error}">
                             <p style="color: red;">${error}</p>
                         </c:if>
-                        <!-- Compact form layout -->
+
+                        <!-- Form đăng ký -->
                         <div class="row g-2">
                             <div class="col-12 mb-2">
                                 <form:input type="email" class="form-control" path="email" placeholder="Email" />
@@ -51,10 +55,8 @@
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Sign up</button>
                         <div class="text-center mt-3">
-                            <p>Already have an account?
-                                <a href="${pageContext.request.contextPath}/login" class="text-primary">Log in
-                                    now</a>
-                            </p>
+                            <p>Already have an account? <a href="${pageContext.request.contextPath}/login"
+                                    class="text-primary">Log in now</a></p>
                         </div>
                     </div>
                 </form:form>
