@@ -11,8 +11,17 @@
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
                 <link href="${pageContext.request.contextPath}/resources/css/sidebar.css" rel="stylesheet">
+                <link href="${pageContext.request.contextPath}/resources/css/roomList.css" rel="stylesheet">
                 <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-                <script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
+                <link href="${pageContext.request.contextPath}/resources/css/general.css" rel="stylesheet">
+                <script src="${pageContext.request.contextPath}/resources/js/sidebar.js"></script>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+                    rel="stylesheet">
             </head>
 
             <body>
@@ -45,7 +54,7 @@
 
                 </div>
 
-                <div class="container mt-4">
+                <div class="container-m">
                     <h2 class="text-center">Danh Sách Phòng</h2>
 
                     <!-- Nút thêm phòng -->
@@ -57,7 +66,7 @@
                     <table class="table table-striped table-bordered">
                         <thead class="table-dark text-center">
                             <tr>
-                                <th>#</th>
+                                <th class="">Mã phòng</th>
                                 <th>Tầng</th>
                                 <th>Diện Tích (m²)</th>
                                 <th>ID Chủ Nhà</th>
@@ -69,11 +78,11 @@
                         <tbody>
                             <c:forEach var="room" items="${rooms}">
                                 <tr class="text-center">
-                                    <td>${room.idRoom}</td>
+                                    <td style="color: rgb(0, 181, 181);">${room.idRoom}</td>
                                     <td>${room.floor}</td>
                                     <td>${room.dientich}</td>
                                     <td>${room.hostId}</td>
-                                    <td>${room.hostName}</td>
+                                    <td style="color: rgb(0, 181, 181);">${room.hostName}</td>
                                     <td>${room.phoneNumber}</td>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/rooms/edit/${room.idRoom}"

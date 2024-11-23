@@ -24,7 +24,7 @@
     align-items: center;
     height: 40px;
     width: 40px;
-    margin-right: 10px;
+    margin-right: 30px;
     border-radius: 20px;
     padding-top: 13px;
     padding-bottom: 13px;
@@ -45,6 +45,7 @@
     width: 35px;
     height: 35px;
     border-radius: 17.5px;
+    margin-right: 6px;
 }
 
 .header h1 {

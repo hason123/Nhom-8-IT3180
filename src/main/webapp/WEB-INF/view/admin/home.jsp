@@ -25,7 +25,7 @@
                 <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
                 <link href="${pageContext.request.contextPath}/resources/css/sidebar.css" rel="stylesheet">
 
-                <script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
+                <script src="${pageContext.request.contextPath}/resources/js/sidebar.js"></script>
 
             </head>
 
