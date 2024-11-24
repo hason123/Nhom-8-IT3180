@@ -12,7 +12,7 @@ public class NhanKhau {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private Long cccd; // Số căn cước công dân
+    private Long cccd;
 
     @Temporal(TemporalType.DATE)
     private Date ngaySinh;
@@ -28,10 +28,10 @@ public class NhanKhau {
 
     @ManyToOne
     @JoinColumn(name = "id_room", referencedColumnName = "idRoom")
-    private Room room; // Liên kết với bảng phòng
+    private Room room;
 
     @Column(nullable = false)
-    private String trangThai; // Ví dụ: "Đang sống", "Đã chuyển đi", v.v.
+    private String trangThai;
 
     @Column(nullable = false)
     private String diaChiThuongTru;
