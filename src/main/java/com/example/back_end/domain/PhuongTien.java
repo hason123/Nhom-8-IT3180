@@ -9,7 +9,7 @@ public class PhuongTien {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idXe; // ID (Mã xe)
 
-    @Column(nullable = false)
+
     private String tenXe; // Tên xe
 
     @Column(nullable = false)
