@@ -15,6 +15,7 @@ public class NhanKhau {
     private Long cccd;
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngaySinh;
 
     @Column(nullable = false)
