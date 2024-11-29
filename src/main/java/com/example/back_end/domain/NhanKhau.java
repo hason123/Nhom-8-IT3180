@@ -2,6 +2,7 @@ package com.example.back_end.domain;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "nhankhau")
