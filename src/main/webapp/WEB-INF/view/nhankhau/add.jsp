@@ -40,13 +40,9 @@
         <!-- Sidebar -->
         <div class="sidebar">
           <a href="${pageContext.request.contextPath}/home"><i class="fas fa-home"></i> Trang chủ</a>
-
           <a href="${pageContext.request.contextPath}/rooms"><i class="fas fa-users"></i> Quản lý hộ khẩu</a>
           <a href="${pageContext.request.contextPath}/nhankhau"><i class="fas fa-users"></i> Quản lý nhân khẩu</a>
-          <a href="${pageContext.request.contextPath}/fees"><i class="fas fa-wallet"></i> Quản lý khoản phí</a>
-          <a href="${pageContext.request.contextPath}/bills"><i class="fas fa-wallet"></i> Quản lý hóa đơn</a>
-          <a href="${pageContext.request.contextPath}/phuong-tien"><i class="fas fa-car"></i> Quản lý phương
-            tiện</a>
+          <a href="#"><i class="fas fa-wallet"></i> Quản lý khoản phí</a>
           <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>
           <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
         </div>
@@ -106,12 +102,22 @@
                 placeholder="Nhập địa chỉ thường trú" />
             </div>
 
-            <!-- Nút hành động -->
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary">Thêm</button>
-              <a href="${pageContext.request.contextPath}/nhankhau" class="btn btn-secondary">Hủy</a>
-            </div>
-          </form:form>
+            <!-- Display error message if exists -->
+            <c:if test="${not empty error}">
+              <div class="alert alert-danger text-center" role="alert">
+                ${error}
+              </div>
+            </c:if>
+
+            <form:form method="post" action="${pageContext.request.contextPath}/nhankhau/add" modelAttribute="nhanKhau">
+              <!-- Submit buttons -->
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Thêm</button>
+                <a href="${pageContext.request.contextPath}/nhankhau" class="btn btn-secondary">Hủy</a>
+              </div>
+            </form:form>
+        </div>
+        </form:form>
         </div>
 
         <!-- Bootstrap JS -->
