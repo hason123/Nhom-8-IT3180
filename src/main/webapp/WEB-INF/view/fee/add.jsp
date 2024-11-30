@@ -51,7 +51,14 @@
                 <h2 class="text-center">Thêm Phí Mới</h2>
 
                 <!-- Form thêm phí -->
+                <%--@elvariable id="fee" type=""--%>
                 <form:form method="post" modelAttribute="fee" action="${pageContext.request.contextPath}/fees/add">
+                    <div class="mb-3">
+                        <label for="idPhi" class="form-label">Mã Phí:</label>
+                        <form:input path="idPhi" id="idPhi" class="form-control" placeholder="Nhập mã phí" />
+                        <div class="invalid-feedback">Vui lòng nhập mã phí.</div>
+                    </div>
+
                     <div class="mb-3">
                         <label for="tenPhi" class="form-label">Tên Phí:</label>
                         <form:input path="tenPhi" id="tenPhi" class="form-control" placeholder="Nhập tên phí" />
