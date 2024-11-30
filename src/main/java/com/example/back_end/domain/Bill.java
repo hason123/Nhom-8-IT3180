@@ -27,7 +27,6 @@ public class Bill {
     @Column
     private int idCacKhoanPhi; // ID_Các khoản phí
 
-
     public int getIdHoaDon() {
         return idHoaDon;
     }
