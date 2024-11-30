@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 @Table(name = "method") // Chỉ định tên bảng
 public class PaymentMethod {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idThanhToan; // ID (Mã hình thức thanh toán)
 
     private String ten; // Tên hình thức thanh toán
