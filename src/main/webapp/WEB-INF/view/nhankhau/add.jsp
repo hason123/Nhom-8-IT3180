@@ -194,14 +194,28 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           />
         </div>
 
-        <!-- Nút hành động -->
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary">Thêm</button>
-          <a
-            href="${pageContext.request.contextPath}/nhankhau"
-            class="btn btn-secondary"
-            >Hủy</a
+          <!-- Display error message if exists -->
+          <c:if test="${not empty error}">
+            <div class="alert alert-danger text-center" role="alert">
+              ${error}
+            </div>
+          </c:if>
+
+          <form:form
+            method="post"
+            action="${pageContext.request.contextPath}/nhankhau/add"
+            modelAttribute="nhanKhau"
           >
+            <!-- Submit buttons -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Thêm</button>
+              <a
+                href="${pageContext.request.contextPath}/nhankhau"
+                class="btn btn-secondary"
+                >Hủy</a
+              >
+            </div>
+          </form:form>
         </div>
       </form:form>
     </div>
