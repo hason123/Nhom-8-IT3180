@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Fee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPhi; // ID (Mã phí)
+    private int idPhi; // ID (Mã phí)
 
     @Column(nullable = false)
     private String tenPhi; // Tên phí
@@ -18,11 +18,11 @@ public class Fee {
     @Column(nullable = false)
     private String thoiGianThu; // Thời gian thu (dùng kiểu String để dễ định dạng)
 
-    public Long getIdPhi() {
+    public int getIdPhi() {
         return idPhi;
     }
 
-    public void setId(Long idPhi) {
+    public void setIdPhi(int idPhi) {
         this.idPhi = idPhi;
     }
 

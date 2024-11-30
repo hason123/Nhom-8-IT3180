@@ -57,6 +57,7 @@ public class FeeController {
     // Xử lý việc cập nhật phí
     @PostMapping("/edit")
     public String updateFee(@ModelAttribute("fee") Fee fee) {
+        System.out.println(fee);
         feeRepository.save(fee);
         return "redirect:/fees";
     }
