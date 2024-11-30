@@ -38,7 +38,15 @@ public class NhanKhauController {
     }
 
     @PostMapping("/add")
-    public String addNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau) {
+    public String addNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau, Model model) {
+        // Validate room existence
+        if (nhanKhau.getRoom() == null || !roomRepository.existsById(nhanKhau.getRoom().getIdRoom())) {
+            model.addAttribute("error", "ID Room không tồn tại. Vui lòng nhập ID hợp lệ.");
+            model.addAttribute("rooms", roomRepository.findAll()); // Populate room list again
+            return "nhankhau/add";
+        }
+
+        // Save the Nhan Khau if validation passes
         nhanKhauRepository.save(nhanKhau);
         return "redirect:/nhankhau";
     }
@@ -50,19 +58,31 @@ public class NhanKhauController {
             model.addAttribute("nhanKhau", nhanKhau);
             model.addAttribute("rooms", roomRepository.findAll());
             return "nhankhau/edit";
+        } else {
+            model.addAttribute("error", "Nhan Khau with ID " + id + " not found.");
+            return "nhankhau/error";
         }
-        return "redirect:/nhankhau";
     }
 
     @PostMapping("/edit")
-    public String updateNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau) {
-        nhanKhauRepository.save(nhanKhau);
-        return "redirect:/nhankhau";
+    public String updateNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau, Model model) {
+        try {
+            nhanKhauRepository.save(nhanKhau);
+            return "redirect:/nhankhau";
+        } catch (Exception e) {
+            model.addAttribute("error", "An error occurred while updating the Nhan Khau.");
+            return "nhankhau/edit";
+        }
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteNhanKhau(@PathVariable("id") Long id) {
-        nhanKhauRepository.deleteById(id);
-        return "redirect:/nhankhau";
+    public String deleteNhanKhau(@PathVariable("id") Long id, Model model) {
+        if (nhanKhauRepository.existsById(id)) {
+            nhanKhauRepository.deleteById(id);
+            return "redirect:/nhankhau";
+        } else {
+            model.addAttribute("error", "Nhan Khau with ID " + id + " not found.");
+            return "nhankhau/error";
+        }
     }
 }
