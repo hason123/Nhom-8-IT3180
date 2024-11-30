@@ -66,7 +66,7 @@
             <!-- CCCD -->
             <div class="mb-3">
               <label for="cccd" class="form-label">Căn Cước Công Dân:</label>
-              <form:input path="cccd" id="cccd" class="form-control" type="number" min="100000000000" max="999999999999"
+              <form:input path="cccd" id="cccd" class="form-control" type="number" min="000000000000" max="999999999999"
                 oninput="if(this.value.length > 12) this.value = this.value.slice(0, 12);" required="required" />
             </div>
 
