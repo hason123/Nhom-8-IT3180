@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "room") // Chỉ định tên bảng nếu khác với tên lớp
 public class Room {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long idRoom;
 
     @Column(nullable = false)

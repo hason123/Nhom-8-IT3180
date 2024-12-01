@@ -63,6 +63,11 @@
               <form:input path="id" id="id" class="form-control" type="number" min="1" max="999999"
                 oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
             </div>
+            <!-- Ho Ten -->
+          <div class="mb-3">
+            <label for="hoTen" class="form-label">Họ tên:</label>
+            <form:input path="hoTen" id="hoTen" class="form-control" type="text" placeholder="Nhập họ tên" />
+          </div>
             <!-- CCCD -->
             <div class="mb-3">
               <label for="cccd" class="form-label">Căn Cước Công Dân:</label>

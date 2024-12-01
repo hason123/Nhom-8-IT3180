@@ -56,6 +56,13 @@
           <h2 class="text-center">Thêm Phòng Mới</h2>
           <form:form method="post" action="${pageContext.request.contextPath}/rooms/add" modelAttribute="room">
             <div class="row">
+              <div class="mb-3">
+                <label for="idRoom" class="form-label">ID Phòng:</label>
+                <form:input path="idRoom" id="idRoom" class="form-control" type="number" min="1" max="9999"
+                            placeholder="Nhập ID Phòng" required="true"
+                            oninput="if(this.value.length > 4) this.value = this.value.slice(0, 4);" />
+              </div>
+
               <!-- Tầng -->
               <div class="col-md-6 mb-3">
                 <label for="floor" class="form-label">Tầng:</label>

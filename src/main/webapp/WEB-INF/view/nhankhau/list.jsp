@@ -69,6 +69,7 @@
             <thead class="table-dark text-center">
               <tr>
                 <th class="">Mã nhân khẩu</th>
+                <th>Họ tên</th>
                 <th>CCCD</th>
                 <th>Ngày sinh</th>
                 <th>Nơi sinh</th>
@@ -84,6 +85,7 @@
               <c:forEach var="nk" items="${nhanKhaus}">
                 <tr class="text-center">
                   <td style="color: rgb(0, 181, 181)">${nk.id}</td>
+                  <td>${nk.hoTen}</td>
                   <td>${nk.cccd}</td>
                   <td>${nk.ngaySinh}</td>
                   <td>${nk.noiSinh}</td>
