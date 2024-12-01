@@ -104,8 +104,11 @@
 
             <div class="mb-3">
               <label for="trangThai" class="form-label">Trạng thái:</label>
-              <form:input path="trangThai" id="trangThai" class="form-control" type="text"
-                placeholder="Nhập trạng thái" />
+              <form:select path="trangThai" id="trangThai" class="form-control">
+                <form:option value="Thường trú">Thường trú</form:option>
+                <form:option value="Tạm trú">Tạm trú</form:option>
+                <form:option value="Tạm vắng">Tạm vắng</form:option>
+              </form:select>
             </div>
             <div class="mb-3">
               <label for="diaChiThuongTru" class="form-label">Địa chỉ thường trú:</label>
