@@ -12,6 +12,9 @@ public class NhanKhau {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String hoTen;
+
     @Column(nullable = false, unique = true)
     private Long cccd;
 
@@ -44,6 +47,14 @@ public class NhanKhau {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getHoTen() {
+        return hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
 
     public Long getCccd() {
@@ -114,6 +125,7 @@ public class NhanKhau {
     public String toString() {
         return "NhanKhau{" +
                 "id=" + id +
+                ", hoTen='" + hoTen + '\'' +
                 ", cccd=" + cccd +
                 ", ngaySinh=" + ngaySinh +
                 ", noiSinh='" + noiSinh + '\'' +
