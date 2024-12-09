@@ -23,11 +23,45 @@ public class PhuongTienController {
 
     // Hiển thị danh sách phương tiện
     @GetMapping
-    public String listPhuongTien(Model model) {
-        List<PhuongTien> phuongTiens = (List<PhuongTien>) phuongTienRepository.findAll();
+    public String listPhuongTien(
+            @RequestParam(value = "searchType", required = false) String searchType,
+            @RequestParam(value = "keyword", required = false) String keyword,
+            Model model) {
+
+        List<PhuongTien> phuongTiens;
+
+        if (keyword != null && !keyword.isEmpty()) {
+            switch (searchType) {
+                case "loaiXe":
+                    phuongTiens = phuongTienRepository.findByLoaiXe(keyword);
+                    break;
+                case "tenXe":
+                    phuongTiens = phuongTienRepository.findByTenXe(keyword);
+                    break;
+                case "bienKiemSoat":
+                    phuongTiens = phuongTienRepository.findByBienKiemSoat(keyword);
+                    break;
+                case "tenChuXe":
+                    phuongTiens = phuongTienRepository.findByTenChuXe(keyword);
+                    break;
+                case "maChuXe":
+                    phuongTiens = phuongTienRepository.findByMaChuXe(keyword);
+                    break;
+                default:
+                    phuongTiens = (List<PhuongTien>) phuongTienRepository.findAll();
+                    break;
+            }
+        } else {
+            phuongTiens = (List<PhuongTien>) phuongTienRepository.findAll();
+        }
+
         model.addAttribute("phuongTiens", phuongTiens);
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
+
         return "phuongtien/list"; // Trả về view hiển thị danh sách phương tiện
     }
+
 
     // Hiển thị form thêm phương tiện
     @GetMapping("/add")

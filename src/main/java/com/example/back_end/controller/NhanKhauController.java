@@ -24,10 +24,43 @@ public class NhanKhauController {
     }
 
     @GetMapping
-    public String listNhanKhau(Model model) {
-        List<NhanKhau> nhanKhaus = nhanKhauRepository.findAll();
+    public String listNhanKhau(
+            @RequestParam(value = "searchType", required = false) String searchType,
+            @RequestParam(value = "keyword", required = false) String keyword,
+            Model model) {
+
+        List<NhanKhau> nhanKhaus;
+
+        if (keyword != null && !keyword.isEmpty()) {
+            switch (searchType) {
+                case "hoTen":
+                    nhanKhaus = nhanKhauRepository.findByHoTen(keyword);
+                    break;
+                case "noiSinh":
+                    nhanKhaus = nhanKhauRepository.findByNoiSinh(keyword);
+                    break;
+                case "room":
+                    nhanKhaus = nhanKhauRepository.findByRoom(Integer.parseInt(keyword));
+                    break;
+                case "trangThai":
+                    nhanKhaus = nhanKhauRepository.findByTrangThai(keyword);
+                    break;
+                case "ngheNghiep":
+                    nhanKhaus = nhanKhauRepository.findByDiaChiThuongTru(keyword);
+                    break;
+                default:
+                    nhanKhaus = (List<NhanKhau>) nhanKhauRepository.findAll();
+                    break;
+            }
+        } else {
+            nhanKhaus = (List<NhanKhau>) nhanKhauRepository.findAll();
+        }
+
         model.addAttribute("nhanKhaus", nhanKhaus);
-        return "nhankhau/list";
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
+
+        return "nhankhau/list"; // Trả về view danh sách nhân khẩu
     }
 
     @GetMapping("/add")
@@ -39,12 +72,6 @@ public class NhanKhauController {
 
     @PostMapping("/add")
     public String addNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau, Model model) {
-        // Validate room existence
-        if (nhanKhau.getRoom() == null || !roomRepository.existsById(nhanKhau.getRoom().getIdRoom())) {
-            model.addAttribute("error", "ID Room không tồn tại. Vui lòng nhập ID hợp lệ.");
-            model.addAttribute("rooms", roomRepository.findAll()); // Populate room list again
-            return "nhankhau/add";
-        }
 
         // Save the Nhan Khau if validation passes
         nhanKhauRepository.save(nhanKhau);

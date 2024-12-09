@@ -23,10 +23,46 @@ public class BillController {
 
     // Hiển thị danh sách các hóa đơn
     @GetMapping
-    public String listBills(Model model) {
-        List<Bill> bills = (List<Bill>) billRepository.findAll();
+    public String listBills(
+            @RequestParam(value = "searchType", required = false) String searchType,
+            @RequestParam(value = "keyword", required = false) String keyword,
+            Model model) {
+
+        List<Bill> bills;
+
+        if (keyword != null && !keyword.isEmpty()) {
+            switch (searchType) {
+                case "maCanHo":
+                    bills = billRepository.findByMaCanHo(keyword);
+                    break;
+                case "trangThai":
+                    bills = billRepository.findByTrangThai(keyword);
+                    break;
+                case "tieuDe":
+                    bills = billRepository.findByTieuDe(keyword);
+                    break;
+                case "kiThanhToan":
+                    bills = billRepository.findBykiThanhToan(keyword);
+                    break;
+                case "idThanhToan":
+                    bills = billRepository.findByidThanhToan(Integer.parseInt(keyword));
+                    break;
+                case "idCacKhoanPhi":
+                    bills = billRepository.findByidCacKhoanPhi(Integer.parseInt(keyword));
+                    break;
+                default:
+                    bills = (List<Bill>) billRepository.findAll();
+                    break;
+            }
+        } else {
+            bills = (List<Bill>) billRepository.findAll();
+        }
+
         model.addAttribute("bills", bills);
-        return "bill/list"; // Chuyển đến view 'bill/list' để hiển thị danh sách
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
+
+        return "bill/list";
     }
 
     // Hiển thị form thêm hóa đơn mới

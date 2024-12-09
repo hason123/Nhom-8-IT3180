@@ -13,4 +13,12 @@ public interface BillRepository extends CrudRepository<Bill, Long> {
 
     // Tìm kiếm Payment theo tiêu đề (tieuDe)
     List<Bill> findByTieuDe(String tieuDe);
+
+    List<Bill> findBykiThanhToan (String kiThanhToan);
+
+    List<Bill> findByidThanhToan(int idThanhToan);
+
+    List<Bill> findByidCacKhoanPhi (int idCacKhoanPhi);
+
+
 }

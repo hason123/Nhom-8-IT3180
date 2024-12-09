@@ -16,7 +16,7 @@ public class NhanKhau {
     private String hoTen;
 
     @Column(nullable = false, unique = true)
-    private Long cccd;
+    private String cccd;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -31,9 +31,9 @@ public class NhanKhau {
     @Column(nullable = false)
     private String ngheNghiep;
 
-    @ManyToOne
-    @JoinColumn(name = "id_room", referencedColumnName = "idRoom")
-    private Room room;
+
+
+    private int room;
 
     @Column(nullable = false)
     private String trangThai;
@@ -57,11 +57,11 @@ public class NhanKhau {
         this.hoTen = hoTen;
     }
 
-    public Long getCccd() {
+    public String getCccd() {
         return cccd;
     }
 
-    public void setCccd(Long cccd) {
+    public void setCccd(String cccd) {
         this.cccd = cccd;
     }
 
@@ -97,11 +97,11 @@ public class NhanKhau {
         this.ngheNghiep = ngheNghiep;
     }
 
-    public Room getRoom() {
+    public int getRoom() {
         return room;
     }
 
-    public void setRoom(Room room) {
+    public void setRoom(int room) {
         this.room = room;
     }
 

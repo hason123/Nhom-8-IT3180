@@ -64,6 +64,20 @@
                     </div>
 
                     <!-- Bảng danh sách hóa đơn -->
+                    <div class="mb-4">
+                        <form method="get" action="${pageContext.request.contextPath}/bills" class="d-flex align-items-center">
+                            <input type="text" name="keyword" value="${keyword}" class="form-control me-2" placeholder="Tìm kiếm">
+                            <select name="searchType" class="form-select me-2">
+                                <option value="maCanHo" ${searchType == 'maCanHo' ? 'selected' : ''}>Mã Căn Hộ</option>
+                                <option value="trangThai" ${searchType == 'trangThai' ? 'selected' : ''}>Trạng Thái</option>
+                                <option value="kiThanhToan" ${searchType == 'kiThanhToan' ? 'selected' : ''}>Kỳ Thanh Toán</option>
+                                <option value="idThanhToan" ${searchType == 'idThanhToan' ? 'selected' : ''}>ID Thanh toán</option>
+                                <option value="idCacKhoanPhi" ${searchType == 'idCacKhoanPhi' ? 'selected' : ''}>ID Các Khoản phí</option>
+                            </select>
+
+
+                        </form>
+                    </div>
                     <table class="table table-striped table-bordered">
                         <thead class="table-dark text-center">
                             <tr>

@@ -20,12 +20,47 @@ public class RoomController {
     public RoomController(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
+
     @GetMapping
-    public String listRooms(Model model) {
-        List<Room> rooms = (List<Room>) roomRepository.findAll();
+    public String listRooms(
+            @RequestParam(value = "searchType", required = false) String searchType,
+            @RequestParam(value = "keyword", required = false) String keyword,
+            Model model) {
+
+        List<Room> rooms;
+
+        if (keyword != null && !keyword.isEmpty()) {
+            switch (searchType) {
+                case "idRoom":
+                    rooms = roomRepository.findByIdRoom(Long.parseLong(keyword));
+                    break;
+                case "floor":
+                    rooms = roomRepository.findByFloor(Integer.parseInt(keyword));
+                    break;
+                case "hostId":
+                    rooms = roomRepository.findByHostId(Long.parseLong(keyword));
+                    break;
+                case "hostName":
+                    rooms = roomRepository.findByHostName(keyword);
+                    break;
+                case "phoneNumber":
+                    rooms = roomRepository.findByPhoneNumber(keyword);
+                    break;
+                default:
+                    rooms = (List<Room>) roomRepository.findAll();
+                    break;
+            }
+        } else {
+            rooms = (List<Room>) roomRepository.findAll();
+        }
+
         model.addAttribute("rooms", rooms);
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
+
         return "room/list";
     }
+
     @GetMapping("/add")
     public String showAddRoomForm(Model model) {
         model.addAttribute("room", new Room());

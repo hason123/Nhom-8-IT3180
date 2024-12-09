@@ -59,10 +59,25 @@
         <div class="container-m">
           <h2 class="text-center">Danh Sách Phòng</h2>
 
-          <!-- Nút thêm phòng -->
           <div class="mb-3 text-end">
             <a href="${pageContext.request.contextPath}/rooms/add" class="btn btn-success">Thêm Phòng</a>
           </div>
+
+          <div class="mb-4">
+            <form method="get" action="${pageContext.request.contextPath}/rooms" class="d-flex align-items-center">
+              <input type="text" name="keyword" value="${keyword}" class="form-control me-2" placeholder="Tìm kiếm">
+              <select name="searchType" class="form-select me-2">
+                <option value="idRoom" ${searchType == 'idRoom' ? 'selected' : ''}>ID Phòng</option>
+                <option value="floor" ${searchType == 'floor' ? 'selected' : ''}>Tầng</option>
+                <option value="hostId" ${searchType == 'hostId' ? 'selected' : ''}>ID Chủ nhà</option>
+                <option value="hostName" ${searchType == 'hostName' ? 'selected' : ''}>Tên chủ nhà</option>
+                <option value="phoneNumber" ${searchType == 'phoneNumber' ? 'selected' : ''}>Số điện thoại</option>
+              </select>
+
+
+            </form>
+          </div>
+
 
           <!-- Bảng danh sách phòng -->
           <table class="table table-striped table-bordered">
@@ -80,7 +95,10 @@
             <tbody>
               <c:forEach var="room" items="${rooms}">
                 <tr class="text-center">
-                  <td style="color: rgb(0, 181, 181)">${room.idRoom}</td>
+                  <!-- Định dạng lại idRoom để luôn có 4 chữ số -->
+                  <td style="color: rgb(0, 181, 181)">
+                    <fmt:formatNumber value="${room.idRoom}" pattern="0000" />
+                  </td>
                   <td>${room.floor}</td>
                   <td>${room.dientich}</td>
                   <td>${room.hostId}</td>
