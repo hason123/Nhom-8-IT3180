@@ -5,7 +5,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <title>Danh sách phương thức thanh toán</title>
+    <title>Danh phương thức thanh toán</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -24,7 +24,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       rel="stylesheet"
     />
     <link
-      href="${pageContext.request.contextPath}/resources/css/payment-method.css"
+      href="${pageContext.request.contextPath}/resources/css/phuongtienList.css"
       rel="stylesheet"
     />
     <script src="${pageContext.request.contextPath}/resources/js/sidebar.js"></script>
@@ -81,23 +81,20 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       <a href="${pageContext.request.contextPath}/phuong-tien"
         ><i class="fas fa-car"></i> Quản lý phương tiện</a
       >
-      <a href="${pageContext.request.contextPath}/payment-methods"
-        ><i class="fas fa-car"></i> Phương thức thanh toán</a
-      >
       <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>
       <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
     </div>
 
     <!-- Main Content -->
     <div class="container-m">
-      <h2 class="text-center">Danh Sách phương thức thanh toán</h2>
+      <h2 class="text-center">Danh Sách Phương thức thanh toán</h2>
 
       <!-- Nút thêm phương tiện -->
       <div class="mb-3 text-end">
         <a
           href="${pageContext.request.contextPath}/payment-methods/add"
           class="btn btn-success"
-          >Thêm hình thức thanh toán</a
+          >Thêm Phương Thức thanh toán</a
         >
       </div>
 
@@ -132,7 +129,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 <a
                   href="${pageContext.request.contextPath}/payment-methods/delete/${paymentMethod.idThanhToan}"
                   class="btn btn-danger btn-sm"
-                  onclick="return confirm('Bạn có chắc chắn muốn xóa phương thức này?');"
+                  onclick="return confirm('Bạn có chắc chắn muốn xóa phương tiện này?');"
                   >Xóa</a
                 >
               </td>
@@ -142,7 +139,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       </table>
 
       <!-- Hiển thị thông báo nếu danh sách rỗng -->
-      <c:if test="${empty paymentMethods}">
+      <c:if test="${empty phuongTiens}">
         <div class="alert alert-warning text-center" role="alert">
           Không có phương thức thanh toán nào được tìm thấy.
         </div>
