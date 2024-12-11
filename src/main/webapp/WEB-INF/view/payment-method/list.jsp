@@ -139,7 +139,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       </table>
 
       <!-- Hiển thị thông báo nếu danh sách rỗng -->
-      <c:if test="${empty phuongTiens}">
+      <c:if test="${empty paymentMethods}">
         <div class="alert alert-warning text-center" role="alert">
           Không có phương thức thanh toán nào được tìm thấy.
         </div>
