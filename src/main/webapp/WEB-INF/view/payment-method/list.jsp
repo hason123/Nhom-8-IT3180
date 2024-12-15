@@ -5,7 +5,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <title>Danh phương thức thanh toán</title>
+    <title>Phương thức thanh toán</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -63,38 +63,40 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <!-- Sidebar -->
     <div class="sidebar">
       <a href="${pageContext.request.contextPath}/home"
-        ><i class="fas fa-home"></i> Trang chủ</a
+      ><i class="fas fa-home"></i> Trang chủ</a
       >
-
       <a href="${pageContext.request.contextPath}/rooms"
-        ><i class="fas fa-users"></i> Quản lý hộ khẩu</a
+      ><i class="fas fa-users"></i> Quản lý hộ khẩu</a
       >
       <a href="${pageContext.request.contextPath}/nhankhau"
-        ><i class="fas fa-users"></i> Quản lý nhân khẩu</a
-      >
-      <a href="${pageContext.request.contextPath}/fees"
-        ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
+      ><i class="fas fa-users"></i> Quản lý nhân khẩu</a
       >
       <a href="${pageContext.request.contextPath}/bills"
-        ><i class="fas fa-wallet"></i> Quản lý hóa đơn</a
+      ><i class="fas fa-wallet"></i> Quản lý hóa đơn</a
+      >
+      <a href="${pageContext.request.contextPath}/fees"
+      ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
+      >
+      <a href="${pageContext.request.contextPath}/payment-methods"
+      ><i class="fas fa-car"></i> Phương thức thanh toán</a
       >
       <a href="${pageContext.request.contextPath}/phuong-tien"
-        ><i class="fas fa-car"></i> Quản lý phương tiện</a
+      ><i class="fas fa-car"></i> Quản lý phương tiện</a
       >
-      <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>
+      <!--<a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>-->
       <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
     </div>
 
     <!-- Main Content -->
     <div class="container-m">
-      <h2 class="text-center">Danh Sách Phương thức thanh toán</h2>
+      <h2 class="text-center">Phương Thức Thanh Toán</h2>
 
       <!-- Nút thêm phương tiện -->
       <div class="mb-3 text-end">
         <a
           href="${pageContext.request.contextPath}/payment-methods/add"
           class="btn btn-success"
-          >Thêm Phương Thức thanh toán</a
+          >Thêm phương thức</a
         >
       </div>
 
@@ -103,9 +105,9 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <thead class="table-dark text-center">
           <tr>
             <th>ID</th>
+            <th>Tên</th>
             <th>Loại</th>
             <th>Nội dung</th>
-            <th>Tên Chủ Xe</th>
             <th>Trạng thái</th>
             <th>Hành Động</th>
           </tr>

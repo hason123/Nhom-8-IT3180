@@ -93,22 +93,20 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
       <a href="${pageContext.request.contextPath}/nhankhau"
         ><i class="fas fa-users"></i> Quản lý nhân khẩu</a
       >
-      <a href="${pageContext.request.contextPath}/fees"
-        ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
-      >
       <a href="${pageContext.request.contextPath}/bills"
         ><i class="fas fa-wallet"></i> Quản lý hóa đơn</a
       >
-      <a href="${pageContext.request.contextPath}/phuong-tien"
-        ><i class="fas fa-car"></i> Quản lý phương tiện</a
-      >
-      <a href="${pageContext.request.contextPath}/phuong-tien"
-        ><i class="fas fa-car"></i> Quản lý phương tiện</a
+      <a href="${pageContext.request.contextPath}/fees"
+      ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
       >
       <a href="${pageContext.request.contextPath}/payment-methods"
-        ><i class="fas fa-car"></i> Quản lý hình thức thanh toán</a
+      ><i class="fas fa-car"></i> Phương thức thanh toán</a
       >
-      <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>
+      <a href="${pageContext.request.contextPath}/phuong-tien"
+        ><i class="fas fa-car"></i> Quản lý phương tiện</a
+      >
+
+      <!-- <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a> -->
       <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
     </div>
 
@@ -153,12 +151,13 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
         />
         <p>Quản lý phương thức thanh toán</p>
       </a>
-      <div class="function">
+      <!-- Sidebar<div class="function">
         <img
           src="${pageContext.request.contextPath}/resources/images/tra_cuu.jpg"
           alt="tra_cuu"
         />
         <p>Tra cứu và thống kê</p>
+        -->
       </div>
     </div>
   </body>

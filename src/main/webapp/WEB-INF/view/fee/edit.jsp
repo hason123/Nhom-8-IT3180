@@ -3,20 +3,32 @@
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             <html lang="en">
 
-            <head>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta charset="UTF-8" />
-                <title>Chỉnh Sửa Phí</title>
-                <!-- Bootstrap CSS -->
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-                <link href="${pageContext.request.contextPath}/resources/css/sidebar.css" rel="stylesheet" />
-                <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet" />
-                <link href="${pageContext.request.contextPath}/resources/css/general.css" rel="stylesheet" />
-                <link href="${pageContext.request.contextPath}/resources/css/add.css" rel="stylesheet" />
-                <script src="${pageContext.request.contextPath}/resources/js/sidebar.js"></script>
-                <link rel="stylesheet"
-                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-            </head>
+            <div class="sidebar">
+                <a href="${pageContext.request.contextPath}/home"
+                ><i class="fas fa-home"></i> Trang chủ</a
+                >
+                <a href="${pageContext.request.contextPath}/rooms"
+                ><i class="fas fa-users"></i> Quản lý hộ khẩu</a
+                >
+                <a href="${pageContext.request.contextPath}/nhankhau"
+                ><i class="fas fa-users"></i> Quản lý nhân khẩu</a
+                >
+                <a href="${pageContext.request.contextPath}/bills"
+                ><i class="fas fa-wallet"></i> Quản lý hóa đơn</a
+                >
+                <a href="${pageContext.request.contextPath}/fees"
+                ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
+                >
+                <a href="${pageContext.request.contextPath}/payment-methods"
+                ><i class="fas fa-car"></i> Phương thức thanh toán</a
+                >
+                <a href="${pageContext.request.contextPath}/phuong-tien"
+                ><i class="fas fa-car"></i> Quản lý phương tiện</a
+                >
+                <!--<a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>-->
+                <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
+            </div>
+
 
             <body>
                 <!-- Header -->

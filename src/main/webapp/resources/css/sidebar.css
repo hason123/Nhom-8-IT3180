@@ -2,16 +2,12 @@
     display: none;
     background-color: white;
     color: black;
-    width: 230px;
+    width: 235px;
     height: 100vh;
     padding: 1rem;
     position: fixed;
     top: 60px;
 }
-
-
-
-
 
 .sidebar a {
     color: black;

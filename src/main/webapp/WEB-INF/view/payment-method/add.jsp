@@ -5,7 +5,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <title>Thêm phương thức thanh toán</title>
+    <title>Thêm Phương Thức Thanh Toán</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -68,32 +68,31 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       <a href="${pageContext.request.contextPath}/home"
         ><i class="fas fa-home"></i> Trang chủ</a
       >
-
       <a href="${pageContext.request.contextPath}/rooms"
         ><i class="fas fa-users"></i> Quản lý hộ khẩu</a
       >
       <a href="${pageContext.request.contextPath}/nhankhau"
         ><i class="fas fa-users"></i> Quản lý nhân khẩu</a
       >
+      <a href="${pageContext.request.contextPath}/bills"
+      ><i class="fas fa-wallet"></i> Quản lý hóa đơn</a
+      >
       <a href="${pageContext.request.contextPath}/fees"
         ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
-      >
-      <a href="${pageContext.request.contextPath}/bills"
-        ><i class="fas fa-wallet"></i> Quản lý hóa đơn</a
-      >
-      <a href="${pageContext.request.contextPath}/phuong-tien"
-        ><i class="fas fa-car"></i> Quản lý phương tiện</a
       >
       <a href="${pageContext.request.contextPath}/payment-methods"
         ><i class="fas fa-car"></i> Phương thức thanh toán</a
       >
-      <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>
+      <a href="${pageContext.request.contextPath}/phuong-tien"
+      ><i class="fas fa-car"></i> Quản lý phương tiện</a
+      >
+      <!--<a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>-->
       <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
     </div>
 
     <!-- Form Thêm Phương Tiện -->
     <div class="container mt-4">
-      <h2 class="text-center">Thêm phương thức thanh toán</h2>
+      <h2 class="text-center">Thêm Phương Thức Thanh Toán</h2>
       <form:form
         method="post"
         action="${pageContext.request.contextPath}/payment-methods/add"
@@ -106,15 +105,13 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               path="idThanhToan"
               id="idThanhToan"
               class="form-control"
-              placeholder="Nhập mã thanh toán"
+              placeholder="Nhập ID"
             />
-            <div class="invalid-feedback">Vui lòng nhập.</div>
+            <div class="invalid-feedback">Vui lòng nhập</div>
           </div>
 
           <div class="col-md-6 mb-3">
-            <label for="ten" class="form-label"
-              >Tên hình thức thanh toán:</label
-            >
+            <label for="ten" class="form-label">Tên:</label>
             <form:input
               path="ten"
               id="ten"
@@ -125,25 +122,25 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             />
           </div>
           <div class="col-md-6 mb-3">
-            <label for="loai" class="form-label"> Loại hình thanh toán:</label>
+            <label for="loai" class="form-label">Loại:</label>
             <form:input
               path="loai"
               id="loai"
               class="form-control"
               type="text"
-              placeholder=" Loại hình thanh toán"
+              placeholder=" Loại hình thức thanh toán"
               required="true"
             />
           </div>
         </div>
         <div class="mb-3">
-          <label for="noiDung" class="form-label">Nội dung chi tiết:</label>
+          <label for="noiDung" class="form-label">Nội dung:</label>
           <form:input
             path="noiDung"
             id="noiDung"
             class="form-control"
             type="text"
-            placeholder="Nội dung chi tiết"
+            placeholder="Nội dung"
             required="true"
           />
         </div>
