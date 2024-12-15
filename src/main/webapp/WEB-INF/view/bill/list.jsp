@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
             <html lang="en">
 
             <head>
@@ -110,7 +111,7 @@
                                 <tr class="text-center">
                                     <td style="color: rgb(0, 181, 181)">${bill.idHoaDon}</td>
                                     <td>${bill.tieuDe}</td>
-                                    <td>${bill.soTien}</td>
+                                    <td><fmt:formatNumber value="${bill.soTien}" type="number" maxFractionDigits="0" />đ</td>
                                     <td>${bill.maCanHo}</td>
                                     <td>${bill.kiThanhToan}</td>
                                     <td>${bill.hanThanhToan}</td>
