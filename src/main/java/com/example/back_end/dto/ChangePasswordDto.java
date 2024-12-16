@@ -2,9 +2,10 @@ package com.example.back_end.dto;
 
 public class ChangePasswordDto {
     private String currentPassword; // Mật khẩu cũ
-    private String newPassword;     // Mật khẩu mới
+    private String newPassword; // Mật khẩu mới
     private String confirmPassword; // Xác nhận mật khẩu mới
 
+    // Getter và Setter cho các thuộc tính
     public String getCurrentPassword() {
         return currentPassword;
     }
