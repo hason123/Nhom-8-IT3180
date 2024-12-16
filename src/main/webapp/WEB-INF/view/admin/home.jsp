@@ -81,7 +81,7 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
       <!-- Nút Đăng xuất -->
     </div>
 
- <!-- Sidebar -->
+    <!-- Sidebar -->
     <div class="sidebar">
       <a href="${pageContext.request.contextPath}/home"
         ><i class="fas fa-home"></i> Trang chủ</a
@@ -136,13 +136,13 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
         />
         <p>Quản lý khoản phí</p>
       </a>
-      <div class="function">
+      <a href="${pageContext.request.contextPath}/user/list" class="function">
         <img
           src="${pageContext.request.contextPath}/resources/images/tai_khoan.jpg"
-          alt="tai_khoan"
+          alt="Phi"
         />
         <p>Quản lý tài khoản cá nhân</p>
-      </div>
+      </a>
       <a
         href="${pageContext.request.contextPath}/payment-methods"
         class="function"
