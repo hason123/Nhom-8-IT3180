@@ -81,7 +81,7 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
       <!-- Nút Đăng xuất -->
     </div>
 
-    <!-- Sidebar -->
+ <!-- Sidebar -->
     <div class="sidebar">
       <a href="${pageContext.request.contextPath}/home"
         ><i class="fas fa-home"></i> Trang chủ</a
@@ -107,7 +107,9 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
       >
 
       <!-- <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a> -->
-      <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
+      <a href="${pageContext.request.contextPath}/user/list"
+      ><i class="fas fa-car"></i> Tài khoản</a
+    >
     </div>
 
     <!-- Main content -->
