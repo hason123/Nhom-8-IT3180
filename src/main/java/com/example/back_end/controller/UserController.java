@@ -9,10 +9,11 @@ import com.example.back_end.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -62,6 +63,30 @@ public class UserController {
                return "admin/login";
           }
      }
+
+     @RequestMapping("/user/list")
+     public String listUsers(Model model) {
+          // Lấy danh sách tất cả người dùng từ UserRepository
+          List<User> users = (List<User>) userRepository.findAll();
+
+          model.addAttribute("users", users);
+
+          return "user/list";
+     }
+
+     @RequestMapping(value = "/user/delete/{id}", method = RequestMethod.GET)
+     public String deleteUser(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+          // Kiểm tra xem người dùng có tồn tại không
+          Optional<User> user = userRepository.findById(id);
+          if (user.isPresent()) {
+               userRepository.deleteById(id); // Xóa người dùng theo ID
+               redirectAttributes.addFlashAttribute("successMessage", "Người dùng đã được xóa thành công!");
+          } else {
+               redirectAttributes.addFlashAttribute("errorMessage", "Người dùng không tồn tại!");
+          }
+          return "redirect:/user/list"; // Chuyển hướng về danh sách người dùng
+     }
+
 
      @RequestMapping(value = "/user/edit", method = RequestMethod.GET)
      public String editProfile(Model model) {

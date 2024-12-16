@@ -15,6 +15,8 @@ public class Room {
     @Column(nullable = false)
     private double dientich;
 
+    private int soNguoi;
+
     private Long hostId;
 
     private String hostName;
@@ -30,6 +32,12 @@ public class Room {
     public int getFloor() {
         return floor;
     }
+    public int getSoNguoi() {return soNguoi;};
+
+    public void setSoNguoi(int soNguoi) {
+        this.soNguoi = soNguoi;
+    }
+
     public void setFloor(int floor) {
         this.floor = floor;
     }
@@ -63,6 +71,7 @@ public class Room {
                 "idRoom=" + idRoom + // Đảm bảo idRoom được in ra
                 ", floor=" + floor +
                 ", dientich=" + dientich +
+                ", soNguoi=" + soNguoi +
                 ", hostId=" + hostId +
                 ", hostName='" + hostName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
