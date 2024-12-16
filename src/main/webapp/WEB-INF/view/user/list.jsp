@@ -60,11 +60,12 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       </button>
     </div>
 
-    <!-- Sidebar -->
+      <!-- Sidebar -->
     <div class="sidebar">
       <a href="${pageContext.request.contextPath}/home"
         ><i class="fas fa-home"></i> Trang chủ</a
       >
+
       <a href="${pageContext.request.contextPath}/rooms"
         ><i class="fas fa-users"></i> Quản lý hộ khẩu</a
       >
@@ -75,16 +76,19 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         ><i class="fas fa-wallet"></i> Quản lý hóa đơn</a
       >
       <a href="${pageContext.request.contextPath}/fees"
-        ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
+      ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
       >
       <a href="${pageContext.request.contextPath}/payment-methods"
-        ><i class="fas fa-car"></i> Phương thức thanh toán</a
+      ><i class="fas fa-car"></i> Phương thức thanh toán</a
       >
       <a href="${pageContext.request.contextPath}/phuong-tien"
         ><i class="fas fa-car"></i> Quản lý phương tiện</a
       >
-      <!--<a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>-->
-      <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
+
+      <!-- <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a> -->
+      <a href="${pageContext.request.contextPath}/user/list"
+      ><i class="fas fa-car"></i> Tài khoản</a
+    >
     </div>
     <!-- Main Content -->
     <div class="container-m">
