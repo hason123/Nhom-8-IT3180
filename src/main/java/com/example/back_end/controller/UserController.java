@@ -87,28 +87,42 @@ public class UserController {
           return "redirect:/user/list"; // Chuyển hướng về danh sách người dùng
      }
 
-
-     @RequestMapping(value = "/user/edit", method = RequestMethod.GET)
-     public String editProfile(Model model) {
-          User currentUser = getCurrentUser(); // Lấy người dùng hiện tại từ session hoặc context
-          model.addAttribute("user", currentUser); // Truyền đối tượng người dùng vào view để hiển thị
-          return "user/editProfile"; // Chuyển đến trang chỉnh sửa thông tin người dùng
+     // Chỉnh sửa thông tin người dùng
+     @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.GET)
+     public String editProfile(@PathVariable("id") Long id, Model model) {
+          // Tìm người dùng theo ID
+          Optional<User> user = userRepository.findById(id);
+          if (user.isPresent()) {
+               model.addAttribute("user", user.get()); // Truyền đối tượng người dùng vào view
+               return "user/editProfile"; // Chuyển đến trang chỉnh sửa
+          } else {
+               model.addAttribute("error", "Không tìm thấy người dùng.");
+               return "user/list"; // Nếu không tìm thấy người dùng, quay lại danh sách người dùng
+          }
      }
 
-     @RequestMapping(value = "/user/edit", method = RequestMethod.POST)
-     public String saveProfile(@ModelAttribute("user") User user, Model model) {
-          User currentUser = getCurrentUser(); // Lấy người dùng hiện tại từ session hoặc context
+     @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
+     public String saveProfile(@PathVariable("id") Long id, @ModelAttribute("user") User user, Model model,
+               RedirectAttributes redirectAttributes) {
+          Optional<User> existingUser = userRepository.findById(id);
+          if (existingUser.isPresent()) {
+               User currentUser = existingUser.get();
 
-          // Chỉ cập nhật các trường thông tin ngoài email và mật khẩu
-          currentUser.setFullName(user.getFullName());
-          currentUser.setPhone(user.getPhone());
-          currentUser.setAddress(user.getAddress());
+               // Cập nhật thông tin người dùng
+               currentUser.setFullName(user.getFullName());
+               currentUser.setPhone(user.getPhone());
+               currentUser.setAddress(user.getAddress());
 
-          // Lưu người dùng đã được cập nhật
-          userRepository.save(currentUser);
+               // Lưu lại người dùng đã cập nhật
+               userRepository.save(currentUser);
 
-          model.addAttribute("successMessage", "Cập nhật thông tin thành công!");
-          return "user/editProfile"; // Trả về trang chỉnh sửa thông tin
+               // Thêm thông báo thành công và chuyển hướng về trang chỉnh sửa
+               redirectAttributes.addFlashAttribute("successMessage", "Cập nhật thông tin thành công!");
+               return "redirect:/user/edit/" + id; // Chuyển hướng lại trang chỉnh sửa để hiển thị thông báo
+          } else {
+               model.addAttribute("error", "Không tìm thấy người dùng.");
+               return "user/list"; // Nếu không tìm thấy người dùng, quay lại danh sách
+          }
      }
 
      @RequestMapping("/user/add")
@@ -122,18 +136,18 @@ public class UserController {
           // Check if the email already exists in the database
           if (userRepository.existsByEmail(user.getEmail())) {
                model.addAttribute("error", "Email này đã được sử dụng!");
-               return "user/addUser"; // Redirect to add user page if email exists
+               return "user/list"; // Redirect to add user page if email exists
           }
 
           // Save the new user if email is unique
           userRepository.save(user);
           model.addAttribute("successMessage", "Ngưới dùng đã được thêm thành công!");
-          return "redirect:/home"; // Redirect to home page after successful addition
+          return "redirect:/user/list"; // Redirect to home page after successful addition
      }
 
      @RequestMapping(value = "/user/change-password", method = RequestMethod.POST)
-     public String changePassword(@ModelAttribute("changePasswordForm") ChangePasswordDto changePasswordDto, Model model) {
-          // Giả sử có người dùng hiện tại đã đăng nhập
+     public String changePassword(@ModelAttribute("changePasswordForm") ChangePasswordDto changePasswordDto,
+               Model model) {
           User currentUser = getCurrentUser(); // Hàm lấy người dùng hiện tại
 
           // Kiểm tra mật khẩu cũ
@@ -153,11 +167,23 @@ public class UserController {
           userRepository.save(currentUser);
 
           model.addAttribute("successMessage", "Đổi mật khẩu thành công!");
-          return "user/changePassword"; // Trả về trang đổi mật khẩu
+          return "user/changePassword"; // Trả về trang đổi mật khẩu với thông báo thành công
      }
 
+     @RequestMapping(value = "/user/changePassword/{id}", method = RequestMethod.GET)
+     public String changePasswordPage(@PathVariable("id") Long id, Model model) {
+          // Lấy thông tin người dùng từ id
+          Optional<User> user = userRepository.findById(id);
+          if (user.isPresent()) {
+               model.addAttribute("user", user.get());
+          } else {
+               model.addAttribute("error", "Không tìm thấy người dùng.");
+          }
+          return "user/changePassword"; // Trả về trang changePassword
+     }
 
-     // Hàm giả định lấy người dùng hiện tại (bạn cần tự triển khai theo ứng dụng của mình)
+     // Hàm giả định lấy người dùng hiện tại (bạn cần tự triển khai theo ứng dụng của
+     // mình)
      private User getCurrentUser() {
           // Ví dụ: Lấy từ session hoặc context
           return userRepository.findById(1L).orElseThrow(() -> new RuntimeException("Người dùng không tồn tại"));
