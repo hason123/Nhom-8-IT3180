@@ -120,9 +120,12 @@
           </div>
           <!-- Nút Thêm -->
           <div class="text-center">
-            <button type="submit" class="btn btn-primary">Thêm</button>
-            <a href="${pageContext.request.contextPath}/user/list" class="btn btn-secondary">Hủy</a>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary w-50 me-2">Thêm</button>
+              <a href="${pageContext.request.contextPath}/user/list" class="btn btn-secondary w-50">Hủy</a>
+            </div>
           </div>
+          
           </div>
         </form>
       </div>
