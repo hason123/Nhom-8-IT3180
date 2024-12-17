@@ -61,7 +61,7 @@ public class BillController {
         model.addAttribute("bills", bills);
         model.addAttribute("searchType", searchType);
         model.addAttribute("keyword", keyword);
-
+        model.addAttribute("totalBills", bills.size());
         return "bill/list";
     }
 

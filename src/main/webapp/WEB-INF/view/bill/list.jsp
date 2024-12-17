@@ -74,10 +74,11 @@
                 <div class="container-m">
                     <h2 class="text-center">Danh Sách Hóa Đơn</h2>
 
-                    <!-- Nút thêm hóa đơn -->
-                    <div class="mb-3 text-end">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <p style="font-size: 1.4rem;"><strong>Tổng số hóa đơn:</strong> ${totalRooms}</p>
                         <a href="${pageContext.request.contextPath}/bills/add" class="btn btn-success">Thêm Hóa Đơn</a>
                     </div>
+
 
                     <!-- Bảng danh sách hóa đơn -->
                     <div class="mb-4">
