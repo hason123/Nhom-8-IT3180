@@ -88,7 +88,7 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
       >
 
       <a href="${pageContext.request.contextPath}/rooms"
-        ><i class="fas fa-users"></i> Quản lý hộ khẩu</a
+        ><i class="fas fa-users"></i> Quản lý phòng</a
       >
       <a href="${pageContext.request.contextPath}/nhankhau"
         ><i class="fas fa-users"></i> Quản lý nhân khẩu</a
@@ -126,7 +126,7 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
           src="${pageContext.request.contextPath}/resources/images/ho_khau.webp"
           alt="Ho_khau"
         />
-        <p>Quản lý hộ khẩu</p>
+        <p>Quản lý phòng</p>
       </a>
 
       <a href="${pageContext.request.contextPath}/fees" class="function">

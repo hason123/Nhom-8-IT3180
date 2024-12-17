@@ -8,7 +8,7 @@
                 ><i class="fas fa-home"></i> Trang chủ</a
                 >
                 <a href="${pageContext.request.contextPath}/rooms"
-                ><i class="fas fa-users"></i> Quản lý hộ khẩu</a
+                ><i class="fas fa-users"></i> Quản lý phòng</a
                 >
                 <a href="${pageContext.request.contextPath}/nhankhau"
                 ><i class="fas fa-users"></i> Quản lý nhân khẩu</a
@@ -50,7 +50,7 @@
                 <div class="sidebar">
                     <a href="${pageContext.request.contextPath}/home"><i class="fas fa-home"></i> Trang chủ</a>
 
-                    <a href="${pageContext.request.contextPath}/rooms"><i class="fas fa-users"></i> Quản lý hộ khẩu</a>
+                    <a href="${pageContext.request.contextPath}/rooms"><i class="fas fa-users"></i> Quản lý phòng</a>
                     <a href="${pageContext.request.contextPath}/nhankhau"><i class="fas fa-users"></i> Quản lý nhân
                         khẩu</a>
                     <a href="${pageContext.request.contextPath}/fees"><i class="fas fa-wallet"></i> Quản lý khoản

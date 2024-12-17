@@ -69,7 +69,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       ><i class="fas fa-home"></i> Trang chủ</a
       >
       <a href="${pageContext.request.contextPath}/rooms"
-      ><i class="fas fa-users"></i> Quản lý hộ khẩu</a
+      ><i class="fas fa-users"></i> Quản lý phòng</a
       >
       <a href="${pageContext.request.contextPath}/nhankhau"
       ><i class="fas fa-users"></i> Quản lý nhân khẩu</a

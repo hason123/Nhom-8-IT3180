@@ -50,7 +50,7 @@
       >
 
       <a href="${pageContext.request.contextPath}/rooms"
-        ><i class="fas fa-users"></i> Quản lý hộ khẩu</a
+        ><i class="fas fa-users"></i> Quản lý phòng</a
       >
       <a href="${pageContext.request.contextPath}/nhankhau"
         ><i class="fas fa-users"></i> Quản lý nhân khẩu</a
@@ -77,8 +77,8 @@
           <h2 class="text-center">Danh Sách Phòng</h2>
 
           <div class="d-flex justify-content-between align-items-center mb-4">
-            <p style="font-size: 1.4rem;"><strong>Tổng số hộ khẩu:</strong> ${totalRooms}</p>
-            <a href="${pageContext.request.contextPath}/phuong-tien/add" class="btn btn-success">Thêm phòng</a>
+            <p style="font-size: 1.4rem;"><strong>Tổng số phòng:</strong> ${totalRooms}</p>
+            <a href="${pageContext.request.contextPath}/rooms/add" class="btn btn-success">Thêm phòng</a>
           </div>
 
 
