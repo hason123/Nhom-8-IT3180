@@ -72,7 +72,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
         <a
           href="${pageContext.request.contextPath}/user/list"
           class="btn btn-secondary btn-block"
-          >Quay trang danh sách</a
+          >Hủy</a
         >
       </div>
     </div>
