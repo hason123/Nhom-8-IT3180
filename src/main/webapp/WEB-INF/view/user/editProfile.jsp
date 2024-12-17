@@ -69,23 +69,17 @@ contentType="text/html;charset=UTF-8" language="java" %>
           />
         </div>
 
-        <button type="submit" class="btn btn-primary">Cập Nhật</button>
-
-        <!-- Nút Thêm thay vì Hủy -->
-        <a
-          href="${pageContext.request.contextPath}/user/add"
-          class="btn btn-success btn-block"
-          >Thêm</a
-        >
+        <div class="d-flex justify-content-between mt-3">
+          <button type="submit" class="btn btn-primary w-50 me-2">
+            Cập Nhật
+          </button>
+          <a
+            href="${pageContext.request.contextPath}/user/list"
+            class="btn btn-secondary w-50"
+            >Hủy</a
+          >
+        </div>
       </form>
-
-      <div class="mt-3">
-        <a
-          href="${pageContext.request.contextPath}/user/list"
-          class="btn btn-secondary"
-          >Quay lại danh sách</a
-        >
-      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
