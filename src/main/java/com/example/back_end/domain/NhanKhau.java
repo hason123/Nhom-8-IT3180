@@ -31,9 +31,7 @@ public class NhanKhau {
     @Column(nullable = false)
     private String ngheNghiep;
 
-
-
-    private int room;
+    private int idRoom;
 
     @Column(nullable = false)
     private String trangThai;
@@ -97,12 +95,12 @@ public class NhanKhau {
         this.ngheNghiep = ngheNghiep;
     }
 
-    public int getRoom() {
-        return room;
+    public int getIdRoom() {
+        return idRoom;
     }
 
-    public void setRoom(int room) {
-        this.room = room;
+    public void setIdRoom(int idRoom) {
+        this.idRoom = idRoom;
     }
 
     public String getTrangThai() {
@@ -131,7 +129,7 @@ public class NhanKhau {
                 ", noiSinh='" + noiSinh + '\'' +
                 ", danToc='" + danToc + '\'' +
                 ", ngheNghiep='" + ngheNghiep + '\'' +
-                ", room=" + room +
+                ", idRoom=" + idRoom +
                 ", trangThai='" + trangThai + '\'' +
                 ", diaChiThuongTru='" + diaChiThuongTru + '\'' +
                 '}';

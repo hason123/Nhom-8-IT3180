@@ -1,7 +1,10 @@
 package com.example.back_end.repository;
 
 import com.example.back_end.domain.Bill;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
 import java.util.List;
 
 public interface BillRepository extends CrudRepository<Bill, Long> {
@@ -19,6 +22,5 @@ public interface BillRepository extends CrudRepository<Bill, Long> {
     List<Bill> findByidThanhToan(int idThanhToan);
 
     List<Bill> findByidCacKhoanPhi (int idCacKhoanPhi);
-
 
 }

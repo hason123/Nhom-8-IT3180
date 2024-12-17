@@ -1,7 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
   <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-      <html lang="en">
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<html lang="en">
 
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -102,6 +103,7 @@
                 <th class="">Mã phòng</th>
                 <th>Tầng</th>
                 <th>Diện Tích (m²)</th>
+                <th>Số người</th>
                 <th>ID Chủ Nhà</th>
                 <th>Tên Chủ Nhà</th>
                 <th>Số Điện Thoại</th>
@@ -117,6 +119,7 @@
                   </td>
                   <td>${room.floor}</td>
                   <td>${room.dientich}</td>
+                  <td>${room.soNguoi}</td>
                   <td>${room.hostId}</td>
                   <td style="color: rgb(0, 181, 181)">${room.hostName}</td>
                   <td>${room.phoneNumber}</td>

@@ -83,13 +83,20 @@
                 placeholder="Nhập diện tích" required="true" maxlength="5" />
             </div>
           </div>
-
+        <div class="row">
           <!-- ID chủ nhà -->
-          <div class="mb-3">
+          <div class=" col-md-6 mb-3">
             <label for="hostId" class="form-label">ID Chủ Nhà:</label>
             <form:input path="hostId" id="hostId" class="form-control" type="number" placeholder="Nhập ID chủ nhà"
               maxlength="6" />
           </div>
+          <!-- So nguoi -->
+          <div class=" col-md-6 mb-3">
+            <label for="soNguoi" class="form-label">Số người:</label>
+            <form:input path="soNguoi" id="soNguoi" class="form-control" type="number" placeholder="Nhập ID chủ nhà"
+                        maxlength="6" />
+          </div>
+        </div>
           <!-- Tên chủ nhà -->
           <div class="mb-3">
             <label for="hostName" class="form-label">Tên Chủ Nhà:</label>

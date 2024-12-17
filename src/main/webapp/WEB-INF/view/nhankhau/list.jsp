@@ -1,7 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
   <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-      <html lang="en">
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<html lang="en">
 
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -77,9 +78,11 @@
           <h2 class="text-center">Danh sách nhân khẩu</h2>
 
           <!-- Nút thêm nhân khẩu -->
-          <div class="mb-3 text-end">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <p><strong>Tổng số cư dân:</strong> ${totalNhanKhaus}</p>
             <a href="${pageContext.request.contextPath}/nhankhau/add" class="btn btn-success">Thêm nhân khẩu</a>
           </div>
+
 
           <!-- Bảng danh sách nhân khẩu -->
           <table class="table table-striped table-bordered">
@@ -108,7 +111,7 @@
                   <td>${nk.noiSinh}</td>
                   <td>${nk.danToc}</td>
                   <td>${nk.ngheNghiep}</td>
-                  <td>${nk.room.idRoom}</td>
+                  <td><fmt:formatNumber value="${nk.idRoom}" pattern="0000" /></td>
                   <td>${nk.trangThai}</td>
                   <td>${nk.diaChiThuongTru}</td>
                   <td>

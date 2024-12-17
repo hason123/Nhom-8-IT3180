@@ -91,12 +91,19 @@
                   oninput="if(this.value.length > 5) this.value = this.value.slice(0, 5);" />
               </div>
             </div>
+          <div class="row">
             <!-- ID chủ nhà -->
-            <div class="mb-3">
+            <div class=" col-md-6 mb-3">
               <label for="hostId" class="form-label">ID Chủ Nhà:</label>
               <form:input path="hostId" id="hostId" class="form-control" type="number" min="1" max="999999"
                 oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
             </div>
+            <div class=" col-md-6 mb-3">
+              <label for="soNguoi" class="form-label">Số người:</label>
+              <form:input path="soNguoi" id="soNguoi" class="form-control" type="number" min="1" max="999999"
+                          oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
+            </div>
+          </div>
             <!-- Tên chủ nhà -->
             <div class="mb-3">
               <label for="hostName" class="form-label">Tên Chủ Nhà:</label>

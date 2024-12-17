@@ -101,14 +101,16 @@
               <label for="danToc" class="form-label">Dân tộc:</label>
               <form:input path="danToc" id="danToc" class="form-control" type="text" placeholder="Nhập dân tộc" />
             </div>
+
             <div class="mb-3">
               <label for="ngheNghiep" class="form-label">Nghề nghiệp:</label>
               <form:input path="ngheNghiep" id="ngheNghiep" class="form-control" type="text"
                 placeholder="Nhập nghề nghiệp" />
             </div>
+
             <div class="mb-3">
-              <label for="roomId" class="form-label">ID Phòng:</label>
-              <form:input path="room.idRoom" id="roomId" class="form-control" type="number" min="1" max="999999"
+              <label for="idRoom" class="form-label">ID Phòng:</label>
+              <form:input path="idRoom" id="idRoom" class="form-control" type="number" min="1" max="999999"
                 oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
             </div>
 

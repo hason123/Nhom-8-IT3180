@@ -15,12 +15,12 @@ import java.util.List;
 public class NhanKhauController {
 
     private final NhanKhauRepository nhanKhauRepository;
-    private final RoomRepository roomRepository;
+
 
     @Autowired
-    public NhanKhauController(NhanKhauRepository nhanKhauRepository, RoomRepository roomRepository) {
+    public NhanKhauController(NhanKhauRepository nhanKhauRepository) {
         this.nhanKhauRepository = nhanKhauRepository;
-        this.roomRepository = roomRepository;
+
     }
 
     @GetMapping
@@ -39,8 +39,8 @@ public class NhanKhauController {
                 case "noiSinh":
                     nhanKhaus = nhanKhauRepository.findByNoiSinh(keyword);
                     break;
-                case "room":
-                    nhanKhaus = nhanKhauRepository.findByRoom(Integer.parseInt(keyword));
+                case "idRoom":
+                    nhanKhaus = nhanKhauRepository.findByidRoom(Integer.parseInt(keyword));
                     break;
                 case "trangThai":
                     nhanKhaus = nhanKhauRepository.findByTrangThai(keyword);
@@ -59,6 +59,7 @@ public class NhanKhauController {
         model.addAttribute("nhanKhaus", nhanKhaus);
         model.addAttribute("searchType", searchType);
         model.addAttribute("keyword", keyword);
+        model.addAttribute("totalNhanKhaus", nhanKhaus.size());
 
         return "nhankhau/list"; // Trả về view danh sách nhân khẩu
     }
@@ -66,7 +67,7 @@ public class NhanKhauController {
     @GetMapping("/add")
     public String showAddNhanKhauForm(Model model) {
         model.addAttribute("nhanKhau", new NhanKhau());
-        model.addAttribute("rooms", roomRepository.findAll());
+
         return "nhankhau/add";
     }
 
@@ -83,7 +84,7 @@ public class NhanKhauController {
         NhanKhau nhanKhau = nhanKhauRepository.findById(id).orElse(null);
         if (nhanKhau != null) {
             model.addAttribute("nhanKhau", nhanKhau);
-            model.addAttribute("rooms", roomRepository.findAll());
+
             return "nhankhau/edit";
         } else {
             model.addAttribute("error", "Nhan Khau with ID " + id + " not found.");
@@ -111,5 +112,6 @@ public class NhanKhauController {
             model.addAttribute("error", "Nhan Khau with ID " + id + " not found.");
             return "nhankhau/error";
         }
+
     }
 }
