@@ -73,10 +73,23 @@
                     <h2 class="text-center">Danh Sách Phương Tiện</h2>
 
                     <!-- Nút thêm phương tiện -->
-                    <div class="mb-3 text-end">
-                        <a href="${pageContext.request.contextPath}/phuong-tien/add" class="btn btn-success">Thêm Phương
-                            Tiện</a>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <p style="font-size: 1.4rem;"><strong>Tổng số phương tiện:</strong> ${totalPhuongTiens}</p>
+                        <a href="${pageContext.request.contextPath}/phuong-tien/add" class="btn btn-success">Thêm phương tiện</a>
                     </div>
+
+
+                    <form method="get" action="${pageContext.request.contextPath}/phuong-tien" class="d-flex align-items-center mb-4">
+                        <input type="text" name="keyword" value="${keyword}" class="form-control me-2" placeholder="Tìm kiếm">
+                        <select name="searchType" class="form-select me-2">
+                            <option value="loaiXe" ${searchType == 'loaiXe' ? 'selected' : ''}>Loại Xe</option>
+                            <option value="tenXe" ${searchType == 'tenXe' ? 'selected' : ''}>Tên Xe</option>
+                            <option value="bienKiemSoat" ${searchType == 'bienKiemSoat' ? 'selected' : ''}>Biển Kiểm Soát</option>
+                            <option value="tenChuXe" ${searchType == 'tenChuXe' ? 'selected' : ''}>Tên Chủ Xe</option>
+                            <option value="maChuXe" ${searchType == 'maChuXe' ? 'selected' : ''}>Mã Chủ Xe</option>
+                        </select>
+                    </form>
+
 
                     <!-- Bảng danh sách phương tiện -->
                     <table class="table table-striped table-bordered">

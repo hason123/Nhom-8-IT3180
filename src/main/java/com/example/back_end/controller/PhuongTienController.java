@@ -58,7 +58,7 @@ public class PhuongTienController {
         model.addAttribute("phuongTiens", phuongTiens);
         model.addAttribute("searchType", searchType);
         model.addAttribute("keyword", keyword);
-
+        model.addAttribute("totalPhuongTiens", phuongTiens.size());
         return "phuongtien/list"; // Trả về view hiển thị danh sách phương tiện
     }
 

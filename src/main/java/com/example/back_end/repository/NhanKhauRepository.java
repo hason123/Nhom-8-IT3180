@@ -10,11 +10,10 @@ import java.util.List;
 public interface NhanKhauRepository extends JpaRepository<NhanKhau, Long> {
     List<NhanKhau> findByHoTen(String hoTen);
     List<NhanKhau> findByidRoom(int idRoom);
-
     List<NhanKhau> findByNoiSinh(String noiSinh); // Hoặc kiểu ngày tùy vào yêu cầu
     List<NhanKhau> findByTrangThai(String trangThai);
     List<NhanKhau> findByDiaChiThuongTru(String diaChiThuongTru);
-    // Thêm các phương thức tìm kiếm khác nếu cần
+
 }
 
 

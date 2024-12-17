@@ -79,8 +79,22 @@
 
           <!-- Nút thêm nhân khẩu -->
           <div class="d-flex justify-content-between align-items-center mb-4">
-            <p><strong>Tổng số cư dân:</strong> ${totalNhanKhaus}</p>
+            <p style="font-size: 1.4rem;"><strong>Tổng số cư dân:</strong> ${totalNhanKhaus}</p>
             <a href="${pageContext.request.contextPath}/nhankhau/add" class="btn btn-success">Thêm nhân khẩu</a>
+          </div>
+
+
+          <div class="mb-4">
+            <form method="get" action="${pageContext.request.contextPath}/nhankhau" class="d-flex align-items-center">
+              <input type="text" name="keyword" value="${keyword}" class="form-control me-2" placeholder="Tìm kiếm">
+              <select name="searchType" class="form-select me-2">
+                <option value="hoTen" ${searchType == 'hoTen' ? 'selected' : ''}>Họ tên</option>
+                <option value="cccd" ${searchType == 'cccd' ? 'selected' : ''}>CCCD</option>
+                <option value="noiSinh" ${searchType == 'noiSinh' ? 'selected' : ''}>Nơi sinh</option>
+                <option value="trangThai" ${searchType == 'trangThai' ? 'selected' : ''}>Trạng thái</option>
+                <option value="diaChiThuongTru" ${searchType == 'diaChiThuongTru' ? 'selected' : ''}>Địa chỉ thường trú</option>
+              </select>
+            </form>
           </div>
 
 

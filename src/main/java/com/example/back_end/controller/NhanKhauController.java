@@ -22,7 +22,6 @@ public class NhanKhauController {
         this.nhanKhauRepository = nhanKhauRepository;
 
     }
-
     @GetMapping
     public String listNhanKhau(
             @RequestParam(value = "searchType", required = false) String searchType,

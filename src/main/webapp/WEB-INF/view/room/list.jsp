@@ -76,9 +76,12 @@
         <div class="container-m">
           <h2 class="text-center">Danh Sách Phòng</h2>
 
-          <div class="mb-3 text-end">
-            <a href="${pageContext.request.contextPath}/rooms/add" class="btn btn-success">Thêm Phòng</a>
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <p style="font-size: 1.4rem;"><strong>Tổng số hộ khẩu:</strong> ${totalRooms}</p>
+            <a href="${pageContext.request.contextPath}/phuong-tien/add" class="btn btn-success">Thêm phòng</a>
           </div>
+
+
 
           <div class="mb-4">
             <form method="get" action="${pageContext.request.contextPath}/rooms" class="d-flex align-items-center">

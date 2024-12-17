@@ -57,7 +57,7 @@ public class RoomController {
         model.addAttribute("rooms", rooms);
         model.addAttribute("searchType", searchType);
         model.addAttribute("keyword", keyword);
-
+        model.addAttribute("totalRooms", rooms.size());
         return "room/list";
     }
 
