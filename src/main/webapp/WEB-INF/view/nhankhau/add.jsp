@@ -108,11 +108,13 @@
                 placeholder="Nhập nghề nghiệp" />
             </div>
 
-            <div class="mb-3">
-              <label for="idRoom" class="form-label">ID Phòng:</label>
-              <form:input path="idRoom" id="idRoom" class="form-control" type="number" min="1" max="999999"
-                oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
-            </div>
+          <!-- ID phòng -->
+          <div class="mb-3">
+            <label for="idRoom" class="form-label">ID Phòng:</label>
+            <form:select path="idRoom" id="idRoom" class="form-control">
+              <form:options items="${rooms}" itemValue="idRoom"/>
+            </form:select>
+          </div>
 
             <div class="mb-3">
               <label for="trangThai" class="form-label">Trạng thái:</label>
