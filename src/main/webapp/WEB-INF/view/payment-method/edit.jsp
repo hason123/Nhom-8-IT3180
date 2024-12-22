@@ -92,6 +92,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
     <div class="container mt-4">
       <h2 class="text-center">Chỉnh Sửa Phương Thức Thanh Toán</h2>
+      <%--@elvariable id="paymentMethod" type=""--%>
       <form:form
         method="post"
         action="${pageContext.request.contextPath}/payment-methods/edit"
@@ -129,7 +130,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
           <div class="col-md-6 mb-3">
             <label for="noiDung" class="form-label">Nội dung chi tiết:</label>
-            <form:input
+            <form:textarea
               path="noiDung"
               id="noiDung"
               class="form-control"

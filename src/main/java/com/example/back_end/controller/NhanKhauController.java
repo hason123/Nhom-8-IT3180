@@ -1,6 +1,7 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.domain.NhanKhau;
+import com.example.back_end.domain.Room;
 import com.example.back_end.repository.NhanKhauRepository;
 import com.example.back_end.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,12 @@ import java.util.List;
 public class NhanKhauController {
 
     private final NhanKhauRepository nhanKhauRepository;
-
+    private final RoomRepository roomRepository;
 
     @Autowired
-    public NhanKhauController(NhanKhauRepository nhanKhauRepository) {
+    public NhanKhauController(NhanKhauRepository nhanKhauRepository, RoomRepository roomRepository) {
         this.nhanKhauRepository = nhanKhauRepository;
-
+        this.roomRepository = roomRepository;
     }
     @GetMapping
     public String listNhanKhau(
@@ -65,6 +66,9 @@ public class NhanKhauController {
 
     @GetMapping("/add")
     public String showAddNhanKhauForm(Model model) {
+        // Lấy danh sách các phòng
+        List<Room> rooms = (List<Room>) roomRepository.findAll();
+        model.addAttribute("rooms", rooms); // Thêm danh sách phòng vào model
         model.addAttribute("nhanKhau", new NhanKhau());
 
         return "nhankhau/add";

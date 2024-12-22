@@ -108,13 +108,20 @@
                 placeholder="Nhập nghề nghiệp" />
             </div>
 
-            <div class="mb-3">
-              <label for="idRoom" class="form-label">ID Phòng:</label>
-              <form:input path="idRoom" id="idRoom" class="form-control" type="number" min="1" max="999999"
-                oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
-            </div>
+          <!-- ID phòng -->
+          <div class="mb-3">
+            <label for="idRoom" class="form-label">ID Phòng:</label>
+            <input list="roomList" id="idRoom" name="idRoom" class="form-control" />
+            <datalist id="roomList">
+              <!-- Lặp qua danh sách rooms và tạo các option -->
+              <c:forEach var="room" items="${rooms}">
+                <option value="${room.idRoom}">${room.idRoom}</option>
+              </c:forEach>
+            </datalist>
+          </div>
 
-            <div class="mb-3">
+
+          <div class="mb-3">
               <label for="trangThai" class="form-label">Trạng thái:</label>
               <form:select path="trangThai" id="trangThai" class="form-control">
                 <form:option value="Thường trú">Thường trú</form:option>
