@@ -1,7 +1,9 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.domain.PhuongTien;
+import com.example.back_end.domain.Room;
 import com.example.back_end.repository.PhuongTienRepository;
+import com.example.back_end.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +17,12 @@ import java.util.Optional;
 public class PhuongTienController {
 
     private final PhuongTienRepository phuongTienRepository;
+    private final RoomRepository roomRepository;
 
     @Autowired
-    public PhuongTienController(PhuongTienRepository phuongTienRepository) {
+    public PhuongTienController(PhuongTienRepository phuongTienRepository, RoomRepository roomRepository) {
         this.phuongTienRepository = phuongTienRepository;
+        this.roomRepository = roomRepository;
     }
 
     // Hiển thị danh sách phương tiện
@@ -67,6 +71,8 @@ public class PhuongTienController {
     @GetMapping("/add")
     public String showAddPhuongTienForm(Model model) {
         model.addAttribute("phuongTien", new PhuongTien());
+        List<Room> rooms = (List<Room>) roomRepository.findAll(); // Lấy danh sách phòng từ cơ sở dữ liệu
+        model.addAttribute("rooms", rooms);
         return "phuongtien/add"; // Tên của view hiển thị form thêm
     }
 
@@ -74,6 +80,7 @@ public class PhuongTienController {
     @PostMapping("/add")
     public String addPhuongTien(@ModelAttribute("phuongTien") PhuongTien phuongTien) {
         phuongTienRepository.save(phuongTien);
+
         return "redirect:/phuong-tien";
     }
 

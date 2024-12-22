@@ -101,6 +101,7 @@
                                 <th>Biển Kiểm Soát</th>
                                 <th>Tên Chủ Xe</th>
                                 <th>Mã Chủ Xe</th>
+                                <th>Phòng</th>
                                 <th>Hành Động</th>
                             </tr>
                         </thead>
@@ -113,6 +114,7 @@
                                     <td style="color: rgb(0, 181, 181)">${phuongTien.bienKiemSoat}</td>
                                     <td>${phuongTien.tenChuXe}</td>
                                     <td>${phuongTien.maChuXe}</td>
+                                    <td>${phuongTien.room.room_id}</td>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/phuong-tien/edit/${phuongTien.idXe}"
                                             class="btn btn-warning btn-sm">Sửa</a>

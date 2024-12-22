@@ -1,13 +1,19 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.domain.Bill;
+import com.example.back_end.domain.Fee;
+import com.example.back_end.domain.Room;
 import com.example.back_end.repository.BillRepository;
+import com.example.back_end.repository.FeeRepository;
+import com.example.back_end.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -15,10 +21,13 @@ import java.util.Optional;
 public class BillController {
 
     private final BillRepository billRepository;
-
+    private final FeeRepository feeRepository;
+    private final RoomRepository roomRepository;
     @Autowired
-    public BillController(BillRepository billRepository) {
+    public BillController(BillRepository billRepository,FeeRepository feeRepository,RoomRepository roomRepository) {
         this.billRepository = billRepository;
+        this.feeRepository = feeRepository;
+        this.roomRepository = roomRepository;
     }
 
     // Hiển thị danh sách các hóa đơn
@@ -102,5 +111,34 @@ public class BillController {
     public String deleteBill(@PathVariable("id") Long id) {
         billRepository.deleteById(id); // Xóa hóa đơn theo id
         return "redirect:/bills"; // Chuyển hướng về trang danh sách hóa đơn
+    }
+
+    @RequestMapping(value = "/calculate", method = RequestMethod.POST)
+    @ResponseBody
+    public double calculateAmount(@RequestBody Map<String, String> requestData) {
+        int  feeIds = Integer.parseInt(requestData.get("feeIds"));
+        Long idRoom = Long.parseLong(requestData.get("idRoom"));
+        double amount=0;
+        Fee fee= feeRepository.findByIdPhi(feeIds);
+        List<Room> ls=roomRepository.findByIdRoom(idRoom);
+        Room room= ls.get(0);
+        if(feeIds==1){
+            amount=Double.parseDouble(fee.getMoTaPhi())*room.getDientich();
+        }
+        else if(feeIds==2){
+            amount=Double.parseDouble(fee.getMoTaPhi())*room.getDientich();
+        }
+        else if(feeIds==3 || feeIds==4){
+            int cnt1=0,cnt2=0;
+            for(int i=0;i<room.getPhuongTien().size();i++){
+                if(room.getPhuongTien().get(i).getLoaiXe()=="Xe máy") cnt1+=1;
+                else if(room.getPhuongTien().get(i).getLoaiXe()=="Ô tô") cnt2+=1;
+            }
+            amount=cnt1*70000+ cnt2*1200000;
+        }
+        else {
+            amount=Double.parseDouble(fee.getMoTaPhi());
+        }
+        return amount;
     }
 }

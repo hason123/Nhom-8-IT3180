@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface FeeRepository extends CrudRepository<Fee, Long> {
-    List<Fee> findByIdPhi(int idPhi);
+    Fee findByIdPhi(int idPhi);
 
 }

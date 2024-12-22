@@ -110,6 +110,12 @@
                             <button type="submit" class="btn btn-primary">Thêm</button>
                             <a href="${pageContext.request.contextPath}/phuong-tien" class="btn btn-secondary">Hủy</a>
                         </div>
+                        <label for="roomId">Chọn Phòng:</label>
+                        <select id="roomId" name="roomId">
+                            <c:forEach var="room" items="${rooms}">
+                                <option value="${room.idRoom}">${room.idRoom}</option>
+                            </c:forEach>
+                        </select><br/>
                     </form:form>
                 </div>
 

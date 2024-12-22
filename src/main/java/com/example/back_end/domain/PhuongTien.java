@@ -18,11 +18,12 @@ public class PhuongTien {
     @Column(nullable = false, unique = true)
     private String bienKiemSoat; // Biển kiểm soát
 
-
     private String tenChuXe; // Tên chủ xe
-
-
     private String maChuXe; // Mã chủ xe
+
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
 
     // Getters and Setters
     public Long getIdXe() {
@@ -72,6 +73,14 @@ public class PhuongTien {
     public void setMaChuXe(String maChuXe) {
         this.maChuXe = maChuXe;
     }
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
 
     @Override
     public String toString() {

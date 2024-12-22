@@ -23,5 +23,4 @@ public interface RoomRepository extends CrudRepository<Room, Long> {
 
     // Tìm kiếm theo phoneNumber
     List<Room> findByPhoneNumber(String phoneNumber);
-
 }

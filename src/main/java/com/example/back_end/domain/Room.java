@@ -2,6 +2,8 @@ package com.example.back_end.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "room") // Chỉ định tên bảng nếu khác với tên lớp
 public class Room {
@@ -23,6 +25,8 @@ public class Room {
 
     private String phoneNumber;
 
+    @OneToMany(mappedBy = "room")
+    private List<PhuongTien> phuongTien;
     public Long getIdRoom() {
         return idRoom;
     }
@@ -65,6 +69,14 @@ public class Room {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    public List<PhuongTien> getPhuongTien() {
+        return phuongTien;
+    }
+
+    public void setPhuongTien(List<PhuongTien> phuongTien) {
+        this.phuongTien = phuongTien;
+    }
+
     @Override
     public String toString() {
         return "Room{" +
