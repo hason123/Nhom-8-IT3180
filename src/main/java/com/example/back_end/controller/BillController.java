@@ -131,8 +131,8 @@ public class BillController {
         else if(feeIds==3 || feeIds==4){
             int cnt1=0,cnt2=0;
             for(int i=0;i<room.getPhuongTien().size();i++){
-                if(room.getPhuongTien().get(i).getLoaiXe()=="Xe máy") cnt1+=1;
-                else if(room.getPhuongTien().get(i).getLoaiXe()=="Ô tô") cnt2+=1;
+                if(room.getPhuongTien().get(i).getLoaiXe().equals("Xe máy")) cnt1+=1;
+                else if(room.getPhuongTien().get(i).getLoaiXe().equals("Ô tô")) cnt2+=1;
             }
             amount=cnt1*70000+ cnt2*1200000;
         }

@@ -79,10 +79,18 @@
                             </div>
 
                             <!-- Loại phương tiện -->
-                            <div class="col-md-6 mb-3">
-                                <label for="loaiXe" class="form-label">Loại phương tiện:</label>
-                                <form:input path="loaiXe" id="loaiXe" class="form-control" type="text"
-                                    placeholder="Nhập loại phương tiện" required="true" />
+<%--                            <div class="col-md-6 mb-3">--%>
+<%--                                <label for="loaiXe" class="form-label">Loại phương tiện:</label>--%>
+<%--                                <form:input path="loaiXe" id="loaiXe" class="form-control" type="text"--%>
+<%--                                    placeholder="Nhập loại phương tiện" required="true" />--%>
+<%--                            </div>--%>
+                            <div class="mb-3">
+                                <label for="loaiXe" class="form-label">Loại phương tiện</label>
+                                <form:select path="loaiXe" id="loaiXe" class="form-control">
+                                    <form:option value="" label="-- Chọn loại xe --" />
+                                    <option value="1">Xe máy</option>
+                                    <option value="2">Ô tô</option>
+                                </form:select>
                             </div>
                             <!-- Biển kiểm soát -->
                             <div class="col-md-6 mb-3">
@@ -105,17 +113,19 @@
                                 oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
                         </div>
 
+                        <div class="mb-3">
+                            <label for="room.idRoom" class="form-label">Phòng</label>
+                            <form:select path="room.idRoom" id="room.idRoom" class="form-control">
+                                <form:option value="" label="-- Chọn phòng --" />
+                                <form:options items="${rooms}" />
+                            </form:select>
+                        </div>
+
                         <!-- Nút hành động -->
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Thêm</button>
                             <a href="${pageContext.request.contextPath}/phuong-tien" class="btn btn-secondary">Hủy</a>
                         </div>
-                        <label for="roomId">Chọn Phòng:</label>
-                        <select id="roomId" name="roomId">
-                            <c:forEach var="room" items="${rooms}">
-                                <option value="${room.idRoom}">${room.idRoom}</option>
-                            </c:forEach>
-                        </select><br/>
                     </form:form>
                 </div>
 

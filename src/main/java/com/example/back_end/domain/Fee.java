@@ -13,7 +13,7 @@ public class Fee {
     private String tenPhi; // Tên phí
 
     @Column
-    private int moTaPhi; // Mô tả phí
+    private String moTaPhi; // Mô tả phí
 
     @Column(nullable = false)
     private String thoiGianThu; // Thời gian thu (dùng kiểu String để dễ định dạng)
@@ -34,11 +34,11 @@ public class Fee {
         this.tenPhi = tenPhi;
     }
 
-    public int getMoTaPhi() {
+    public String getMoTaPhi() {
         return moTaPhi;
     }
 
-    public void setMoTaPhi(int moTaPhi) {
+    public void setMoTaPhi(String moTaPhi) {
         this.moTaPhi = moTaPhi;
     }
 

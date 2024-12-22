@@ -80,7 +80,9 @@ public class PhuongTienController {
     @PostMapping("/add")
     public String addPhuongTien(@ModelAttribute("phuongTien") PhuongTien phuongTien) {
         phuongTienRepository.save(phuongTien);
-
+        Room room= phuongTien.getRoom();
+        room.getPhuongTien().add(phuongTien);
+        roomRepository.save(room);
         return "redirect:/phuong-tien";
     }
 

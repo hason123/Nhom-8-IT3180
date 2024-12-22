@@ -2,6 +2,7 @@ package com.example.back_end.domain;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,7 +27,7 @@ public class Room {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "room")
-    private List<PhuongTien> phuongTien;
+    private List<PhuongTien> phuongTien= new ArrayList<>();
     public Long getIdRoom() {
         return idRoom;
     }

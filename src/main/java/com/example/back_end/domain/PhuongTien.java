@@ -9,7 +9,6 @@ public class PhuongTien {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idXe; // ID (Mã xe)
 
-
     private String tenXe; // Tên xe
 
     @Column(nullable = false)
@@ -22,7 +21,7 @@ public class PhuongTien {
     private String maChuXe; // Mã chủ xe
 
     @ManyToOne
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "idRoom")
     private Room room;
 
     // Getters and Setters
