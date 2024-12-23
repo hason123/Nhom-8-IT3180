@@ -100,7 +100,7 @@
             </div>
             <div class=" col-md-6 mb-3">
               <label for="soNguoi" class="form-label">Số người:</label>
-              <form:input path="soNguoi" id="soNguoi" class="form-control" type="number" min="1" max="999999"
+              <form:input path="soNguoi" id="soNguoi" class="form-control" type="number" min="0" max="999999"
                           oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
             </div>
           </div>
