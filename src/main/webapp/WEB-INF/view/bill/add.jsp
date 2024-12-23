@@ -116,6 +116,7 @@
                                 <form:select path="trangThai" id="trangThai" class="form-control">
                                     <form:option value="Chưa thanh toán">Chưa thanh toán</form:option>
                                     <form:option value="Đã thanh toán">Đã thanh toán</form:option>
+                                    <form:option value="Đã quá hạn">Đã thanh toán</form:option>
                                 </form:select>
                             </div>
 

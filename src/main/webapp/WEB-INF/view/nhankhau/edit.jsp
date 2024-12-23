@@ -100,9 +100,9 @@
             <form:input path="danToc" id="danToc" class="form-control" type="text" placeholder="Nhập dân tộc" />
           </div>
           <div class="mb-3">
-            <label for="ngheNghiep" class="form-label">Nghề nghiệp:</label>
-            <form:input path="ngheNghiep" id="ngheNghiep" class="form-control" type="text"
-              placeholder="Nhập nghề nghiệp" />
+            <label for="phoneNumber" class="form-label">Nghề nghiệp:</label>
+            <form:input path="phoneNumber" id="phoneNumber" class="form-control" type="text"
+              placeholder="Nhập số điện thoại" />
           </div>
 
           <div class="mb-3">

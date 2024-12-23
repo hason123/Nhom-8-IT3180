@@ -124,7 +124,7 @@
                   <td>${nk.ngaySinh}</td>
                   <td>${nk.noiSinh}</td>
                   <td>${nk.danToc}</td>
-                  <td>${nk.ngheNghiep}</td>
+                  <td>${nk.phoneNumber}</td>
                   <td><fmt:formatNumber value="${nk.idRoom}" pattern="0000" /></td>
                   <td>${nk.trangThai}</td>
                   <td>${nk.diaChiThuongTru}</td>
