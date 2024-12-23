@@ -108,7 +108,7 @@
                 <th>Ngày sinh</th>
                 <th>Nơi sinh</th>
                 <th>Dân tộc</th>
-                <th>Nghề nghiệp</th>
+                <th>Số điện thoại</th>
                 <th>ID Phòng</th>
                 <th>Trạng thái</th>
                 <th>Địa chỉ thường trú</th>

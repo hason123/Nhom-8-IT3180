@@ -86,6 +86,8 @@ public class NhanKhauController {
     public String showEditNhanKhauForm(@PathVariable("id") Long id, Model model) {
         NhanKhau nhanKhau = nhanKhauRepository.findById(id).orElse(null);
         if (nhanKhau != null) {
+            List<Room> rooms = (List<Room>) roomRepository.findAll();
+            model.addAttribute("rooms", rooms);
             model.addAttribute("nhanKhau", nhanKhau);
 
             return "nhankhau/edit";
