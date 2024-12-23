@@ -1,3 +1,4 @@
+<%@ page import="com.example.back_end.domain.NhanKhau" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
   <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
     <html lang="en">
@@ -65,9 +66,15 @@
       <!-- Form Chỉnh Sửa Phòng -->
       <div class="container mt-4">
         <h2 class="text-center">Chỉnh Sửa Phòng</h2>
+
         <form:form method="post" action="${pageContext.request.contextPath}/rooms/edit" modelAttribute="room">
           <!-- ID của phòng (ẩn) -->
-          <form:hidden path="idRoom" />
+          <div class="mb-3">
+            <label for="idRoom" class="form-label">ID Phòng:</label>
+            <form:input path="idRoom" id="idRoom" class="form-control" type="number" min="1" max="9999"
+                        placeholder="Nhập ID Phòng" required="true" readonly="true"
+                        oninput="if(this.value.length > 4) this.value = this.value.slice(0, 4);" />
+          </div>
 
           <div class="row">
             <!-- Tầng -->
@@ -83,13 +90,22 @@
                 placeholder="Nhập diện tích" required="true" maxlength="5" />
             </div>
           </div>
+
         <div class="row">
+
           <!-- ID chủ nhà -->
-          <div class=" col-md-6 mb-3">
+          <div class="col-md-6 mb-3">
             <label for="hostId" class="form-label">ID Chủ Nhà:</label>
-            <form:input path="hostId" id="hostId" class="form-control" type="number" placeholder="Nhập ID chủ nhà"
-              maxlength="6" />
+            <select id="hostId" name="hostId" class="form-control">
+              <option value="">Chọn chủ nhà</option>
+              <!-- Lặp qua danh sách nhân khẩu và tạo các option -->
+              <c:forEach var="nhanKhau" items="${nhanKhaus}">
+                <option value="${nhanKhau.id}">${nhanKhau.id}</option>
+              </c:forEach>
+            </select>
           </div>
+
+
           <!-- So nguoi -->
           <div class=" col-md-6 mb-3">
             <label for="soNguoi" class="form-label">Số người:</label>
@@ -97,10 +113,16 @@
                         maxlength="6" />
           </div>
         </div>
+
           <!-- Tên chủ nhà -->
           <div class="mb-3">
             <label for="hostName" class="form-label">Tên Chủ Nhà:</label>
-            <form:input path="hostName" id="hostName" class="form-control" type="text" placeholder="Nhập tên chủ nhà" />
+            <form:input path="hostName" id="hostName" class="form-control" list="hostNameList" placeholder="Nhập tên chủ nhà"/>
+            <datalist id="hostNameList">
+              <c:forEach var="nhanKhau" items="${nhanKhaus}">
+                <option value="${nhanKhau.hoTen}">${nhanKhau.hoTen}</option>
+              </c:forEach>
+            </datalist>
           </div>
           <!-- Số điện thoại -->
           <div class="mb-3">

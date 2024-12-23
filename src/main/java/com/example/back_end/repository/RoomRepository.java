@@ -10,17 +10,22 @@ import org.springframework.data.repository.query.Param;
 public interface RoomRepository extends CrudRepository<Room, Long> {
 
     // Tìm kiếm theo idRoom
-    List<Room> findByIdRoom(Long idRoom);
+    @Query("SELECT r FROM Room r WHERE CAST(r.idRoom AS string) LIKE %:keyword%")
+    List<Room> findByIdRoom(@Param("keyword") String keyword);
 
     // Tìm kiếm theo floor
-    List<Room> findByFloor(int floor);
+    @Query("SELECT r FROM Room r WHERE CAST(r.floor AS string) LIKE %:keyword%")
+    List<Room> findByFloor(@Param("keyword") String keyword);
 
     // Tìm kiếm theo hostId
-    List<Room> findByHostId(Long hostId);
+    @Query("SELECT r FROM Room r WHERE CAST(r.hostId AS string) LIKE %:keyword%")
+    List<Room> findByHostId(@Param("keyword") String keyword);
 
     // Tìm kiếm theo hostName
-    List<Room> findByHostName(String hostName);
+    @Query("SELECT r FROM Room r WHERE LOWER(r.hostName) LIKE LOWER(CONCAT('%', :keyword, '%'))")
+    List<Room> findByHostName(@Param("keyword") String keyword);
 
     // Tìm kiếm theo phoneNumber
-    List<Room> findByPhoneNumber(String phoneNumber);
+    @Query("SELECT r FROM Room r WHERE r.phoneNumber LIKE %:keyword%")
+    List<Room> findByPhoneNumber(@Param("keyword") String keyword);
 }

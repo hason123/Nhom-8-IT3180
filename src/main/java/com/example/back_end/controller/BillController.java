@@ -123,7 +123,7 @@ public class BillController {
         Long idRoom = Long.parseLong(requestData.get("idRoom"));
         double amount=0;
         Fee fee= feeRepository.findByIdPhi(feeIds);
-        List<Room> ls=roomRepository.findByIdRoom(idRoom);
+        List<Room> ls=roomRepository.findByIdRoom(String.valueOf(idRoom));
         Room room= ls.get(0);
         if(feeIds==1){
             amount=Double.parseDouble(fee.getMoTaPhi())*room.getDientich();

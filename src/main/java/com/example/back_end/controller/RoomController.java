@@ -1,6 +1,8 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.domain.NhanKhau;
 import com.example.back_end.domain.Room;
+import com.example.back_end.repository.NhanKhauRepository;
 import com.example.back_end.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +17,12 @@ import java.util.Optional;
 public class RoomController {
 
     private final RoomRepository roomRepository;
+    private final NhanKhauRepository nhanKhauRepository;
 
     @Autowired
-    public RoomController(RoomRepository roomRepository) {
+    public RoomController(RoomRepository roomRepository, NhanKhauRepository nhanKhauRepository) {
         this.roomRepository = roomRepository;
+        this.nhanKhauRepository = nhanKhauRepository;
     }
 
     @GetMapping
@@ -29,22 +33,22 @@ public class RoomController {
 
         List<Room> rooms;
 
-        if (keyword != null && !keyword.isEmpty()) {
+        if (keyword != null && !keyword.trim().isEmpty()&& !keyword.isEmpty()) {
             switch (searchType) {
                 case "idRoom":
-                    rooms = roomRepository.findByIdRoom(Long.parseLong(keyword));
+                    rooms = roomRepository.findByIdRoom(keyword.trim());
                     break;
                 case "floor":
-                    rooms = roomRepository.findByFloor(Integer.parseInt(keyword));
+                    rooms = roomRepository.findByFloor(keyword.trim());
                     break;
                 case "hostId":
-                    rooms = roomRepository.findByHostId(Long.parseLong(keyword));
+                    rooms = roomRepository.findByHostId(keyword.trim());
                     break;
                 case "hostName":
-                    rooms = roomRepository.findByHostName(keyword);
+                    rooms = roomRepository.findByHostName(keyword.trim());
                     break;
                 case "phoneNumber":
-                    rooms = roomRepository.findByPhoneNumber(keyword);
+                    rooms = roomRepository.findByPhoneNumber(keyword.trim());
                     break;
                 default:
                     rooms = (List<Room>) roomRepository.findAll();
@@ -64,8 +68,11 @@ public class RoomController {
     @GetMapping("/add")
     public String showAddRoomForm(Model model) {
         model.addAttribute("room", new Room());
+        List<NhanKhau> nhanKhaus = nhanKhauRepository.findAll(); // Lấy danh sách nhân khẩu
+        model.addAttribute("nhanKhaus", nhanKhaus);
         return "room/add";
     }
+
     @PostMapping("/add")
     public String addRoom(@ModelAttribute("room") Room room) {
         roomRepository.save(room);
@@ -74,12 +81,16 @@ public class RoomController {
     @GetMapping("/edit/{id}")
     public String showEditRoomForm(@PathVariable("id") Long id, Model model) {
         Optional<Room> room = roomRepository.findById(id);
+        List<NhanKhau> nhanKhaus = nhanKhauRepository.findAll(); // Lấy danh sách nhân khẩu
+        model.addAttribute("nhanKhaus", nhanKhaus);
         if (room.isPresent()) {
             model.addAttribute("room", room.get());
             return "room/edit"; // Tên của view hiển thị form cập nhật phòng
         }
+
         return "redirect:/rooms";
     }
+
     @PostMapping("/edit")
     public String updateRoom(@ModelAttribute("room") Room room) {
         roomRepository.save(room);
