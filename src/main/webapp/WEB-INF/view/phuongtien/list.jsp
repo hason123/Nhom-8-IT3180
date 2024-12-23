@@ -87,6 +87,8 @@
                             <option value="bienKiemSoat" ${searchType == 'bienKiemSoat' ? 'selected' : ''}>Biển Kiểm Soát</option>
                             <option value="tenChuXe" ${searchType == 'tenChuXe' ? 'selected' : ''}>Tên Chủ Xe</option>
                             <option value="maChuXe" ${searchType == 'maChuXe' ? 'selected' : ''}>Mã Chủ Xe</option>
+                            <option value="idRoom" ${searchType == 'idRoom' ? 'selected' : ''}>Mã Phòng</option>
+
                         </select>
                     </form>
 

@@ -1,6 +1,7 @@
 package com.example.back_end.controller;
 
 import com.example.back_end.domain.NhanKhau;
+import com.example.back_end.domain.PhuongTien;
 import com.example.back_end.domain.Room;
 import com.example.back_end.repository.NhanKhauRepository;
 import com.example.back_end.repository.RoomRepository;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/nhankhau")
@@ -31,22 +33,22 @@ public class NhanKhauController {
 
         List<NhanKhau> nhanKhaus;
 
-        if (keyword != null && !keyword.isEmpty()) {
+        if (keyword != null && !keyword.trim().isEmpty() && !keyword.isEmpty()) {
             switch (searchType) {
                 case "hoTen":
-                    nhanKhaus = nhanKhauRepository.findByHoTen(keyword);
+                    nhanKhaus = nhanKhauRepository.findByHoTen(keyword.trim());
                     break;
                 case "noiSinh":
-                    nhanKhaus = nhanKhauRepository.findByNoiSinh(keyword);
+                    nhanKhaus = nhanKhauRepository.findByNoiSinh(keyword.trim());
                     break;
                 case "idRoom":
-                    nhanKhaus = nhanKhauRepository.findByidRoom(Integer.parseInt(keyword));
+                    nhanKhaus = nhanKhauRepository.findByidRoom(keyword.trim());
                     break;
                 case "trangThai":
-                    nhanKhaus = nhanKhauRepository.findByTrangThai(keyword);
+                    nhanKhaus = nhanKhauRepository.findByTrangThai(keyword.trim());
                     break;
                 case "ngheNghiep":
-                    nhanKhaus = nhanKhauRepository.findByDiaChiThuongTru(keyword);
+                    nhanKhaus = nhanKhauRepository.findByDiaChiThuongTru(keyword.trim());
                     break;
                 default:
                     nhanKhaus = (List<NhanKhau>) nhanKhauRepository.findAll();
@@ -76,7 +78,6 @@ public class NhanKhauController {
 
     @PostMapping("/add")
     public String addNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau, Model model) {
-
         // Save the Nhan Khau if validation passes
         nhanKhauRepository.save(nhanKhau);
         return "redirect:/nhankhau";
@@ -84,28 +85,20 @@ public class NhanKhauController {
 
     @GetMapping("/edit/{id}")
     public String showEditNhanKhauForm(@PathVariable("id") Long id, Model model) {
-        NhanKhau nhanKhau = nhanKhauRepository.findById(id).orElse(null);
-        if (nhanKhau != null) {
-            List<Room> rooms = (List<Room>) roomRepository.findAll();
-            model.addAttribute("rooms", rooms);
-            model.addAttribute("nhanKhau", nhanKhau);
-
+        Optional<NhanKhau> nhanKhau = nhanKhauRepository.findById(id);
+        List<Room> rooms = (List<Room>) roomRepository.findAll();
+        model.addAttribute("rooms", rooms);
+        if (nhanKhau.isPresent()) {
+            model.addAttribute("nhanKhau", nhanKhau.get());
             return "nhankhau/edit";
-        } else {
-            model.addAttribute("error", "Nhan Khau with ID " + id + " not found.");
-            return "nhankhau/error";
         }
+        return "nhankhau/error";
     }
 
     @PostMapping("/edit")
-    public String updateNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau, Model model) {
-        try {
-            nhanKhauRepository.save(nhanKhau);
-            return "redirect:/nhankhau";
-        } catch (Exception e) {
-            model.addAttribute("error", "An error occurred while updating the Nhan Khau.");
-            return "nhankhau/edit";
-        }
+    public String updateNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau) {
+        nhanKhauRepository.save(nhanKhau);
+        return "redirect:/nhankhau";
     }
 
     @GetMapping("/delete/{id}")

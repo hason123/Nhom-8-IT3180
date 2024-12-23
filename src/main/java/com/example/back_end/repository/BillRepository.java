@@ -9,18 +9,24 @@ import java.util.List;
 
 public interface BillRepository extends CrudRepository<Bill, Long> {
     // Tìm kiếm Payment theo mã căn hộ (maCanHo)
-    List<Bill> findByMaCanHo(String maCanHo);
+    @Query("SELECT r FROM Bill r WHERE CAST(r.maCanHo AS string) LIKE %:keyword%")
+    List<Bill> findByMaCanHo(@Param("keyword") String keyword);
 
     // Tìm kiếm Payment theo trạng thái (trangThai)
-    List<Bill> findByTrangThai(String trangThai);
+    @Query("SELECT r FROM Bill r WHERE CAST(r.trangThai AS string) LIKE %:keyword%")
+    List<Bill> findByTrangThai(@Param("keyword") String keyword);
 
     // Tìm kiếm Payment theo tiêu đề (tieuDe)
-    List<Bill> findByTieuDe(String tieuDe);
+    @Query("SELECT r FROM Bill r WHERE CAST(r.tieuDe AS string) LIKE %:keyword%")
+    List<Bill> findByTieuDe(@Param("keyword") String keyword);
 
-    List<Bill> findBykiThanhToan (String kiThanhToan);
+    @Query("SELECT r FROM Bill r WHERE CAST(r.trangThai AS string) LIKE %:keyword%")
+    List<Bill> findBykiThanhToan (@Param("keyword") String keyword);
 
-    List<Bill> findByidThanhToan(int idThanhToan);
+    @Query("SELECT r FROM Bill r WHERE CAST(r.idThanhToan AS string) LIKE %:keyword%")
+    List<Bill> findByidThanhToan(@Param("keyword") String keyword);
 
-    List<Bill> findByidCacKhoanPhi (int idCacKhoanPhi);
+    @Query("SELECT r FROM Bill r WHERE CAST(r.idCacKhoanPhi AS string) LIKE %:keyword%")
+    List<Bill> findByidCacKhoanPhi (@Param("keyword") String keyword);
 
 }

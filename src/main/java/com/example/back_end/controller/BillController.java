@@ -39,25 +39,25 @@ public class BillController {
 
         List<Bill> bills;
 
-        if (keyword != null && !keyword.isEmpty()) {
+        if (keyword != null && !keyword.trim().isEmpty() && !keyword.isEmpty()) {
             switch (searchType) {
                 case "maCanHo":
-                    bills = billRepository.findByMaCanHo(keyword);
+                    bills = billRepository.findByMaCanHo(keyword.trim());
                     break;
                 case "trangThai":
-                    bills = billRepository.findByTrangThai(keyword);
+                    bills = billRepository.findByTrangThai(keyword.trim());
                     break;
                 case "tieuDe":
-                    bills = billRepository.findByTieuDe(keyword);
+                    bills = billRepository.findByTieuDe(keyword.trim());
                     break;
                 case "kiThanhToan":
-                    bills = billRepository.findBykiThanhToan(keyword);
+                    bills = billRepository.findBykiThanhToan(keyword.trim());
                     break;
                 case "idThanhToan":
-                    bills = billRepository.findByidThanhToan(Integer.parseInt(keyword));
+                    bills = billRepository.findByidThanhToan(keyword.trim());
                     break;
                 case "idCacKhoanPhi":
-                    bills = billRepository.findByidCacKhoanPhi(Integer.parseInt(keyword));
+                    bills = billRepository.findByidCacKhoanPhi(keyword.trim());
                     break;
                 default:
                     bills = (List<Bill>) billRepository.findAll();

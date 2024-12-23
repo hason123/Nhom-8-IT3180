@@ -47,6 +47,10 @@ public class NhanKhau {
         this.id = id;
     }
 
+    //@ManyToOne
+    //@JoinColumn(name = "nk.room")
+    //public Room room;
+
     public String getHoTen() {
         return hoTen;
     }

@@ -34,22 +34,25 @@ public class PhuongTienController {
 
         List<PhuongTien> phuongTiens;
 
-        if (keyword != null && !keyword.isEmpty()) {
+        if (keyword != null && !keyword.trim().isEmpty() && !keyword.isEmpty()) {
             switch (searchType) {
                 case "loaiXe":
-                    phuongTiens = phuongTienRepository.findByLoaiXe(keyword);
+                    phuongTiens = phuongTienRepository.findByLoaiXe(keyword.trim());
                     break;
                 case "tenXe":
-                    phuongTiens = phuongTienRepository.findByTenXe(keyword);
+                    phuongTiens = phuongTienRepository.findByTenXe(keyword.trim());
                     break;
                 case "bienKiemSoat":
-                    phuongTiens = phuongTienRepository.findByBienKiemSoat(keyword);
+                    phuongTiens = phuongTienRepository.findByBienKiemSoat(keyword.trim());
                     break;
                 case "tenChuXe":
-                    phuongTiens = phuongTienRepository.findByTenChuXe(keyword);
+                    phuongTiens = phuongTienRepository.findByTenChuXe(keyword.trim());
                     break;
                 case "maChuXe":
-                    phuongTiens = phuongTienRepository.findByMaChuXe(keyword);
+                    phuongTiens = phuongTienRepository.findByMaChuXe(keyword.trim());
+                    break;
+                case "idRoom":
+                    phuongTiens = phuongTienRepository.findByPhongChuXe(keyword.trim());
                     break;
                 default:
                     phuongTiens = (List<PhuongTien>) phuongTienRepository.findAll();
