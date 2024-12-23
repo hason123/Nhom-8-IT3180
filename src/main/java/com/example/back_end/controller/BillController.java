@@ -78,6 +78,9 @@ public class BillController {
     @GetMapping("/add")
     public String showAddBillForm(Model model) {
         model.addAttribute("bill", new Bill());
+        List<Fee> list= (List<Fee>) feeRepository.findAll();
+        List<Fee> fees = list.subList(4, list.size());
+        model.addAttribute("fees", fees);
         return "bill/add"; // Chuyển đến form thêm hóa đơn
     }
 

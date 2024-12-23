@@ -82,7 +82,7 @@ public class PhuongTienController {
         phuongTienRepository.save(phuongTien);
         Room room= phuongTien.getRoom();
         room.getPhuongTien().add(phuongTien);
-        roomRepository.save(room);
+        //roomRepository.save(room);
         return "redirect:/phuong-tien";
     }
 
@@ -90,6 +90,8 @@ public class PhuongTienController {
     @GetMapping("/edit/{id}")
     public String showEditPhuongTienForm(@PathVariable("id") Long id, Model model) {
         Optional<PhuongTien> phuongTien = phuongTienRepository.findById(id);
+        List<Room> rooms = (List<Room>) roomRepository.findAll(); // Lấy danh sách phòng từ cơ sở dữ liệu
+        model.addAttribute("rooms", rooms);
         if (phuongTien.isPresent()) {
             model.addAttribute("phuongTien", phuongTien.get());
             return "phuongtien/edit"; // Tên của view hiển thị form cập nhật

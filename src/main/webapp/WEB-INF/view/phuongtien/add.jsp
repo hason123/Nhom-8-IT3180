@@ -88,8 +88,8 @@
                                 <label for="loaiXe" class="form-label">Loại phương tiện</label>
                                 <form:select path="loaiXe" id="loaiXe" class="form-control">
                                     <form:option value="" label="-- Chọn loại xe --" />
-                                    <option value="1">Xe máy</option>
-                                    <option value="2">Ô tô</option>
+                                    <option>Xe máy</option>
+                                    <option>Ô tô</option>
                                 </form:select>
                             </div>
                             <!-- Biển kiểm soát -->

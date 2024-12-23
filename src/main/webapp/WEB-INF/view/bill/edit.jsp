@@ -129,9 +129,16 @@
 
                             <!-- ID Các Khoản Phí -->
                             <div class="col-md-6 mb-3">
-                                <label for="idCacKhoanPhi" class="form-label">ID Các Khoản Phí:</label>
-                                <form:input path="idCacKhoanPhi" id="idCacKhoanPhi" class="form-control" type="text"
-                                    placeholder="Nhập ID Các Khoản Phí" />
+                                <label for="idCacKhoanPhi" class="form-label">Các Khoản Phí:</label>
+                                <form:select path="idCacKhoanPhi" id="idCacKhoanPhi" class="form-control">
+                                    <form:option value="0" label="-- Chọn loại phí --" />
+                                    <form:option value="1">Phí quản lý</form:option>
+                                    <form:option value="2">Phí dịch vụ</form:option>
+                                    <form:option value="3">Phí gửi xe</form:option>
+                                    <c:forEach var="fee" items="${fees}">
+                                        <form:option value="${fee.idPhi}">${fee.tenPhi}</form:option>
+                                    </c:forEach>
+                                </form:select>
                             </div>
                         </div>
 
@@ -142,6 +149,42 @@
                         </div>
                     </form:form>
                 </div>
+                <script>
+                    document.getElementById('idCacKhoanPhi').addEventListener('input', calculateCost);
+                    document.getElementById('maCanHo').addEventListener('input', calculateCost);
+
+                    function calculateCost() {
+                        const feeIds = document.getElementById('idCacKhoanPhi').value.trim();
+                        const idRoom = document.getElementById('maCanHo').value.trim();
+
+                        if (feeIds && idRoom) {
+                            // Tạo một đối tượng chứa dữ liệu
+                            const data = {
+                                feeIds: feeIds,
+                                idRoom: idRoom,
+                            };
+
+                            // Gửi yêu cầu POST
+                            fetch(`${pageContext.request.contextPath}/bills/calculate`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data) // Dữ liệu gửi dưới dạng JSON
+                            })
+                                .then(response => response.json()) // Backend trả về số tiền dưới dạng JSON
+                                .then(amount => {
+                                    document.getElementById('soTien').value = amount.toFixed(2); // Đảm bảo số tiền có định dạng chính xác
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    document.getElementById('soTien').value = ''; // Xử lý lỗi nếu có
+                                });
+                        } else {
+                            document.getElementById('soTien').value = '';
+                        }
+                    }
+                </script>
 
                 <!-- Bootstrap JS -->
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -82,11 +82,15 @@
                             </div>
 
                             <!-- Loại phương tiện -->
-                            <div class="col-md-6 mb-3">
-                                <label for="loaiXe" class="form-label">Loại phương tiện:</label>
-                                <form:input path="loaiXe" id="loaiXe" class="form-control" type="text"
-                                    placeholder="Nhập loại phương tiện" required="true" />
+                            <div class="mb-3">
+                                <label for="loaiXe" class="form-label">Loại phương tiện</label>
+                                <form:select path="loaiXe" id="loaiXe" class="form-control">
+                                    <form:option value="" label="-- Chọn loại xe --" />
+                                    <option>Xe máy</option>
+                                    <option>Ô tô</option>
+                                </form:select>
                             </div>
+
                             <!-- Biển kiểm soát -->
                             <div class="col-md-6 mb-3">
                                 <label for="bienKiemSoat" class="form-label">Biển kiểm soát:</label>
@@ -108,6 +112,14 @@
                             <form:input path="maChuXe" id="maChuXe" class="form-control" type="number" min="1"
                                 max="999999" placeholder="Nhập mã chủ xe" required="true"
                                 oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="room.idRoom" class="form-label">Phòng</label>
+                            <form:select path="room.idRoom" id="room.idRoom" class="form-control">
+                                <form:option value="" label="-- Chọn phòng --" />
+                                <form:options items="${rooms}" />
+                            </form:select>
                         </div>
 
                         <!-- Nút hành động -->

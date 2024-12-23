@@ -87,7 +87,7 @@
 
                     <div class="mb-3">
                         <label for="thoiGianThu" class="form-label">Thời Gian Thu:</label>
-                        <form:input path="thoiGianThu" id="thoiGianThu" class="form-control"
+                        <form:input type="date" path="thoiGianThu" id="thoiGianThu" class="form-control"
                             placeholder="Nhập thời gian thu" />
                         <div class="invalid-feedback">Vui lòng nhập thời gian thu.</div>
                     </div>

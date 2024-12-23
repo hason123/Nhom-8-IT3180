@@ -64,6 +64,7 @@
                 <!-- Form Thêm Hóa Đơn -->
                 <div class="container mt-4">
                     <h2 class="text-center">Thêm Hóa Đơn Mới</h2>
+                    <%--@elvariable id="bill" type=""--%>
                     <form:form method="POST" action="${pageContext.request.contextPath}/bills/add"
                         modelAttribute="bill">
                         <div class="row">
@@ -128,10 +129,22 @@
                             </div>
 
                             <!-- ID Các Khoản Phí -->
+<%--                            <div class="col-md-6 mb-3">--%>
+<%--                                <label for="idCacKhoanPhi" class="form-label">ID Các Khoản Phí:</label>--%>
+<%--                                <form:input path="idCacKhoanPhi" id="idCacKhoanPhi" class="form-control" type="text"--%>
+<%--                                    placeholder="Nhập ID Các Khoản Phí" />--%>
+<%--                            </div>--%>
                             <div class="col-md-6 mb-3">
-                                <label for="idCacKhoanPhi" class="form-label">ID Các Khoản Phí:</label>
-                                <form:input path="idCacKhoanPhi" id="idCacKhoanPhi" class="form-control" type="text"
-                                    placeholder="Nhập ID Các Khoản Phí" />
+                                <label for="idCacKhoanPhi" class="form-label">Các Khoản Phí:</label>
+                                <form:select path="idCacKhoanPhi" id="idCacKhoanPhi" class="form-control">
+                                    <form:option value="0" label="-- Chọn loại phí --" />
+                                    <form:option value="1">Phí quản lý</form:option>
+                                    <form:option value="2">Phí dịch vụ</form:option>
+                                    <form:option value="3">Phí gửi xe</form:option>
+                                    <c:forEach var="fee" items="${fees}">
+                                        <form:option value="${fee.idPhi}">${fee.tenPhi}</form:option>
+                                    </c:forEach>
+                                </form:select>
                             </div>
                         </div>
 
