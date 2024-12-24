@@ -18,7 +18,20 @@
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+      <script>
+        const nhanKhaus = [
+          <c:forEach var="nhanKhau" items="${nhanKhaus}">
+          {
+            id: "${nhanKhau.id}",
+            hoTen: "${nhanKhau.hoTen}",
+            phoneNumber: "${nhanKhau.phoneNumber}"
+          },
+          </c:forEach>
+        ];
+      </script>
     </head>
+
 
     <body>
       <!-- Header -->
@@ -92,42 +105,30 @@
           </div>
 
         <div class="row">
-
           <!-- ID chủ nhà -->
-          <div class="col-md-6 mb-3">
+          <div class=" col-md-6 mb-3">
             <label for="hostId" class="form-label">ID Chủ Nhà:</label>
-            <select id="hostId" name="hostId" class="form-control">
-              <option value="">Chọn chủ nhà</option>
-              <!-- Lặp qua danh sách nhân khẩu và tạo các option -->
-              <c:forEach var="nhanKhau" items="${nhanKhaus}">
-                <option value="${nhanKhau.id}">${nhanKhau.id}</option>
-              </c:forEach>
-            </select>
+            <form:input path="hostId" id="hostId" class="form-control" type="number" placeholder="Nhập ID chủ nhà"
+              maxlength="6" />
           </div>
 
 
           <!-- So nguoi -->
           <div class=" col-md-6 mb-3">
             <label for="soNguoi" class="form-label">Số người:</label>
-            <form:input path="soNguoi" id="soNguoi" class="form-control" type="number" placeholder="Nhập ID chủ nhà"
+            <form:input path="soNguoi" id="soNguoi" class="form-control" type="number" placeholder="Nhập số người"
                         maxlength="6" />
           </div>
         </div>
-
           <!-- Tên chủ nhà -->
           <div class="mb-3">
             <label for="hostName" class="form-label">Tên Chủ Nhà:</label>
-            <form:input path="hostName" id="hostName" class="form-control" list="hostNameList" placeholder="Nhập tên chủ nhà"/>
-            <datalist id="hostNameList">
-              <c:forEach var="nhanKhau" items="${nhanKhaus}">
-                <option value="${nhanKhau.hoTen}">${nhanKhau.hoTen}</option>
-              </c:forEach>
-            </datalist>
+            <form:input path="hostName" id="hostName" class="form-control" type="text" placeholder="Nhập tên chủ nhà" />
           </div>
           <!-- Số điện thoại -->
           <div class="mb-3">
             <label for="phoneNumber" class="form-label">Số Điện Thoại:</label>
-            <form:input path="phoneNumber" id="phoneNumber" class="form-control" type="text"
+            <form:input path="phoneNumber" id="phoneNumber" class="form-control" type="number"
               placeholder="Nhập số điện thoại" />
           </div>
 
@@ -140,6 +141,54 @@
       </div>
 
       <!-- Bootstrap JS -->
+      <script>
+        function fillNhanKhauInfo() {
+          const hostIdInput = document.getElementById('hostId');
+          const hostNameInput = document.getElementById('hostName');
+          const phoneNumberInput = document.getElementById('phoneNumber');
+
+          const hostId = hostIdInput.value.trim();
+
+          // Tìm nhân khẩu theo ID
+          const nhanKhau = nhanKhaus.find(nk => nk.id === hostId);
+
+          if (nhanKhau) {
+            // Nếu tìm thấy nhân khẩu, tự động điền thông tin
+            hostNameInput.value = nhanKhau.hoTen;
+            phoneNumberInput.value = nhanKhau.phoneNumber;
+          } else {
+            // Nếu không tìm thấy nhân khẩu, làm trống các trường thông tin
+            hostNameInput.value = '';
+            phoneNumberInput.value = '';
+          }
+        }
+        function fillNhanKhauInfoByName() {
+          const hostIdInput = document.getElementById('hostId');
+          const hostNameInput = document.getElementById('hostName');
+          const phoneNumberInput = document.getElementById('phoneNumber');
+
+          const hostName = hostNameInput.value.trim().toLowerCase();
+
+          // Tìm nhân khẩu theo tên
+          const nhanKhau = nhanKhaus.find(nk => nk.hoTen.toLowerCase() === hostName);
+
+          if (nhanKhau) {
+            // Nếu tìm thấy nhân khẩu, tự động điền thông tin
+            hostIdInput.value = nhanKhau.id;
+            phoneNumberInput.value = nhanKhau.phoneNumber;
+          } else {
+            // Nếu không tìm thấy nhân khẩu, làm trống các trường thông tin
+            hostIdInput.value = '';
+            phoneNumberInput.value = '';
+          }
+        }
+        // Gắn sự kiện khi người dùng thay đổi ID chủ nhà
+        document.getElementById('hostId').addEventListener('change', fillNhanKhauInfo);
+        document.getElementById('hostName').addEventListener('input', fillNhanKhauInfoByName);
+
+
+      </script>
+
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 

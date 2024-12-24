@@ -109,16 +109,17 @@
             </div>
 
           <!-- ID phòng -->
-            <div class= "mb-3">
-              <label for="idRoom" class="form-label">ID Phòng:</label>
-              <input list="roomList" id="idRoom" name="idRoom" class="form-control" />
-              <datalist id="roomList">
-                <!-- Lặp qua danh sách rooms và tạo các option -->
-                <c:forEach var="room" items="${rooms}">
-                  <option value="${room.idRoom}">${room.idRoom}</option>
-                </c:forEach>
-              </datalist>
-            </div>
+
+
+          <div class="mb-3">
+            <label for="idRoom" class="form-label">Phòng</label>
+            <form:select path="idRoom" id="idRoom" class="form-control">
+              <form:option value="0" label="-- Chọn phòng --" />
+              <c:forEach var="room" items="${rooms}">
+                <form:option value="${room.idRoom}">${room.idRoom}</form:option>
+              </c:forEach>
+            </form:select>
+          </div>
 
 
           <div class="mb-3">

@@ -85,11 +85,24 @@
                             </div>
 
                             <!-- Mã căn hộ -->
+                            <%--
                             <div class="col-md-6 mb-3">
                                 <label for="maCanHo" class="form-label">Mã Căn Hộ:</label>
                                 <form:input path="maCanHo" id="maCanHo" class="form-control" type="text"
                                     placeholder="Nhập mã căn hộ" required="true" />
                             </div>
+                            --%>
+
+                            <div class="mb-3">
+                                <label for="maCanHo" class="form-label">Phòng</label>
+                                <form:select path="maCanHo" id="maCanHo" class="form-control">
+                                    <form:option value="0" label="-- Chọn phòng --" />
+                                    <c:forEach var="room" items="${rooms}">
+                                        <form:option value="${room.idRoom}">${room.idRoom}</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </div>
+
 
                             <!-- Kỳ thanh toán -->
                             <div class="col-md-6 mb-3">
@@ -123,9 +136,13 @@
 
                             <!-- ID Thanh Toán -->
                             <div class="col-md-6 mb-3">
-                                <label for="idThanhToan" class="form-label">ID Thanh Toán:</label>
-                                <form:input path="idThanhToan" id="idThanhToan" class="form-control" type="text"
-                                    placeholder="Nhập ID Thanh Toán" />
+                                <label for="idThanhToan" class="form-label">Hình Thức Thanh Toán:</label>
+                                <form:select path="idThanhToan" id="idThanhToan" class="form-control">
+                                    <!-- Duyệt qua các phương thức thanh toán -->
+                                    <c:forEach var="method" items="${paymentMethods}">
+                                        <form:option value="${method.idThanhToan}">${method.loai}</form:option>
+                                    </c:forEach>
+                                </form:select>
                             </div>
 
                             <!-- ID Các Khoản Phí -->

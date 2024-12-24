@@ -20,6 +20,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
           rel="stylesheet" />
+
+    <script>
+        const nhanKhaus = [
+            <c:forEach var="nhanKhau" items="${nhanKhaus}">
+            {
+                id: "${nhanKhau.id}",
+                hoTen: "${nhanKhau.hoTen}",
+                idRoom: "${nhanKhau.idRoom}"
+
+            },
+            </c:forEach>
+        ];
+    </script>
+
 </head>
 
 <body>
@@ -99,30 +113,38 @@
             </div>
         </div>
 
-        <!-- Tên chủ xe -->
-        <div class="mb-3">
-            <label for="tenChuXe" class="form-label">Tên chủ xe:</label>
-            <form:input path="tenChuXe" id="tenChuXe" class="form-control" type="text"
-                        placeholder="Nhập tên chủ xe" required="true" />
-        </div>
-
-        <!-- Mã chủ xe -->
         <div class="mb-3">
             <label for="maChuXe" class="form-label">Mã chủ xe:</label>
-            <form:input path="maChuXe" id="maChuXe" class="form-control" type="number" min="1"
-                        max="999999" placeholder="Nhập mã chủ xe" required="true"
-                        oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
+            <form:input path="maChuXe" id="maChuXe" class="form-control" list="maChuXeList" placeholder="Nhập tên chủ xe" onchange="fillPhuongTienInfoById()"/>
+            <datalist id="maChuXeList">
+                <c:forEach var="nhanKhau" items="${nhanKhaus}">
+                    <option value="${nhanKhau.id}">${nhanKhau.id}</option>
+                </c:forEach>
+            </datalist>
         </div>
+
+        <div class="mb-3">
+            <label for="tenChuXe" class="form-label">Tên chủ xe:</label>
+            <form:input path="tenChuXe" id="tenChuXe" class="form-control" list="tenChuXeList" placeholder="Nhập tên chủ xe" onchange="fillPhuongTienInfoByName()"/>
+            <datalist id="tenChuXeList">
+                <c:forEach var="nhanKhau" items="${nhanKhaus}">
+                    <option value="${nhanKhau.hoTen}">${nhanKhau.hoTen}</option>
+                </c:forEach>
+            </datalist>
+        </div>
+
 
         <div class="mb-3">
             <label for="room.idRoom" class="form-label">Phòng</label>
-            <form:select path="room.idRoom" id="room.idRoom" class="form-control">
-                <form:option value="" label="-- Chọn phòng --" />
+            <input list="rooms" name="room.idRoom" id="room.idRoom" class="form-control" placeholder="-- Chọn phòng --" />
+            <datalist id="rooms">
+                <option value="">-- Chọn phòng --</option>
                 <c:forEach var="room" items="${rooms}">
-                    <form:option value="${room.idRoom}">${room.idRoom}</form:option>
+                    <option value="${room.idRoom}">${room.idRoom}</option>
                 </c:forEach>
-            </form:select>
+            </datalist>
         </div>
+
 
         <!-- Nút hành động -->
         <div class="text-center">
@@ -132,7 +154,56 @@
     </form:form>
 </div>
 
+
 <!-- Bootstrap JS -->
+<script>
+
+    // Hàm tự động điền thông tin nhân khẩu dựa trên mã (ID)
+    function fillPhuongTienInfoById() {
+        const maChuXeInput = document.getElementById('maChuXe');
+        const tenChuXeInput = document.getElementById('tenChuXe');
+        const phongChuXeInput = document.getElementById('room.idRoom');
+        const maChuXe = maChuXeInput.value.trim();
+        // Tìm nhân khẩu theo ID
+        const nhanKhau = nhanKhaus.find(nk => nk.id === maChuXe);
+
+        if (nhanKhau) {
+            // Điền tên chủ xe nếu tìm thấy
+            tenChuXeInput.value = nhanKhau.hoTen;
+            phongChuXeInput.value = nhanKhau.idRoom;
+        } else {
+            // Nếu không tìm thấy, làm trống các trường thông tin
+            tenChuXeInput.value = '';
+            phongChuXeInput.value = '';
+        }
+    }
+
+    // Hàm tự động điền thông tin nhân khẩu dựa trên tên chủ nhà
+    function fillPhuongTienInfoByName() {
+        const maChuXeInput = document.getElementById('maChuXe');
+        const tenChuXeInput = document.getElementById('tenChuXe');
+        const phongChuXeInput = document.getElementById('room.idRoom');
+        const tenChuXe = tenChuXeInput.value.trim().toLowerCase();
+
+        // Tìm nhân khẩu theo tên
+        const nhanKhau = nhanKhaus.find(nk => nk.hoTen.toLowerCase() === tenChuXe);
+
+        if (nhanKhau) {
+            // Điền mã (ID) chủ nhà nếu tìm thấy
+            maChuXeInput.value = nhanKhau.id;
+            phongChuXeInput.value = nhanKhau.idRoom;
+        } else {
+            // Nếu không tìm thấy, làm trống các trường thông tin
+            maChuXeInput.value = '';
+            phongChuXeInput.value = nhanKhau.idRoom;
+        }
+    }
+
+    // Gắn sự kiện khi người dùng thay đổi mã chủ nhà (ID)
+    document.getElementById('maChuXe').addEventListener('change', fillPhuongTienInfoById);
+    document.getElementById('tenChuXe').addEventListener('input', fillPhuongTienInfoByName);
+</script>
+
 <script src="⁦https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js⁩"></script>
 </body>
 

@@ -157,7 +157,7 @@
                         path="thoiGianThu"
                         id="thoiGianThu"
                         class="form-control"
-                        type="date"
+                        type="text"
                         required="true"
                 />
             </div>

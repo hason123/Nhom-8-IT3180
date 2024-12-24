@@ -69,9 +69,9 @@ public class NhanKhauController {
     @GetMapping("/add")
     public String showAddNhanKhauForm(Model model) {
         // Lấy danh sách các phòng
-        List<Room> rooms = (List<Room>) roomRepository.findAll();
-        model.addAttribute("rooms", rooms); // Thêm danh sách phòng vào model
         model.addAttribute("nhanKhau", new NhanKhau());
+        List<Room> rooms = (List<Room>) roomRepository.findAll();
+        model.addAttribute("rooms", rooms);
 
         return "nhankhau/add";
     }

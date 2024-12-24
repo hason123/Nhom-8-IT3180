@@ -1,7 +1,9 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.domain.NhanKhau;
 import com.example.back_end.domain.PhuongTien;
 import com.example.back_end.domain.Room;
+import com.example.back_end.repository.NhanKhauRepository;
 import com.example.back_end.repository.PhuongTienRepository;
 import com.example.back_end.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,13 @@ public class PhuongTienController {
 
     private final PhuongTienRepository phuongTienRepository;
     private final RoomRepository roomRepository;
+    private final NhanKhauRepository nhanKhauRepository;
 
     @Autowired
-    public PhuongTienController(PhuongTienRepository phuongTienRepository, RoomRepository roomRepository) {
+    public PhuongTienController(PhuongTienRepository phuongTienRepository, RoomRepository roomRepository, NhanKhauRepository nhanKhauRepository) {
         this.phuongTienRepository = phuongTienRepository;
         this.roomRepository = roomRepository;
+        this.nhanKhauRepository = nhanKhauRepository;
     }
 
     // Hiển thị danh sách phương tiện
@@ -76,6 +80,8 @@ public class PhuongTienController {
         model.addAttribute("phuongTien", new PhuongTien());
         List<Room> rooms = (List<Room>) roomRepository.findAll(); // Lấy danh sách phòng từ cơ sở dữ liệu
         model.addAttribute("rooms", rooms);
+        List<NhanKhau> nhanKhaus = nhanKhauRepository.findAll(); // Lấy danh sách nhân khẩu
+        model.addAttribute("nhanKhaus", nhanKhaus);
         return "phuongtien/add"; // Tên của view hiển thị form thêm
     }
 
@@ -95,6 +101,8 @@ public class PhuongTienController {
         Optional<PhuongTien> phuongTien = phuongTienRepository.findById(id);
         List<Room> rooms = (List<Room>) roomRepository.findAll(); // Lấy danh sách phòng từ cơ sở dữ liệu
         model.addAttribute("rooms", rooms);
+        List<NhanKhau> nhanKhaus = nhanKhauRepository.findAll(); // Lấy danh sách nhân khẩu
+        model.addAttribute("nhanKhaus", nhanKhaus);
         if (phuongTien.isPresent()) {
             model.addAttribute("phuongTien", phuongTien.get());
             return "phuongtien/edit"; // Tên của view hiển thị form cập nhật

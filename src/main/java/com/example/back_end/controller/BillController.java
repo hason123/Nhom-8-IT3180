@@ -2,9 +2,11 @@ package com.example.back_end.controller;
 
 import com.example.back_end.domain.Bill;
 import com.example.back_end.domain.Fee;
+import com.example.back_end.domain.PaymentMethod;
 import com.example.back_end.domain.Room;
 import com.example.back_end.repository.BillRepository;
 import com.example.back_end.repository.FeeRepository;
+import com.example.back_end.repository.PaymentMethodRepository;
 import com.example.back_end.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +25,13 @@ public class BillController {
     private final BillRepository billRepository;
     private final FeeRepository feeRepository;
     private final RoomRepository roomRepository;
+    private final PaymentMethodRepository paymentMethodRepository;
     @Autowired
-    public BillController(BillRepository billRepository,FeeRepository feeRepository,RoomRepository roomRepository) {
+    public BillController(BillRepository billRepository, FeeRepository feeRepository, RoomRepository roomRepository, PaymentMethodRepository paymentMethodRepository) {
         this.billRepository = billRepository;
         this.feeRepository = feeRepository;
         this.roomRepository = roomRepository;
+        this.paymentMethodRepository = paymentMethodRepository;
     }
 
     // Hiển thị danh sách các hóa đơn
@@ -78,6 +82,10 @@ public class BillController {
     @GetMapping("/add")
     public String showAddBillForm(Model model) {
         model.addAttribute("bill", new Bill());
+        List<PaymentMethod> paymentMethods = (List<PaymentMethod>) paymentMethodRepository.findAll();
+        model.addAttribute("paymentMethods", paymentMethods);
+        List<Room> rooms = (List<Room>) roomRepository.findAll(); // Lấy danh sách phòng từ cơ sở dữ liệu
+        model.addAttribute("rooms", rooms);
         List<Fee> list= (List<Fee>) feeRepository.findAll();
         List<Fee> fees = list.subList(4, list.size());
         model.addAttribute("fees", fees);
@@ -95,6 +103,10 @@ public class BillController {
     @GetMapping("/edit/{id}")
     public String showEditBillForm(@PathVariable("id") Long id, Model model) {
         Optional<Bill> bill = billRepository.findById(id);
+        List<PaymentMethod> paymentMethods = (List<PaymentMethod>) paymentMethodRepository.findAll();
+        model.addAttribute("paymentMethods", paymentMethods);
+        List<Room> rooms = (List<Room>) roomRepository.findAll(); // Lấy danh sách phòng từ cơ sở dữ liệu
+        model.addAttribute("rooms", rooms);
         if (bill.isPresent()) {
             model.addAttribute("bill", bill.get());
             return "bill/edit"; // Chuyển đến form chỉnh sửa hóa đơn
@@ -137,7 +149,7 @@ public class BillController {
                 if(room.getPhuongTien().get(i).getLoaiXe().equals("Xe máy")) cnt1+=1;
                 else if(room.getPhuongTien().get(i).getLoaiXe().equals("Ô tô")) cnt2+=1;
             }
-            amount=cnt1*70000+ cnt2*1200000;
+            amount=cnt1 *70000 + cnt2 * 1500000;
         }
         else {
             amount=Double.parseDouble(fee.getMoTaPhi());

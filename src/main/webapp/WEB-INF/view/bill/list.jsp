@@ -75,7 +75,7 @@
                     <h2 class="text-center">Danh Sách Hóa Đơn</h2>
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <p style="font-size: 1.4rem;"><strong>Tổng số hóa đơn:</strong> ${totalRooms}</p>
+                        <p style="font-size: 1.4rem;"><strong>Tổng số hóa đơn:</strong> ${totalBills}</p>
                         <a href="${pageContext.request.contextPath}/bills/add" class="btn btn-success">Thêm Hóa Đơn</a>
                     </div>
 
