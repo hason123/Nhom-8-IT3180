@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-            <html lang="en">
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<html lang="en">
 
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -92,7 +93,7 @@
                                 <tr class="text-center">
                                     <td style="color: rgb(0, 181, 181)">${fee.idPhi}</td>
                                     <td>${fee.tenPhi}</td>
-                                    <td>${fee.moTaPhi}</td>
+                                    <td><fmt:formatNumber value="${fee.moTaPhi}" type="number" maxFractionDigits="0" />đ</td>
                                     <td>${fee.thoiGianThu}</td>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/fees/edit/${fee.idPhi}"
