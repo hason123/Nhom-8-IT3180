@@ -96,8 +96,8 @@
           </div>
           <!-- Dân tộc -->
           <div class="mb-3">
-            <label for="danToc" class="form-label">Dân tộc:</label>
-            <form:input path="danToc" id="danToc" class="form-control" type="text" placeholder="Nhập dân tộc" />
+            <label for="ngheNghiep" class="form-label">Dân tộc:</label>
+            <form:input path="ngheNghiep" id="ngheNghiep" class="form-control" type="text" placeholder="Nhập nghề nghiệp" />
           </div>
           <div class="mb-3">
             <label for="phoneNumber" class="form-label">Nghề nghiệp:</label>

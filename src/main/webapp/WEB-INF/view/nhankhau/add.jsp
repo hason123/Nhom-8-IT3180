@@ -94,18 +94,18 @@
             <!-- Nơi sinh -->
             <div class="mb-3">
               <label for="noiSinh" class="form-label">Nơi sinh:</label>
-              <form:input path="noiSinh" id="noiSinh" class="form-control" type="text" placeholder="Nhập nơi sinh" />
+              <form:input path="noiSinh" id="noiSinh" class="form-control" type="text" placeholder="Nhập nơi sinh" required="required"/>
             </div>
             <!-- Dân tộc -->
             <div class="mb-3">
-              <label for="danToc" class="form-label">Dân tộc:</label>
-              <form:input path="danToc" id="danToc" class="form-control" type="text" placeholder="Nhập dân tộc" />
+              <label for="ngheNghiep" class="form-label">Dân tộc:</label>
+              <form:input path="ngheNghiep" id="ngheNghiep" class="form-control" type="text" placeholder="Nhập nghề nghiệp" required="required"/>
             </div>
 
             <div class="mb-3">
               <label for="phoneNumber" class="form-label">Số điện thoại:</label>
               <form:input path="phoneNumber" id="phoneNumber" class="form-control" type="text"
-                placeholder="Nhập số điện thoại" />
+                placeholder="Nhập số điện thoại" required="required"/>
             </div>
 
           <!-- ID phòng -->
@@ -133,7 +133,7 @@
             <div class="mb-3">
               <label for="diaChiThuongTru" class="form-label">Địa chỉ thường trú:</label>
               <form:input path="diaChiThuongTru" id="diaChiThuongTru" class="form-control" type="text"
-                placeholder="Nhập địa chỉ thường trú" />
+                placeholder="Nhập địa chỉ thường trú" required="required"/>
             </div>
 
             <!-- Display error message if exists -->

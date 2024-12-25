@@ -44,13 +44,13 @@
                                     placeholder="Password" />
                             </div>
                             <div class="col-6">
-                                <form:input type="tel" class="form-control" path="phone" placeholder="Phone" />
+                                <form:input type="tel" class="form-control" path="phone" placeholder="Phone" required="required"/>
                             </div>
                             <div class="col-6">
-                                <form:input type="text" class="form-control" path="fullName" placeholder="Full Name" />
+                                <form:input type="text" class="form-control" path="fullName" placeholder="Full Name" required="required"/>
                             </div>
                             <div class="col-12 mb-3">
-                                <form:input type="text" class="form-control" path="address" placeholder="Address" />
+                                <form:input type="text" class="form-control" path="address" placeholder="Address" required="required"/>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Sign up</button>

@@ -26,7 +26,7 @@ public class NhanKhau {
     private String noiSinh;
 
     @Column(nullable = false)
-    private String danToc;
+    private String ngheNghiep;
 
     @Column(nullable = false)
     private String phoneNumber;
@@ -83,12 +83,12 @@ public class NhanKhau {
         this.noiSinh = noiSinh;
     }
 
-    public String getDanToc() {
-        return danToc;
+    public String getngheNghiep() {
+        return ngheNghiep;
     }
 
-    public void setDanToc(String danToc) {
-        this.danToc = danToc;
+    public void setngheNghiep(String ngheNghiep) {
+        this.ngheNghiep = ngheNghiep;
     }
 
     public String getPhoneNumber() {
@@ -131,7 +131,7 @@ public class NhanKhau {
                 ", cccd=" + cccd +
                 ", ngaySinh=" + ngaySinh +
                 ", noiSinh='" + noiSinh + '\'' +
-                ", danToc='" + danToc + '\'' +
+                ", ngheNghiep='" + ngheNghiep + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", idRoom=" + idRoom +
                 ", trangThai='" + trangThai + '\'' +

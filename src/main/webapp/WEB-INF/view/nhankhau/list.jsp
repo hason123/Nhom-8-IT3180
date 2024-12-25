@@ -107,7 +107,7 @@
                 <th>CCCD</th>
                 <th>Ngày sinh</th>
                 <th>Nơi sinh</th>
-                <th>Dân tộc</th>
+                <th>Nghề nghiệp</th>
                 <th>Số điện thoại</th>
                 <th>ID Phòng</th>
                 <th>Trạng thái</th>
@@ -123,7 +123,7 @@
                   <td>${nk.cccd}</td>
                   <td>${nk.ngaySinh}</td>
                   <td>${nk.noiSinh}</td>
-                  <td>${nk.danToc}</td>
+                  <td>${nk.ngheNghiep}</td>
                   <td>${nk.phoneNumber}</td>
                   <td><fmt:formatNumber value="${nk.idRoom}" pattern="0000" /></td>
                   <td>${nk.trangThai}</td>
