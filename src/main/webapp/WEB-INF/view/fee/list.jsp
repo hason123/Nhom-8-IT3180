@@ -19,6 +19,14 @@
                     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
                 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
                     rel="stylesheet" />
+                <style>
+                    /* Căn giữa nội dung trong các ô theo chiều dọc và ngang */
+                    td {
+                        vertical-align: middle;  /* Căn giữa theo chiều dọc */
+                        text-align: center;      /* Căn giữa theo chiều ngang */
+                    }
+                </style>
+                
             </head>
 
             <body>
@@ -63,7 +71,7 @@
 
       <!-- <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a> -->
       <a href="${pageContext.request.contextPath}/user/list"
-      ><i class="fas fa-car"></i> Tài khoản</a
+      ><i class="fas fa-user-circle"></i> Tài khoản</a
     >
     </div>
 
@@ -101,6 +109,11 @@
                                         <a href="${pageContext.request.contextPath}/fees/delete/${fee.idPhi}"
                                             class="btn btn-danger btn-sm"
                                             onclick="return confirm('Bạn có chắc chắn muốn xóa phí này?');">Xóa</a>
+
+                                        <!--<a href="${pageContext.request.contextPath}/fees/delete/${fee.idPhi}"
+                                            class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa phí này?');">Xóa</a>
+                                            !-->
                                     </td>
                                 </tr>
                             </c:forEach>

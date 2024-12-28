@@ -23,6 +23,13 @@
         <link
           href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
           rel="stylesheet" />
+        <style>
+          /* Căn giữa nội dung trong các ô theo chiều dọc và ngang */
+          td {
+            vertical-align: middle;  /* Căn giữa theo chiều dọc */
+            text-align: center;      /* Căn giữa theo chiều ngang */
+          }
+        </style>
       </head>
 
       <body>
@@ -70,7 +77,7 @@
 
       <!-- <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a> -->
       <a href="${pageContext.request.contextPath}/user/list"
-      ><i class="fas fa-car"></i> Tài khoản</a
+      ><i class="fas fa-user-circle"></i> Tài khoản</a
     >
     </div>
         <div class="container-m">

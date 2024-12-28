@@ -21,6 +21,25 @@
                 <link
                     href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
                     rel="stylesheet" />
+                <style>
+                    /* Căn giữa nội dung trong các ô theo chiều dọc và ngang */
+                    td {
+                        vertical-align: middle;  /* Căn giữa theo chiều dọc */
+                        text-align: center;      /* Căn giữa theo chiều ngang */
+                    }
+                </style>
+                <style>
+                    .status {
+                        font-weight: bold;
+                        color: white;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                    }
+                    .oto { background-color: #FFAC1C; }
+                    .xemay { background-color: green; }
+
+                </style>
+
             </head>
 
             <body>
@@ -65,7 +84,7 @@
 
       <!-- <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a> -->
       <a href="${pageContext.request.contextPath}/user/list"
-      ><i class="fas fa-car"></i> Tài khoản</a
+      ><i class="fas fa-user-circle"></i> Tài khoản</a
     >
     </div>
                 <!-- Main Content -->
@@ -112,7 +131,13 @@
                                 <tr class="text-center">
                                     <td style="color: rgb(0, 181, 181)">${phuongTien.idXe}</td>
                                     <td>${phuongTien.tenXe}</td>
-                                    <td>${phuongTien.loaiXe}</td>
+                                    <td>
+    <span class="status
+        ${phuongTien.loaiXe == 'Ô tô' ? 'oto' :
+          (phuongTien.loaiXe == 'Xe máy' ? 'xemay' : '')}">
+            ${phuongTien.loaiXe}
+    </span>
+                                    </td>
                                     <td style="color: rgb(0, 181, 181)">${phuongTien.bienKiemSoat}</td>
                                     <td>${phuongTien.tenChuXe}</td>
                                     <td>${phuongTien.maChuXe}</td>

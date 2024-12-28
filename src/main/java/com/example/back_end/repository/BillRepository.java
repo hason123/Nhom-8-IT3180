@@ -23,8 +23,8 @@ public interface BillRepository extends CrudRepository<Bill, Long> {
     @Query("SELECT r FROM Bill r WHERE CAST(r.trangThai AS string) LIKE %:keyword%")
     List<Bill> findBykiThanhToan (@Param("keyword") String keyword);
 
-    @Query("SELECT r FROM Bill r WHERE CAST(r.idThanhToan AS string) LIKE %:keyword%")
-    List<Bill> findByidThanhToan(@Param("keyword") String keyword);
+    @Query("SELECT r FROM Bill r WHERE CAST(r.loaiThanhToan AS string) LIKE %:keyword%")
+    List<Bill> findByLoaiThanhToan(@Param("keyword") String keyword);
 
     @Query("SELECT r FROM Bill r WHERE CAST(r.idCacKhoanPhi AS string) LIKE %:keyword%")
     List<Bill> findByidCacKhoanPhi (@Param("keyword") String keyword);

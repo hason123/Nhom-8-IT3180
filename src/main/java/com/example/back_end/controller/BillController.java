@@ -57,8 +57,8 @@ public class BillController {
                 case "kiThanhToan":
                     bills = billRepository.findBykiThanhToan(keyword.trim());
                     break;
-                case "idThanhToan":
-                    bills = billRepository.findByidThanhToan(keyword.trim());
+                case "loaiThanhToan":
+                    bills = billRepository.findByLoaiThanhToan(keyword.trim());
                     break;
                 case "idCacKhoanPhi":
                     bills = billRepository.findByidCacKhoanPhi(keyword.trim());
@@ -67,8 +67,21 @@ public class BillController {
                     bills = (List<Bill>) billRepository.findAll();
                     break;
             }
+
         } else {
             bills = (List<Bill>) billRepository.findAll();
+        }
+
+        List<PaymentMethod> paymentMethods = (List<PaymentMethod>) paymentMethodRepository.findAll();
+
+        // Ánh xạ tên phương thức thanh toán (loai) vào từng hóa đơn
+        for (Bill bill : bills) {
+            for (PaymentMethod method : paymentMethods) {
+                if (bill.getIdThanhToan() == method.getIdThanhToan()) {
+                    bill.setLoaiThanhToan(method.getLoai()); // Thêm thông tin tên loại thanh toán
+                    break;
+                }
+            }
         }
 
         model.addAttribute("bills", bills);
@@ -87,7 +100,7 @@ public class BillController {
         List<Room> rooms = (List<Room>) roomRepository.findAll(); // Lấy danh sách phòng từ cơ sở dữ liệu
         model.addAttribute("rooms", rooms);
         List<Fee> list= (List<Fee>) feeRepository.findAll();
-        List<Fee> fees = list.subList(4, list.size());
+        List<Fee> fees = list.subList(4, list.size()); //cần thêm ngoại lệ ko cút
         model.addAttribute("fees", fees);
         return "bill/add"; // Chuyển đến form thêm hóa đơn
     }
@@ -149,7 +162,9 @@ public class BillController {
                 if(room.getPhuongTien().get(i).getLoaiXe().equals("Xe máy")) cnt1+=1;
                 else if(room.getPhuongTien().get(i).getLoaiXe().equals("Ô tô")) cnt2+=1;
             }
-            amount=cnt1 *70000 + cnt2 * 1500000;
+            Fee feeXeMay = feeRepository.findByIdPhi(3); // Phí cho xe máy
+            Fee feeOto = feeRepository.findByIdPhi(4); // Phí cho ô tô
+            amount = cnt1 * Double.parseDouble(feeXeMay.getMoTaPhi()) + cnt2 * Double.parseDouble(feeOto.getMoTaPhi());
         }
         else {
             amount=Double.parseDouble(fee.getMoTaPhi());

@@ -26,6 +26,9 @@ public interface NhanKhauRepository extends JpaRepository<NhanKhau, Long> {
     @Query("SELECT r FROM NhanKhau r WHERE CAST(r.diaChiThuongTru AS string) LIKE %:keyword%")
     List<NhanKhau> findByDiaChiThuongTru(@Param("keyword") String keyword);
 
+    @Query("SELECT COUNT(n) FROM NhanKhau n WHERE n.idRoom = :roomId")
+    int countByRoomId(@Param("roomId") Long roomId);
+
 }
 
 

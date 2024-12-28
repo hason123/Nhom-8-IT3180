@@ -23,6 +23,25 @@
         <link
           href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
           rel="stylesheet" />
+        <style>
+          /* Căn giữa nội dung trong các ô theo chiều dọc và ngang */
+          td {
+            vertical-align: middle;  /* Căn giữa theo chiều dọc */
+            text-align: center;      /* Căn giữa theo chiều ngang */
+          }
+        </style>
+        <style>
+          .status {
+            font-weight: bold;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+          }
+          .tamtru { background-color: #FFAC1C; }
+          .thuongtru { background-color: green; }
+          .tamvang { background-color: red; }
+        </style>
+
       </head>
 
       <body>
@@ -70,7 +89,7 @@
 
       <!-- <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a> -->
       <a href="${pageContext.request.contextPath}/user/list"
-      ><i class="fas fa-car"></i> Tài khoản</a
+      ><i class="fas fa-user-circle"></i> Tài khoản</a
     >
     </div>
 
@@ -125,8 +144,15 @@
                   <td>${nk.noiSinh}</td>
                   <td>${nk.ngheNghiep}</td>
                   <td>${nk.phoneNumber}</td>
-                  <td><fmt:formatNumber value="${nk.idRoom}" pattern="0000" /></td>
-                  <td>${nk.trangThai}</td>
+                  <td style="color: rgb(0, 181, 181)"><fmt:formatNumber value="${nk.idRoom}" pattern="0000" /></td>
+                  <td>
+    <span class="status
+        ${nk.trangThai == 'Thường trú' ? 'thuongtru' :
+          (nk.trangThai == 'Tạm trú' ? 'tamtru' :
+          (nk.trangThai == 'Tạm vắng' ? 'tamvang' : ''))}">
+        ${nk.trangThai}
+    </span>
+                  </td>
                   <td>${nk.diaChiThuongTru}</td>
                   <td>
                     <a href="${pageContext.request.contextPath}/nhankhau/edit/${nk.id}"

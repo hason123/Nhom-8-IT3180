@@ -73,7 +73,7 @@
     ><i class="fas fa-car"></i> Phương thức thanh toán</a
     >
     <a href="${pageContext.request.contextPath}/phuong-tien"
-    ><i class="fas fa-car"></i> Quản lý phương tiện</a
+    ><i class="fas fa-user-circle"></i> Quản lý phương tiện</a
     >
     <!--<a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>-->
     <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
@@ -81,6 +81,7 @@
 <!-- Form Thêm Phương Tiện -->
 <div class="container mt-4">
     <h2 class="text-center">Thêm Phương Tiện Mới</h2>
+    <%--@elvariable id="phuongTien" type=""--%>
     <form:form method="post" action="${pageContext.request.contextPath}/phuong-tien/add"
                modelAttribute="phuongTien">
         <div class="row">

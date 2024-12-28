@@ -80,6 +80,7 @@ public class NhanKhauController {
     public String addNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau, Model model) {
         // Save the Nhan Khau if validation passes
         nhanKhauRepository.save(nhanKhau);
+        updateSoNguoiInRoom((long) nhanKhau.getIdRoom());
         return "redirect:/nhankhau";
     }
 
@@ -98,18 +99,31 @@ public class NhanKhauController {
     @PostMapping("/edit")
     public String updateNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau) {
         nhanKhauRepository.save(nhanKhau);
+        updateSoNguoiInRoom((long) nhanKhau.getIdRoom());
         return "redirect:/nhankhau";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteNhanKhau(@PathVariable("id") Long id, Model model) {
+        Optional<NhanKhau> nhanKhau = nhanKhauRepository.findById(id);
         if (nhanKhauRepository.existsById(id)) {
-            nhanKhauRepository.deleteById(id);
+            Long roomId = (long) nhanKhau.get().getIdRoom(); // Lấy ID phòng trước khi xóa
+            nhanKhauRepository.deleteById(id); // Xóa nhân khẩu
+            updateSoNguoiInRoom(roomId); // Cập nhật số người trong phòn
             return "redirect:/nhankhau";
         } else {
             model.addAttribute("error", "Nhan Khau with ID " + id + " not found.");
             return "nhankhau/error";
         }
 
+    }
+    private void updateSoNguoiInRoom(Long roomId) {
+        Optional<Room> roomOptional = roomRepository.findById(roomId);
+        if (roomOptional.isPresent()) {
+            Room room = roomOptional.get();
+            int soNguoi = nhanKhauRepository.countByRoomId(roomId); // Đếm số nhân khẩu trong phòng
+            room.setSoNguoi(soNguoi); // Cập nhật số lượng người
+            roomRepository.save(room); // Lưu lại thông tin phòng
+        }
     }
 }
