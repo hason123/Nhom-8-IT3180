@@ -88,10 +88,14 @@ public class PhuongTienController {
     // Xử lý thêm phương tiện mới
     @PostMapping("/add")
     public String addPhuongTien(@ModelAttribute("phuongTien") PhuongTien phuongTien) {
+        Room room = roomRepository.findById(phuongTien.getRoom().getIdRoom())
+                .orElseThrow(() -> new IllegalArgumentException("Room không tồn tại"));
+
+        phuongTien.setRoom(room);
         phuongTienRepository.save(phuongTien);
-        Room room= phuongTien.getRoom();
+
         room.getPhuongTien().add(phuongTien);
-        //roomRepository.save(room);
+        roomRepository.save(room); // Cần lưu lại Room để cập nhật danh sách phương tiện
         return "redirect:/phuong-tien";
     }
 
@@ -113,6 +117,10 @@ public class PhuongTienController {
     // Xử lý cập nhật phương tiện
     @PostMapping("/edit")
     public String updatePhuongTien(@ModelAttribute("phuongTien") PhuongTien phuongTien) {
+        Room room = roomRepository.findById(phuongTien.getRoom().getIdRoom())
+                .orElseThrow(() -> new IllegalArgumentException("Room không tồn tại"));
+
+        phuongTien.setRoom(room);
         phuongTienRepository.save(phuongTien);
         return "redirect:/phuong-tien";
     }
