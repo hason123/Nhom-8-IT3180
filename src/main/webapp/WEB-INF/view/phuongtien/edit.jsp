@@ -70,7 +70,7 @@
     ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
     >
     <a href="${pageContext.request.contextPath}/payment-methods"
-    ><i class="fas fa-car"></i> Phương thức thanh toán</a
+    ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
     >
     <a href="${pageContext.request.contextPath}/phuong-tien"
     ><i class="fas fa-car"></i> Quản lý phương tiện</a
@@ -82,10 +82,14 @@
 <!-- Form Chỉnh Sửa Phương Tiện -->
 <div class="container mt-4">
     <h2 class="text-center">Chỉnh Sửa Phương Tiện</h2>
+    <%--@elvariable id="phuongTien" type=""--%>
     <form:form method="post" action="${pageContext.request.contextPath}/phuong-tien/edit"
                modelAttribute="phuongTien">
-        <!-- ID Xe (ẩn) -->
-        <form:hidden path="idXe" />
+        <!-- ID xe -->
+        <div class="mb-3">
+            <label for="idXe" class="form-label">ID Xe:</label>
+            <form:input path="idXe" id="idXe" class="form-control" type="number" min="1" max="999999" readonly = 'true'/>
+        </div>
 
         <div class="row">
             <!-- Tên xe -->

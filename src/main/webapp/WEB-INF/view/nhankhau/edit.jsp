@@ -54,7 +54,7 @@
         ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
         >
         <a href="${pageContext.request.contextPath}/payment-methods"
-        ><i class="fas fa-car"></i> Phương thức thanh toán</a
+        ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
         >
         <a href="${pageContext.request.contextPath}/phuong-tien"
         ><i class="fas fa-car"></i> Quản lý phương tiện</a
@@ -67,8 +67,12 @@
       <div class="container mt-4">
         <h2 class="text-center">Chỉnh nhân khẩu</h2>
         <form:form method="post" action="${pageContext.request.contextPath}/nhankhau/edit" modelAttribute="nhanKhau">
-          <!-- ID của nhan khau (ẩn) -->
-          <form:hidden path="id" />
+          <!-- ID của nhan khau-->
+          <div class="mb-3">
+            <label for="id" class="form-label">ID Nhân Khẩu:</label>
+            <form:input path="id" id="id" class="form-control" type="number" min="1" max="999999"
+                        placeholder="Nhập ID" required="true" readonly="true"/>
+          </div>
           <!-- Ho ten -->
           <div class="mb-3">
             <label for="hoTen" class="form-label">Họ tên:</label>
@@ -96,11 +100,11 @@
           </div>
           <!-- Dân tộc -->
           <div class="mb-3">
-            <label for="ngheNghiep" class="form-label">Dân tộc:</label>
+            <label for="ngheNghiep" class="form-label">Nghề nghiệp:</label>
             <form:input path="ngheNghiep" id="ngheNghiep" class="form-control" type="text" placeholder="Nhập nghề nghiệp" />
           </div>
           <div class="mb-3">
-            <label for="phoneNumber" class="form-label">Nghề nghiệp:</label>
+            <label for="phoneNumber" class="form-label">Số điện thoại:</label>
             <form:input path="phoneNumber" id="phoneNumber" class="form-control" type="text"
               placeholder="Nhập số điện thoại" />
           </div>

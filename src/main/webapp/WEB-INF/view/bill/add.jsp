@@ -52,7 +52,7 @@
                     ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
                     >
                     <a href="${pageContext.request.contextPath}/payment-methods"
-                    ><i class="fas fa-car"></i> Phương thức thanh toán</a
+                    ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
                     >
                     <a href="${pageContext.request.contextPath}/phuong-tien"
                     ><i class="fas fa-car"></i> Quản lý phương tiện</a
@@ -69,6 +69,12 @@
                         modelAttribute="bill">
                         <div class="row">
 
+                            <!-- ID hóa đơn -->
+                            <div class="mb-3">
+                                <label for="idHoaDon" class="form-label">ID Hóa Đơn:</label>
+                                <form:input path="idHoaDon" id="idHoaDon" class="form-control" type="number" min="1" max="999999"
+                                            oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
+                            </div>
 
                             <!-- Tiêu đề -->
                             <div class="col-md-6 mb-3">

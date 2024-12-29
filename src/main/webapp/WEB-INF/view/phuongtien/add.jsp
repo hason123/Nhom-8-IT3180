@@ -70,7 +70,7 @@
     ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
     >
     <a href="${pageContext.request.contextPath}/payment-methods"
-    ><i class="fas fa-car"></i> Phương thức thanh toán</a
+    ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
     >
     <a href="${pageContext.request.contextPath}/phuong-tien"
     ><i class="fas fa-user-circle"></i> Quản lý phương tiện</a
@@ -85,7 +85,14 @@
     <form:form method="post" action="${pageContext.request.contextPath}/phuong-tien/add"
                modelAttribute="phuongTien">
         <div class="row">
+            <!-- ID xe -->
+            <div class="mb-3">
+                <label for="idXe" class="form-label">ID Xe:</label>
+                <form:input path="idXe" id="idXe" class="form-control" type="number" min="1" max="999999"/>
+            </div>
+
             <!-- Tên xe -->
+
             <div class="mb-3">
                 <label for="tenXe" class="form-label">Tên Xe:</label>
                 <form:input path="tenXe" id="tenXe" class="form-control" type="text"
