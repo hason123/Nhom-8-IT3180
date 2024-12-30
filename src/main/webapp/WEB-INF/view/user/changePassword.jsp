@@ -89,6 +89,17 @@ contentType="text/html;charset=UTF-8" language="java" %>
             />
           </div>
 
+          <div class="form-check">
+            <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="showPassword"
+                    onclick="togglePasswordVisibility()"
+            />
+            <label class="form-check-label" for="showPassword">Hiển thị mật khẩu</label>
+          </div>
+
+          <br />
 
           <div class="text-center">
             <div class="d-flex justify-content-between" style="gap: 10px;">
@@ -107,6 +118,21 @@ contentType="text/html;charset=UTF-8" language="java" %>
 
 
       <!-- Bootstrap JS and dependencies -->
+    <script>
+      function togglePasswordVisibility() {
+        var passwordFields = document.querySelectorAll('#currentPassword, #newPassword, #confirmPassword');
+        var showPasswordCheckbox = document.getElementById('showPassword');
+
+        // Nếu checkbox được chọn, thay đổi tất cả các ô mật khẩu sang hiển thị
+        passwordFields.forEach(function(field) {
+          if (showPasswordCheckbox.checked) {
+            field.type = 'text';
+          } else {
+            field.type = 'password';
+          }
+        });
+      }
+    </script>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

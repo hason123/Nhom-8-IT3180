@@ -118,6 +118,18 @@
               placeholder="Nhập địa chỉ"
             />
           </div>
+          <div class="form-check text-start">
+            <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="showPassword"
+                    onclick="togglePasswordVisibility()"
+            />
+            <label class="form-check-label" for="showPassword">Hiển thị mật khẩu</label>
+          </div>
+
+          <br />
+
           <!-- Nút Thêm -->
           <div class="text-center">
             <div class="d-flex justify-content-between">
@@ -125,11 +137,27 @@
               <a href="${pageContext.request.contextPath}/user/list" class="btn btn-secondary w-50 text-center d-flex justify-content-center align-items-center">Hủy</a>
             </div>
           </div>
-          
+
 
         </form>
       </div>
     </div>
+
+    <script>
+      function togglePasswordVisibility() {
+        var passwordFields = document.querySelectorAll('#password');
+        var showPasswordCheckbox = document.getElementById('showPassword');
+
+        // Nếu checkbox được chọn, thay đổi tất cả các ô mật khẩu sang hiển thị
+        passwordFields.forEach(function(field) {
+          if (showPasswordCheckbox.checked) {
+            field.type = 'text';
+          } else {
+            field.type = 'password';
+          }
+        });
+      }
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

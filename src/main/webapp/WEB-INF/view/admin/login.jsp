@@ -41,6 +41,19 @@
                             <label class="form-label">Password</label>
                             <form:input type="password" class="form-control" path="password" />
                         </div>
+
+                        <div class="form-check text-start">
+                            <input
+                                    type="checkbox"
+                                    class="form-check-input"
+                                    id="showPassword"
+                                    onclick="togglePasswordVisibility()"
+                            />
+                            <label class="form-check-label" for="showPassword">Hiển thị mật khẩu</label>
+                        </div>
+
+                        <br />
+
                         <button type="submit" class="btn btn-primary">Login</button>
                         <!-- Thêm phần "Don't have an account?" -->
                         <div class="text-center mt-3">
@@ -51,6 +64,23 @@
                         </div>
                     </div>
                 </form:form>
+
+                <script>
+                    function togglePasswordVisibility() {
+                        var passwordFields = document.querySelectorAll('#password');
+                        var showPasswordCheckbox = document.getElementById('showPassword');
+
+                        // Nếu checkbox được chọn, thay đổi tất cả các ô mật khẩu sang hiển thị
+                        passwordFields.forEach(function(field) {
+                            if (showPasswordCheckbox.checked) {
+                                field.type = 'text';
+                            } else {
+                                field.type = 'password';
+                            }
+                        });
+                    }
+                </script>
+
             </body>
 
             </html>
