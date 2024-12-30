@@ -122,11 +122,11 @@
           <div class="text-center">
             <div class="d-flex justify-content-between">
               <button type="submit" class="btn btn-primary w-50 me-2">Thêm</button>
-              <a href="${pageContext.request.contextPath}/user/list" class="btn btn-secondary w-50">Hủy</a>
+              <a href="${pageContext.request.contextPath}/user/list" class="btn btn-secondary w-50 text-center d-flex justify-content-center align-items-center">Hủy</a>
             </div>
           </div>
           
-          </div>
+
         </form>
       </div>
     </div>
