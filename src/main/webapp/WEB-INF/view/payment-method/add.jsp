@@ -107,6 +107,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               id="idThanhToan"
               class="form-control"
               placeholder="Nhập ID"
+              required="true"
             />
             <div class="invalid-feedback">Vui lòng nhập</div>
           </div>

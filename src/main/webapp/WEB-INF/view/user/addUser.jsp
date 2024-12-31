@@ -105,6 +105,7 @@
               name="phone"
               class="form-control"
               placeholder="Nhập số điện thoại"
+              required
             />
           </div>
           <!-- Địa Chỉ -->
@@ -116,6 +117,7 @@
               name="address"
               class="form-control"
               placeholder="Nhập địa chỉ"
+              required
             />
           </div>
           <div class="form-check text-start">

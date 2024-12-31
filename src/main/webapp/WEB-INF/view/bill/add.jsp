@@ -73,7 +73,7 @@
                             <div class="mb-3">
                                 <label for="idHoaDon" class="form-label">ID Hóa Đơn:</label>
                                 <form:input path="idHoaDon" id="idHoaDon" class="form-control" type="number" min="1" max="999999"
-                                            oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
+                                            required="true" />
                             </div>
 
                             <!-- Tiêu đề -->
@@ -171,6 +171,11 @@
                             </div>
                         </div>
 
+                        <c:if test="${not empty error}">
+                            <div class="alert alert-danger text-center" role="alert">
+                                    ${error}
+                            </div>
+                        </c:if>
                         <!-- Nút hành động -->
                         <div class="text-center mt-3">
                             <button type="submit" class="btn btn-primary">Lưu Hóa Đơn</button>

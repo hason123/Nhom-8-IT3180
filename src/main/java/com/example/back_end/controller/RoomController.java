@@ -74,7 +74,13 @@ public class RoomController {
     }
 
     @PostMapping("/add")
-    public String addRoom(@ModelAttribute("room") Room room) {
+    public String addRoom(@ModelAttribute("room") Room room, Model model) {
+        if (roomRepository.existsById(room.getIdRoom())) {
+            model.addAttribute("error", "Mã phòng đã tồn tại. Vui lòng nhập mã khác.");
+            List<NhanKhau> nhanKhaus = nhanKhauRepository.findAll(); // Lấy danh sách nhân khẩu
+            model.addAttribute("nhanKhaus", nhanKhaus);
+            return "room/add"; // Trả về lại form thêm
+        }
         roomRepository.save(room);
         return "redirect:/rooms";
     }

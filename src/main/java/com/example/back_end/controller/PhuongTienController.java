@@ -87,7 +87,19 @@ public class PhuongTienController {
 
     // Xử lý thêm phương tiện mới
     @PostMapping("/add")
-    public String addPhuongTien(@ModelAttribute("phuongTien") PhuongTien phuongTien) {
+    public String addPhuongTien(@ModelAttribute("phuongTien") PhuongTien phuongTien, Model model) {
+        if (phuongTienRepository.existsById(phuongTien.getIdXe())) {
+            model.addAttribute("error", "ID này đã tồn tại. Vui lòng nhập ID khác.");
+            model.addAttribute("phuongTien", phuongTien);
+
+            // Lấy lại danh sách phòng và nhân khẩu để hiển thị trong form
+            List<Room> rooms = (List<Room>) roomRepository.findAll();
+            model.addAttribute("rooms", rooms);
+            List<NhanKhau> nhanKhaus = nhanKhauRepository.findAll();
+            model.addAttribute("nhanKhaus", nhanKhaus);
+
+            return "phuongtien/add"; // Trả về lại form thêm
+        }
         Room room = roomRepository.findById(phuongTien.getRoom().getIdRoom())
                 .orElseThrow(() -> new IllegalArgumentException("Room không tồn tại"));
 

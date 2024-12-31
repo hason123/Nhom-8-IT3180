@@ -149,6 +149,12 @@
               <form:input path="phoneNumber" id="phoneNumber" class="form-control" type="text"
                 placeholder="Nhập số điện thoại" />
             </div>
+
+            <c:if test="${not empty error}">
+              <div class="alert alert-danger text-center" role="alert">
+                  ${error}
+              </div>
+            </c:if>
             <!-- Nút hành động -->
             <div class="text-center">
               <button type="submit" class="btn btn-primary">Thêm</button>

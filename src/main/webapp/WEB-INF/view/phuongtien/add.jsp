@@ -84,11 +84,13 @@
     <%--@elvariable id="phuongTien" type=""--%>
     <form:form method="post" action="${pageContext.request.contextPath}/phuong-tien/add"
                modelAttribute="phuongTien">
+
+
         <div class="row">
             <!-- ID xe -->
             <div class="mb-3">
                 <label for="idXe" class="form-label">ID Xe:</label>
-                <form:input path="idXe" id="idXe" class="form-control" type="number" min="1" max="999999"/>
+                <form:input path="idXe" id="idXe" class="form-control" type="number" min="1" max="999999" required="true"/>
             </div>
 
             <!-- Tên xe -->
@@ -144,7 +146,7 @@
 
         <div class="mb-3">
             <label for="room.idRoom" class="form-label">Phòng</label>
-            <input list="rooms" name="room.idRoom" id="room.idRoom" class="form-control" placeholder="-- Chọn phòng --" />
+            <input list="rooms" name="room.idRoom" id="room.idRoom" class="form-control" placeholder="-- Chọn phòng --" required/>
             <datalist id="rooms">
                 <option value="">-- Chọn phòng --</option>
                 <c:forEach var="room" items="${rooms}">
@@ -152,6 +154,12 @@
                 </c:forEach>
             </datalist>
         </div>
+
+        <c:if test="${not empty error}">
+            <div class="alert alert-danger text-center" role="alert">
+                    ${error}
+            </div>
+        </c:if>
 
         <!-- Nút hành động -->
         <div class="text-center">

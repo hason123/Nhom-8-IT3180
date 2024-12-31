@@ -147,6 +147,7 @@
                         class="form-control"
                         placeholder="Nhập mô tả phí"
                         rows="3"
+                        required="true"
                 ></form:textarea>
             </div>
 
@@ -158,7 +159,7 @@
                         id="thoiGianThu"
                         class="form-control"
                         type="text"
-                        required="true"
+
                 />
             </div>
         </div>

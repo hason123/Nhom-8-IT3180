@@ -107,10 +107,29 @@ public class BillController {
 
     // Thêm hóa đơn mới
     @PostMapping("/add")
-    public String addBill(@ModelAttribute("bill") Bill bill) {
-        billRepository.save(bill); // Lưu hóa đơn mới
-        return "redirect:/bills"; // Chuyển hướng về trang danh sách hóa đơn
+    public String addBill(@ModelAttribute("bill") Bill bill, Model model) {
+        // Kiểm tra nếu mã hóa đơn đã tồn tại
+        if (billRepository.existsById((long) bill.getIdHoaDon())) {
+            model.addAttribute("error", "Mã hóa đơn đã tồn tại. Vui lòng nhập mã khác.");
+            setModelAttributes(model);
+            return "bill/add"; // Trả về form thêm với thông báo lỗi
+        }
+
+        // Lưu hóa đơn mới
+        billRepository.save(bill);
+        return "redirect:/bills"; // Chuyển hướng về danh sách hóa đơn
     }
+
+    private void setModelAttributes(Model model) {
+        List<PaymentMethod> paymentMethods = (List<PaymentMethod>) paymentMethodRepository.findAll();
+        model.addAttribute("paymentMethods", paymentMethods);
+        List<Room> rooms = (List<Room>) roomRepository.findAll();
+        model.addAttribute("rooms", rooms);
+        List<Fee> list= (List<Fee>) feeRepository.findAll();
+        List<Fee> fees = list.subList(4, list.size()); //cần thêm ngoại lệ ko cút
+        model.addAttribute("fees", fees);
+    }
+
 
     // Hiển thị form chỉnh sửa hóa đơn
     @GetMapping("/edit/{id}")

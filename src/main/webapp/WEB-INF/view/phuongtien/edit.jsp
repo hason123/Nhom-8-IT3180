@@ -140,7 +140,7 @@
 
         <div class="mb-3">
             <label for="room.idRoom" class="form-label">Phòng</label>
-            <input list="rooms" name="room.idRoom" id="room.idRoom" class="form-control" placeholder="-- Chọn phòng --" />
+            <input list="rooms" name="room.idRoom" id="room.idRoom" class="form-control" placeholder="-- Chọn phòng --" required/>
             <datalist id="rooms">
                 <option value="">-- Chọn phòng --</option>
                 <c:forEach var="room" items="${rooms}">

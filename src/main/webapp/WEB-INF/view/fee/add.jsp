@@ -69,20 +69,20 @@
                 <form:form method="post" modelAttribute="fee" action="${pageContext.request.contextPath}/fees/add">
                     <div class="mb-3">
                         <label for="idPhi" class="form-label">Mã Phí:</label>
-                        <form:input path="idPhi" id="idPhi" class="form-control" placeholder="Nhập mã phí" />
+                        <form:input path="idPhi" id="idPhi" class="form-control" placeholder="Nhập mã phí" required="true"/>
                         <div class="invalid-feedback">Vui lòng nhập mã phí.</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="tenPhi" class="form-label">Tên Phí:</label>
-                        <form:input path="tenPhi" id="tenPhi" class="form-control" placeholder="Nhập tên phí" />
+                        <form:input path="tenPhi" id="tenPhi" class="form-control" placeholder="Nhập tên phí" required="true"/>
                         <div class="invalid-feedback">Vui lòng nhập tên phí.</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="moTaPhi" class="form-label">Mô Tả Phí:</label>
                         <form:textarea path="moTaPhi" id="moTaPhi" class="form-control" placeholder="Nhập mô tả phí"
-                            rows="3"></form:textarea>
+                            rows="3" required="true"></form:textarea>
                     </div>
 
                     <div class="mb-3">

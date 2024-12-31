@@ -71,7 +71,7 @@
             <div class="mb-3">
               <label for="id" class="form-label">ID Nhân Khẩu:</label>
               <form:input path="id" id="id" class="form-control" type="number" min="1" max="999999"
-                oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" />
+                          required="true" />
             </div>
             <!-- Ho Ten -->
           <div class="mb-3">
@@ -82,30 +82,30 @@
             <div class="mb-3">
               <label for="cccd" class="form-label">Căn Cước Công Dân:</label>
               <form:input path="cccd" id="cccd" class="form-control" type="number" min="000000000000" max="999999999999"
-                oninput="if(this.value.length > 12) this.value = this.value.slice(0, 12);" required="required" />
+                oninput="if(this.value.length > 12) this.value = this.value.slice(0, 12);" required="true" />
             </div>
 
             <!-- Ngày sinh -->
             <div class="mb-3">
               <label for="ngaySinh" class="form-label">Ngày Sinh:</label>
-              <form:input path="ngaySinh" id="ngaySinh" class="form-control" type="date" />
+              <form:input path="ngaySinh" id="ngaySinh" class="form-control" type="date" required="true"/>
               <form:errors path="ngaySinh" cssClass="text-danger" />
             </div>
             <!-- Nơi sinh -->
             <div class="mb-3">
               <label for="noiSinh" class="form-label">Nơi sinh:</label>
-              <form:input path="noiSinh" id="noiSinh" class="form-control" type="text" placeholder="Nhập nơi sinh" required="required"/>
+              <form:input path="noiSinh" id="noiSinh" class="form-control" type="text" placeholder="Nhập nơi sinh" required="true"/>
             </div>
             <!-- Dân tộc -->
             <div class="mb-3">
               <label for="ngheNghiep" class="form-label">Nghề nghiệp:</label>
-              <form:input path="ngheNghiep" id="ngheNghiep" class="form-control" type="text" placeholder="Nhập nghề nghiệp" required="required"/>
+              <form:input path="ngheNghiep" id="ngheNghiep" class="form-control" type="text" placeholder="Nhập nghề nghiệp" required="true"/>
             </div>
 
             <div class="mb-3">
               <label for="phoneNumber" class="form-label">Số điện thoại:</label>
               <form:input path="phoneNumber" id="phoneNumber" class="form-control" type="text"
-                placeholder="Nhập số điện thoại" required="required"/>
+                placeholder="Nhập số điện thoại" required="true"/>
             </div>
 
           <!-- ID phòng -->
@@ -133,7 +133,7 @@
             <div class="mb-3">
               <label for="diaChiThuongTru" class="form-label">Địa chỉ thường trú:</label>
               <form:input path="diaChiThuongTru" id="diaChiThuongTru" class="form-control" type="text"
-                placeholder="Nhập địa chỉ thường trú" required="required"/>
+                placeholder="Nhập địa chỉ thường trú" required="true"/>
             </div>
 
             <!-- Display error message if exists -->
