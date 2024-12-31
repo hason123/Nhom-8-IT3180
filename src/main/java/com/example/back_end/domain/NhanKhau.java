@@ -9,7 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class NhanKhau {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -26,7 +26,7 @@ public class NhanKhau {
     private String noiSinh;
 
     @Column(nullable = false)
-    private String danToc;
+    private String ngheNghiep;
 
     @Column(nullable = false)
     private String phoneNumber;
@@ -46,6 +46,10 @@ public class NhanKhau {
     public void setId(Long id) {
         this.id = id;
     }
+
+    //@ManyToOne
+    //@JoinColumn(name = "nk.room")
+    //public Room room;
 
     public String getHoTen() {
         return hoTen;
@@ -79,12 +83,12 @@ public class NhanKhau {
         this.noiSinh = noiSinh;
     }
 
-    public String getDanToc() {
-        return danToc;
+    public String getngheNghiep() {
+        return ngheNghiep;
     }
 
-    public void setDanToc(String danToc) {
-        this.danToc = danToc;
+    public void setngheNghiep(String ngheNghiep) {
+        this.ngheNghiep = ngheNghiep;
     }
 
     public String getPhoneNumber() {
@@ -127,7 +131,7 @@ public class NhanKhau {
                 ", cccd=" + cccd +
                 ", ngaySinh=" + ngaySinh +
                 ", noiSinh='" + noiSinh + '\'' +
-                ", danToc='" + danToc + '\'' +
+                ", ngheNghiep='" + ngheNghiep + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", idRoom=" + idRoom +
                 ", trangThai='" + trangThai + '\'' +

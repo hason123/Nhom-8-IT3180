@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-            <html lang="en">
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<html lang="en">
 
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,6 +19,14 @@
                     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
                 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
                     rel="stylesheet" />
+                <style>
+                    /* Căn giữa nội dung trong các ô theo chiều dọc và ngang */
+                    td {
+                        vertical-align: middle;  /* Căn giữa theo chiều dọc */
+                        text-align: center;      /* Căn giữa theo chiều ngang */
+                    }
+                </style>
+                
             </head>
 
             <body>
@@ -54,7 +63,7 @@
       ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
       >
       <a href="${pageContext.request.contextPath}/payment-methods"
-      ><i class="fas fa-car"></i> Phương thức thanh toán</a
+      ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
       >
       <a href="${pageContext.request.contextPath}/phuong-tien"
         ><i class="fas fa-car"></i> Quản lý phương tiện</a
@@ -62,7 +71,7 @@
 
       <!-- <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a> -->
       <a href="${pageContext.request.contextPath}/user/list"
-      ><i class="fas fa-car"></i> Tài khoản</a
+      ><i class="fas fa-user-circle"></i> Tài khoản</a
     >
     </div>
 
@@ -92,7 +101,7 @@
                                 <tr class="text-center">
                                     <td style="color: rgb(0, 181, 181)">${fee.idPhi}</td>
                                     <td>${fee.tenPhi}</td>
-                                    <td>${fee.moTaPhi}</td>
+                                    <td><fmt:formatNumber value="${fee.moTaPhi}" type="number" maxFractionDigits="0" />đ</td>
                                     <td>${fee.thoiGianThu}</td>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/fees/edit/${fee.idPhi}"
@@ -100,6 +109,11 @@
                                         <a href="${pageContext.request.contextPath}/fees/delete/${fee.idPhi}"
                                             class="btn btn-danger btn-sm"
                                             onclick="return confirm('Bạn có chắc chắn muốn xóa phí này?');">Xóa</a>
+
+                                        <!--<a href="${pageContext.request.contextPath}/fees/delete/${fee.idPhi}"
+                                            class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa phí này?');">Xóa</a>
+                                            !-->
                                     </td>
                                 </tr>
                             </c:forEach>

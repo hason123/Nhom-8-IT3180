@@ -55,7 +55,7 @@
           ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
           >
           <a href="${pageContext.request.contextPath}/payment-methods"
-          ><i class="fas fa-car"></i> Phương thức thanh toán</a
+          ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
           >
           <a href="${pageContext.request.contextPath}/phuong-tien"
           ><i class="fas fa-car"></i> Quản lý phương tiện</a
@@ -94,31 +94,32 @@
             <!-- Nơi sinh -->
             <div class="mb-3">
               <label for="noiSinh" class="form-label">Nơi sinh:</label>
-              <form:input path="noiSinh" id="noiSinh" class="form-control" type="text" placeholder="Nhập nơi sinh" />
+              <form:input path="noiSinh" id="noiSinh" class="form-control" type="text" placeholder="Nhập nơi sinh" required="required"/>
             </div>
             <!-- Dân tộc -->
             <div class="mb-3">
-              <label for="danToc" class="form-label">Dân tộc:</label>
-              <form:input path="danToc" id="danToc" class="form-control" type="text" placeholder="Nhập dân tộc" />
+              <label for="ngheNghiep" class="form-label">Nghề nghiệp:</label>
+              <form:input path="ngheNghiep" id="ngheNghiep" class="form-control" type="text" placeholder="Nhập nghề nghiệp" required="required"/>
             </div>
 
             <div class="mb-3">
               <label for="phoneNumber" class="form-label">Số điện thoại:</label>
               <form:input path="phoneNumber" id="phoneNumber" class="form-control" type="text"
-                placeholder="Nhập số điện thoại" />
+                placeholder="Nhập số điện thoại" required="required"/>
             </div>
 
           <!-- ID phòng -->
-            <div class= "mb-3">
-              <label for="idRoom" class="form-label">ID Phòng:</label>
-              <input list="roomList" id="idRoom" name="idRoom" class="form-control" />
-              <datalist id="roomList">
-                <!-- Lặp qua danh sách rooms và tạo các option -->
-                <c:forEach var="room" items="${rooms}">
-                  <option value="${room.idRoom}">${room.idRoom}</option>
-                </c:forEach>
-              </datalist>
-            </div>
+
+
+          <div class="mb-3">
+            <label for="idRoom" class="form-label">Phòng</label>
+            <form:select path="idRoom" id="idRoom" class="form-control">
+              <form:option value="0" label="-- Chọn phòng --" />
+              <c:forEach var="room" items="${rooms}">
+                <form:option value="${room.idRoom}">${room.idRoom}</form:option>
+              </c:forEach>
+            </form:select>
+          </div>
 
 
           <div class="mb-3">
@@ -132,7 +133,7 @@
             <div class="mb-3">
               <label for="diaChiThuongTru" class="form-label">Địa chỉ thường trú:</label>
               <form:input path="diaChiThuongTru" id="diaChiThuongTru" class="form-control" type="text"
-                placeholder="Nhập địa chỉ thường trú" />
+                placeholder="Nhập địa chỉ thường trú" required="required"/>
             </div>
 
             <!-- Display error message if exists -->

@@ -44,14 +44,30 @@
                                     placeholder="Password" />
                             </div>
                             <div class="col-6">
-                                <form:input type="tel" class="form-control" path="phone" placeholder="Phone" />
+                                <form:input type="tel" class="form-control" path="phone" placeholder="Phone" required="required"/>
                             </div>
                             <div class="col-6">
-                                <form:input type="text" class="form-control" path="fullName" placeholder="Full Name" />
+                                <form:input type="text" class="form-control" path="fullName" placeholder="Full Name" required="required"/>
                             </div>
                             <div class="col-12 mb-3">
-                                <form:input type="text" class="form-control" path="address" placeholder="Address" />
+                                <form:input type="text" class="form-control" path="address" placeholder="Address" required="required"/>
                             </div>
+
+                            <br />
+
+                            <div class="form-check text-start">
+                                <input
+                                        type="checkbox"
+                                        class="form-check-input"
+                                        id="showPassword"
+                                        onclick="togglePasswordVisibility()"
+                                />
+                                <label class="form-check-label" for="showPassword">Hiển thị mật khẩu</label>
+                            </div>
+
+                            <br />
+                            <br />
+
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Sign up</button>
                         <div class="text-center mt-3">
@@ -60,6 +76,23 @@
                         </div>
                     </div>
                 </form:form>
+
+                <script>
+                    function togglePasswordVisibility() {
+                        var passwordFields = document.querySelectorAll('#password');
+                        var showPasswordCheckbox = document.getElementById('showPassword');
+
+                        // Nếu checkbox được chọn, thay đổi tất cả các ô mật khẩu sang hiển thị
+                        passwordFields.forEach(function(field) {
+                            if (showPasswordCheckbox.checked) {
+                                field.type = 'text';
+                            } else {
+                                field.type = 'password';
+                            }
+                        });
+                    }
+                </script>
+
             </body>
 
             </html>

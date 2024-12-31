@@ -10,10 +10,36 @@ contentType="text/html;charset=UTF-8" language="java" %>
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .add-user-form {
+        margin: 50px auto;
+        max-width: 600px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .form-title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #007bff;
+      }
+      .btn-primary {
+        width: 100%;
+        padding: 8px;
+        font-size: 18px;
+      }
+    </style>
   </head>
   <body>
-    <div class="container mt-5">
-      <h2 class="text-center">Chỉnh Sửa Hồ Sơ Người Dùng</h2>
+    <div class="container">
+      <div class="add-user-form">
+      <h2 class="form-title">Chỉnh Sửa Hồ Sơ Người Dùng</h2>
 
       <!-- Hiển thị thông báo thành công nếu có -->
       <c:if test="${not empty successMessage}">
@@ -69,17 +95,16 @@ contentType="text/html;charset=UTF-8" language="java" %>
           />
         </div>
 
-        <div class="d-flex justify-content-between mt-3">
-          <button type="submit" class="btn btn-primary w-50 me-2">
-            Cập Nhật
-          </button>
-          <a
-            href="${pageContext.request.contextPath}/user/list"
-            class="btn btn-secondary w-50"
-            >Hủy</a
-          >
+
+        <div class="text-center">
+          <div class="d-flex justify-content-between" style="gap: 10px;">
+            <button type="submit" class="btn btn-primary w-50 me-2">Cập nhật</button>
+            <a href="${pageContext.request.contextPath}/user/list" class="btn btn-secondary w-50 text-center d-flex justify-content-center align-items-center">Hủy</a>
+          </div>
         </div>
+
       </form>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

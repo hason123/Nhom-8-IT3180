@@ -50,7 +50,7 @@
                 ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
                 >
                 <a href="${pageContext.request.contextPath}/payment-methods"
-                ><i class="fas fa-car"></i> Phương thức thanh toán</a
+                ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
                 >
                 <a href="${pageContext.request.contextPath}/phuong-tien"
                 ><i class="fas fa-car"></i> Quản lý phương tiện</a
@@ -87,7 +87,7 @@
 
                     <div class="mb-3">
                         <label for="thoiGianThu" class="form-label">Thời Gian Thu:</label>
-                        <form:input type="date" path="thoiGianThu" id="thoiGianThu" class="form-control"
+                        <form:input type="text" path="thoiGianThu" id="thoiGianThu" class="form-control"
                             placeholder="Nhập thời gian thu" />
                         <div class="invalid-feedback">Vui lòng nhập thời gian thu.</div>
                     </div>

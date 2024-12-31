@@ -52,7 +52,7 @@
                     ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
                     >
                     <a href="${pageContext.request.contextPath}/payment-methods"
-                    ><i class="fas fa-car"></i> Phương thức thanh toán</a
+                    ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
                     >
                     <a href="${pageContext.request.contextPath}/phuong-tien"
                     ><i class="fas fa-car"></i> Quản lý phương tiện</a
@@ -67,8 +67,13 @@
                     <form:form method="POST" action="${pageContext.request.contextPath}/bills/edit"
                         modelAttribute="bill">
                         <div class="row">
-                            <!-- ID (Ẩn vì không cần chỉnh sửa) -->
-                            <form:hidden path="idHoaDon" />
+                            <!-- ID -->
+                            <div class="mb-3">
+                                <label for="idHoaDon" class="form-label">ID Hóa Đơn:</label>
+                                <form:input path="idHoaDon" id="idHoaDon" class="form-control" type="number" min="1" max="999999"
+                                            readonly="true"/>
+                            </div>
+
 
                             <!-- Tiêu đề -->
                             <div class="col-md-6 mb-3">
@@ -85,10 +90,14 @@
                             </div>
 
                             <!-- Mã căn hộ -->
-                            <div class="col-md-6 mb-3">
-                                <label for="maCanHo" class="form-label">Mã Căn Hộ:</label>
-                                <form:input path="maCanHo" id="maCanHo" class="form-control" type="text"
-                                    placeholder="Nhập mã căn hộ" required="true" />
+                            <div class="mb-3">
+                                <label for="maCanHo" class="form-label">Phòng</label>
+                                <form:select path="maCanHo" id="maCanHo" class="form-control">
+                                    <form:option value="0" label="-- Chọn phòng --" />
+                                    <c:forEach var="room" items="${rooms}">
+                                        <form:option value="${room.idRoom}">${room.idRoom}</form:option>
+                                    </c:forEach>
+                                </form:select>
                             </div>
 
                             <!-- Kỳ thanh toán -->
@@ -117,14 +126,19 @@
                                 <form:select path="trangThai" id="trangThai" class="form-control">
                                     <form:option value="Chưa thanh toán">Chưa thanh toán</form:option>
                                     <form:option value="Đã thanh toán">Đã thanh toán</form:option>
+                                    <form:option value="Đã quá hạn">Đã quá hạn</form:option>
                                 </form:select>
                             </div>
 
                             <!-- ID Thanh Toán -->
                             <div class="col-md-6 mb-3">
-                                <label for="idThanhToan" class="form-label">ID Thanh Toán:</label>
-                                <form:input path="idThanhToan" id="idThanhToan" class="form-control" type="text"
-                                    placeholder="Nhập ID Thanh Toán" />
+                                <label for="idThanhToan" class="form-label">Hình Thức Thanh Toán:</label>
+                                <form:select path="idThanhToan" id="idThanhToan" class="form-control">
+                                    <!-- Duyệt qua các phương thức thanh toán -->
+                                    <c:forEach var="method" items="${paymentMethods}">
+                                        <form:option value="${method.idThanhToan}">${method.loai}</form:option>
+                                    </c:forEach>
+                                </form:select>
                             </div>
 
                             <!-- ID Các Khoản Phí -->

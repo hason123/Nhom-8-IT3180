@@ -22,6 +22,25 @@
                 <link
                     href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
                     rel="stylesheet" />
+                <style>
+                    /* Căn giữa nội dung trong các ô theo chiều dọc và ngang */
+                    td {
+                        vertical-align: middle;  /* Căn giữa theo chiều dọc */
+                        text-align: center;      /* Căn giữa theo chiều ngang */
+                    }
+                </style>
+                <style>
+                    .status {
+                        font-weight: bold;
+                        color: white;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                    }
+                    .pending { background-color: #FFAC1C; }
+                    .paid { background-color: green; }
+                    .overdue { background-color: red; }
+                </style>
+
             </head>
 
             <body>
@@ -58,7 +77,7 @@
       ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
       >
       <a href="${pageContext.request.contextPath}/payment-methods"
-      ><i class="fas fa-car"></i> Phương thức thanh toán</a
+      ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
       >
       <a href="${pageContext.request.contextPath}/phuong-tien"
         ><i class="fas fa-car"></i> Quản lý phương tiện</a
@@ -66,7 +85,7 @@
 
       <!-- <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a> -->
       <a href="${pageContext.request.contextPath}/user/list"
-      ><i class="fas fa-car"></i> Tài khoản</a
+      ><i class="fas fa-user-circle"></i> Tài khoản</a
     >
     </div>
 
@@ -75,7 +94,7 @@
                     <h2 class="text-center">Danh Sách Hóa Đơn</h2>
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <p style="font-size: 1.4rem;"><strong>Tổng số hóa đơn:</strong> ${totalRooms}</p>
+                        <p style="font-size: 1.4rem;"><strong>Tổng số hóa đơn:</strong> ${totalBills}</p>
                         <a href="${pageContext.request.contextPath}/bills/add" class="btn btn-success">Thêm Hóa Đơn</a>
                     </div>
 
@@ -88,26 +107,32 @@
                                 <option value="maCanHo" ${searchType == 'maCanHo' ? 'selected' : ''}>Mã Căn Hộ</option>
                                 <option value="trangThai" ${searchType == 'trangThai' ? 'selected' : ''}>Trạng Thái</option>
                                 <option value="kiThanhToan" ${searchType == 'kiThanhToan' ? 'selected' : ''}>Kỳ Thanh Toán</option>
-                                <option value="idThanhToan" ${searchType == 'idThanhToan' ? 'selected' : ''}>ID Thanh toán</option>
-                                <option value="idCacKhoanPhi" ${searchType == 'idCacKhoanPhi' ? 'selected' : ''}>ID Các Khoản phí</option>
+                                <option value="idThanhToan" ${searchType == 'loaiThanhToan' ? 'selected' : ''}>Hình Thức Thanh toán</option>
+                               <!-- <option value="idCacKhoanPhi" ${searchType == 'idCacKhoanPhi' ? 'selected' : ''}>ID Các Khoản phí</option> -->
                             </select>
 
 
                         </form>
                     </div>
+
+                    <style>
+                        .hidden-column {
+                            display: none;
+                        }
+                    </style>
                     <table class="table table-striped table-bordered">
                         <thead class="table-dark text-center">
                             <tr>
                                 <th>ID</th>
                                 <th>Tiêu Đề</th>
                                 <th>Số Tiền</th>
-                                <th>Mã Căn Hộ</th>
+                                <th>Mã Phòng</th>
                                 <th>Kỳ Thanh Toán</th>
                                 <th>Hạn Thanh Toán</th>
                                 <th>Ngày Thanh Toán</th>
                                 <th>Trạng Thái</th>
-                                <th>ID Thanh Toán</th>
-                                <th>ID Các Khoản Phí</th>
+                                <th>Hình Thức Thanh Toán</th>
+                                <th class="hidden-column">ID Các Khoản Phí</th>
                                 <th>Hành Động</th>
                             </tr>
                         </thead>
@@ -117,13 +142,22 @@
                                     <td style="color: rgb(0, 181, 181)">${bill.idHoaDon}</td>
                                     <td>${bill.tieuDe}</td>
                                     <td><fmt:formatNumber value="${bill.soTien}" type="number" maxFractionDigits="0" />đ</td>
-                                    <td>${bill.maCanHo}</td>
+                                    <td><fmt:formatNumber value="${bill.maCanHo}" pattern="0000" /></td>
                                     <td>${bill.kiThanhToan}</td>
                                     <td>${bill.hanThanhToan}</td>
                                     <td>${bill.ngayThanhToan}</td>
-                                    <td>${bill.trangThai}</td>
-                                    <td>${bill.idThanhToan}</td>
-                                    <td>${bill.idCacKhoanPhi}</td>
+                                    <td>
+    <span class="status
+        ${bill.trangThai == 'Chưa thanh toán' ? 'pending' :
+          (bill.trangThai == 'Đã thanh toán' ? 'paid' :
+          (bill.trangThai == 'Đã quá hạn' ? 'overdue' : ''))}">
+            ${bill.trangThai}
+    </span>
+                                    </td>
+
+                                    <td>${bill.loaiThanhToan}</td>
+
+                                    <!--<td>${bill.idCacKhoanPhi}</td>-->
                                     <td>
                                         <a href="${pageContext.request.contextPath}/bills/edit/${bill.idHoaDon}"
                                             class="btn btn-warning btn-sm">Sửa</a>

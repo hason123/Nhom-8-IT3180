@@ -108,7 +108,7 @@
     ><i class="fas fa-wallet"></i> Quản lý hóa đơn</a
     >
     <a href="${pageContext.request.contextPath}/phuong-tien"
-    ><i class="fas fa-car"></i> Quản lý phương tiện</a
+    ><i class="fas fa-wallet"></i> Quản lý phương tiện</a
     >
     <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a>
     <a href="#"><i class="fas fa-user-circle"></i> Tài khoản</a>
@@ -157,7 +157,7 @@
                         path="thoiGianThu"
                         id="thoiGianThu"
                         class="form-control"
-                        type="date"
+                        type="text"
                         required="true"
                 />
             </div>

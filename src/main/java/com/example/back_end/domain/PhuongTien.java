@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "PhuongTien") // Chỉ định tên bảng là "vehicle"
 public class PhuongTien {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idXe; // ID (Mã xe)
 
     private String tenXe; // Tên xe

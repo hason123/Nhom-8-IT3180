@@ -45,7 +45,7 @@ public class UserController {
           // Lưu người dùng mới nếu email chưa tồn tại
           userRepository.save(user);
           redirectAttributes.addFlashAttribute("successMessage", "Bạn đã đăng ký thành công!");
-          return "redirect:/home"; // Chuyển hướng nếu đăng ký thành công
+          return "redirect:/login"; // Chuyển hướng nếu đăng ký thành công
      }
 
      @RequestMapping("/login")

@@ -38,6 +38,13 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
       rel="stylesheet"
     />
+    <style>
+      /* Căn giữa nội dung trong các ô theo chiều dọc và ngang */
+      td {
+        vertical-align: middle;  /* Căn giữa theo chiều dọc */
+        text-align: center;      /* Căn giữa theo chiều ngang */
+      }
+    </style>
   </head>
 
   <body>
@@ -79,7 +86,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
       >
       <a href="${pageContext.request.contextPath}/payment-methods"
-      ><i class="fas fa-car"></i> Phương thức thanh toán</a
+      ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
       >
       <a href="${pageContext.request.contextPath}/phuong-tien"
         ><i class="fas fa-car"></i> Quản lý phương tiện</a

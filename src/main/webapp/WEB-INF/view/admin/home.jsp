@@ -100,7 +100,7 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
       ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
       >
       <a href="${pageContext.request.contextPath}/payment-methods"
-      ><i class="fas fa-car"></i> Phương thức thanh toán</a
+      ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
       >
       <a href="${pageContext.request.contextPath}/phuong-tien"
         ><i class="fas fa-car"></i> Quản lý phương tiện</a
@@ -108,7 +108,7 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
 
       <!-- <a href="#"><i class="fas fa-chart-bar"></i> Tra cứu và thống kê</a> -->
       <a href="${pageContext.request.contextPath}/user/list"
-      ><i class="fas fa-car"></i> Tài khoản</a
+      ><i class="fas fa-user-circle"></i> Tài khoản</a
     >
     </div>
 

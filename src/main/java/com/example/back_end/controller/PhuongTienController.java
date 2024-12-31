@@ -1,7 +1,9 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.domain.NhanKhau;
 import com.example.back_end.domain.PhuongTien;
 import com.example.back_end.domain.Room;
+import com.example.back_end.repository.NhanKhauRepository;
 import com.example.back_end.repository.PhuongTienRepository;
 import com.example.back_end.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,13 @@ public class PhuongTienController {
 
     private final PhuongTienRepository phuongTienRepository;
     private final RoomRepository roomRepository;
+    private final NhanKhauRepository nhanKhauRepository;
 
     @Autowired
-    public PhuongTienController(PhuongTienRepository phuongTienRepository, RoomRepository roomRepository) {
+    public PhuongTienController(PhuongTienRepository phuongTienRepository, RoomRepository roomRepository, NhanKhauRepository nhanKhauRepository) {
         this.phuongTienRepository = phuongTienRepository;
         this.roomRepository = roomRepository;
+        this.nhanKhauRepository = nhanKhauRepository;
     }
 
     // Hiển thị danh sách phương tiện
@@ -34,22 +38,25 @@ public class PhuongTienController {
 
         List<PhuongTien> phuongTiens;
 
-        if (keyword != null && !keyword.isEmpty()) {
+        if (keyword != null && !keyword.trim().isEmpty() && !keyword.isEmpty()) {
             switch (searchType) {
                 case "loaiXe":
-                    phuongTiens = phuongTienRepository.findByLoaiXe(keyword);
+                    phuongTiens = phuongTienRepository.findByLoaiXe(keyword.trim());
                     break;
                 case "tenXe":
-                    phuongTiens = phuongTienRepository.findByTenXe(keyword);
+                    phuongTiens = phuongTienRepository.findByTenXe(keyword.trim());
                     break;
                 case "bienKiemSoat":
-                    phuongTiens = phuongTienRepository.findByBienKiemSoat(keyword);
+                    phuongTiens = phuongTienRepository.findByBienKiemSoat(keyword.trim());
                     break;
                 case "tenChuXe":
-                    phuongTiens = phuongTienRepository.findByTenChuXe(keyword);
+                    phuongTiens = phuongTienRepository.findByTenChuXe(keyword.trim());
                     break;
                 case "maChuXe":
-                    phuongTiens = phuongTienRepository.findByMaChuXe(keyword);
+                    phuongTiens = phuongTienRepository.findByMaChuXe(keyword.trim());
+                    break;
+                case "idRoom":
+                    phuongTiens = phuongTienRepository.findByPhongChuXe(keyword.trim());
                     break;
                 default:
                     phuongTiens = (List<PhuongTien>) phuongTienRepository.findAll();
@@ -73,16 +80,22 @@ public class PhuongTienController {
         model.addAttribute("phuongTien", new PhuongTien());
         List<Room> rooms = (List<Room>) roomRepository.findAll(); // Lấy danh sách phòng từ cơ sở dữ liệu
         model.addAttribute("rooms", rooms);
+        List<NhanKhau> nhanKhaus = nhanKhauRepository.findAll(); // Lấy danh sách nhân khẩu
+        model.addAttribute("nhanKhaus", nhanKhaus);
         return "phuongtien/add"; // Tên của view hiển thị form thêm
     }
 
     // Xử lý thêm phương tiện mới
     @PostMapping("/add")
     public String addPhuongTien(@ModelAttribute("phuongTien") PhuongTien phuongTien) {
+        Room room = roomRepository.findById(phuongTien.getRoom().getIdRoom())
+                .orElseThrow(() -> new IllegalArgumentException("Room không tồn tại"));
+
+        phuongTien.setRoom(room);
         phuongTienRepository.save(phuongTien);
-        Room room= phuongTien.getRoom();
+
         room.getPhuongTien().add(phuongTien);
-        //roomRepository.save(room);
+        roomRepository.save(room); // Cần lưu lại Room để cập nhật danh sách phương tiện
         return "redirect:/phuong-tien";
     }
 
@@ -92,6 +105,8 @@ public class PhuongTienController {
         Optional<PhuongTien> phuongTien = phuongTienRepository.findById(id);
         List<Room> rooms = (List<Room>) roomRepository.findAll(); // Lấy danh sách phòng từ cơ sở dữ liệu
         model.addAttribute("rooms", rooms);
+        List<NhanKhau> nhanKhaus = nhanKhauRepository.findAll(); // Lấy danh sách nhân khẩu
+        model.addAttribute("nhanKhaus", nhanKhaus);
         if (phuongTien.isPresent()) {
             model.addAttribute("phuongTien", phuongTien.get());
             return "phuongtien/edit"; // Tên của view hiển thị form cập nhật
@@ -102,6 +117,10 @@ public class PhuongTienController {
     // Xử lý cập nhật phương tiện
     @PostMapping("/edit")
     public String updatePhuongTien(@ModelAttribute("phuongTien") PhuongTien phuongTien) {
+        Room room = roomRepository.findById(phuongTien.getRoom().getIdRoom())
+                .orElseThrow(() -> new IllegalArgumentException("Room không tồn tại"));
+
+        phuongTien.setRoom(room);
         phuongTienRepository.save(phuongTien);
         return "redirect:/phuong-tien";
     }

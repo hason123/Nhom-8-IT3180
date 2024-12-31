@@ -54,7 +54,7 @@
         ><i class="fas fa-wallet"></i> Quản lý khoản phí</a
         >
         <a href="${pageContext.request.contextPath}/payment-methods"
-        ><i class="fas fa-car"></i> Phương thức thanh toán</a
+        ><i class="fas fa-wallet"></i> Phương thức thanh toán</a
         >
         <a href="${pageContext.request.contextPath}/phuong-tien"
         ><i class="fas fa-car"></i> Quản lý phương tiện</a
@@ -67,8 +67,12 @@
       <div class="container mt-4">
         <h2 class="text-center">Chỉnh nhân khẩu</h2>
         <form:form method="post" action="${pageContext.request.contextPath}/nhankhau/edit" modelAttribute="nhanKhau">
-          <!-- ID của nhan khau (ẩn) -->
-          <form:hidden path="id" />
+          <!-- ID của nhan khau-->
+          <div class="mb-3">
+            <label for="id" class="form-label">ID Nhân Khẩu:</label>
+            <form:input path="id" id="id" class="form-control" type="number" min="1" max="999999"
+                        placeholder="Nhập ID" required="true" readonly="true"/>
+          </div>
           <!-- Ho ten -->
           <div class="mb-3">
             <label for="hoTen" class="form-label">Họ tên:</label>
@@ -96,51 +100,61 @@
           </div>
           <!-- Dân tộc -->
           <div class="mb-3">
-            <label for="danToc" class="form-label">Dân tộc:</label>
-            <form:input path="danToc" id="danToc" class="form-control" type="text" placeholder="Nhập dân tộc" />
+            <label for="ngheNghiep" class="form-label">Nghề nghiệp:</label>
+            <form:input path="ngheNghiep" id="ngheNghiep" class="form-control" type="text" placeholder="Nhập nghề nghiệp" />
           </div>
           <div class="mb-3">
-            <label for="phoneNumber" class="form-label">Nghề nghiệp:</label>
+            <label for="phoneNumber" class="form-label">Số điện thoại:</label>
             <form:input path="phoneNumber" id="phoneNumber" class="form-control" type="text"
               placeholder="Nhập số điện thoại" />
           </div>
 
           <div class="mb-3">
             <label for="idRoom" class="form-label">ID Phòng:</label>
-            <input list="roomList" id="idRoom" name="idRoom" class="form-control" />
-            <datalist id="roomList">
-              <!-- Lặp qua danh sách rooms và tạo các option -->
-              <c:forEach var="room" items="${rooms}">
-                <option value="${room.idRoom}">${room.idRoom}</option>
-              </c:forEach>
-            </datalist>
+            <form:input path="idRoom" id="idRoom" class="form-control" type="number" min="1" max="999999"
+              oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" required = "required"/>
           </div>
 
 
-          <div class="mb-3">
-            <label for="trangThai" class="form-label">Trạng thái:</label>
-            <form:select path="trangThai" id="trangThai" class="form-control">
-              <form:option value="Thường trú">Thường trú</form:option>
-              <form:option value="Tạm trú">Tạm trú</form:option>
-              <form:option value="Tạm vắng">Tạm vắng</form:option>
-            </form:select>
-          </div>
-          <div class="mb-3">
-            <label for="diaChiThuongTru" class="form-label">Địa chỉ thường trú:</label>
-            <form:input path="diaChiThuongTru" id="diaChiThuongTru" class="form-control" type="text"
-              placeholder="Nhập địa chỉ thường trú" />
-          </div>
 
-          <!-- Nút hành động -->
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
-            <a href="${pageContext.request.contextPath}/nhankhau" class="btn btn-secondary">Hủy</a>
-          </div>
-        </form:form>
-      </div>
+          <%--
+                    <div class="mb-3">
+                      <label for="idRoom" class="form-label">Phòng</label>
+                      <form:select path="idRoom" id="idRoom" class="form-control">
+                        <form:option value="0" label="-- Chọn phòng --" />
+                        <c:forEach var="room" items="${rooms}">
+                          <form:option value="${room.idRoom}">${room.idRoom}</form:option>
+                        </c:forEach>
+                      </form:select>
+                    </div>
+           --%>
 
-      <!-- Bootstrap JS -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+                  <div class="mb-3">
+                      <label for="trangThai" class="form-label">Trạng thái:</label>
+                      <form:select path="trangThai" id="trangThai" class="form-control">
+                        <form:option value="Thường trú">Thường trú</form:option>
+                        <form:option value="Tạm trú">Tạm trú</form:option>
+                        <form:option value="Tạm vắng">Tạm vắng</form:option>
+                      </form:select>
+                    </div
 
-    </html>
+
+                    <div class="mb-3">
+                      <label for="diaChiThuongTru" class="form-label">Địa chỉ thường trú:</label>
+                      <form:input path="diaChiThuongTru" id="diaChiThuongTru" class="form-control" type="text"
+                        placeholder="Nhập địa chỉ thường trú" />
+                    </div>
+
+                    <!-- Nút hành động -->
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                      <a href="${pageContext.request.contextPath}/nhankhau" class="btn btn-secondary">Hủy</a>
+                    </div>
+                  </form:form>
+                </div>
+
+                <!-- Bootstrap JS -->
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+              </body>
+
+              </html>

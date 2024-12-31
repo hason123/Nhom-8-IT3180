@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "bill") // Chỉ định tên bảng là "payment"
 public class Bill {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHoaDon; // ID
     @Column(nullable = false)
     private String tieuDe; // Tiêu đề
@@ -22,11 +22,21 @@ public class Bill {
     private String ngayThanhToan; // Ngày thanh toán
 
     private String trangThai; // Trạng thái
-    @Column
+
     private int idThanhToan; // ID_Thanh toán
-    @Column
+
     private int idCacKhoanPhi; // ID_Các khoản phí
 
+    private String loaiThanhToan; // Lưu tên phương thức thanh toán (Tiền mặt, Chuyển khoản, ...)
+
+    // Getter và Setter cho loaiThanhToan
+    public String getLoaiThanhToan() {
+        return loaiThanhToan;
+    }
+
+    public void setLoaiThanhToan(String loaiThanhToan) {
+        this.loaiThanhToan = loaiThanhToan;
+    }
     public int getIdHoaDon() {
         return idHoaDon;
     }
