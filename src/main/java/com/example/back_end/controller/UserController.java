@@ -8,10 +8,7 @@ import com.example.back_end.service.LoginService;
 import com.example.back_end.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 import java.util.Optional;
@@ -147,7 +144,58 @@ public class UserController {
 
      @RequestMapping(value = "/user/change-password", method = RequestMethod.POST)
      public String changePassword(@ModelAttribute("changePasswordForm") ChangePasswordDto changePasswordDto,
-               Model model) {
+                                  @RequestParam("userId") Long userId, Model model) {
+          // Lấy thông tin người dùng từ ID
+          User currentUser = getCurrentUser(userId); // Thay đổi getCurrentUser để nhận ID
+
+          // Kiểm tra mật khẩu cũ
+          if (!currentUser.getPassword().equals(changePasswordDto.getCurrentPassword())) {
+               model.addAttribute("error", "Mật khẩu cũ không đúng.");
+               return "user/changePassword";
+          }
+
+          // Kiểm tra xác nhận mật khẩu
+          if (!changePasswordDto.getNewPassword().equals(changePasswordDto.getConfirmPassword())) {
+               model.addAttribute("error", "Mật khẩu mới và xác nhận không khớp.");
+               return "user/changePassword";
+          }
+
+          // Cập nhật mật khẩu mới
+          currentUser.setPassword(changePasswordDto.getNewPassword());
+          userRepository.save(currentUser);
+
+          model.addAttribute("successMessage", "Đổi mật khẩu thành công!");
+          return "user/changePassword"; // Trả về trang đổi mật khẩu với thông báo thành công
+     }
+
+     @RequestMapping(value = "/user/changePassword/{id}", method = RequestMethod.GET)
+     public String changePasswordPage(@PathVariable("id") Long id, Model model) {
+          // Lấy thông tin người dùng từ id
+          Optional<User> user = userRepository.findById(id);
+          if (user.isPresent()) {
+               model.addAttribute("user", user.get());
+          } else {
+               model.addAttribute("error", "Không tìm thấy người dùng.");
+          }
+          return "user/changePassword"; // Trả về trang changePassword
+     }
+
+     // Hàm lấy thông tin người dùng dựa trên ID
+     private User getCurrentUser(Long userId) {
+          return userRepository.findById(userId)
+                  .orElseThrow(() -> new RuntimeException("Người dùng không tồn tại"));
+     }
+
+
+     @RequestMapping("/home")
+     public String homePage() {
+          return "admin/home";
+     }
+
+     /*
+     @RequestMapping(value = "/user/change-password", method = RequestMethod.POST)
+     public String changePassword(@ModelAttribute("changePasswordForm") ChangePasswordDto changePasswordDto,
+                                  Model model) {
           User currentUser = getCurrentUser(); // Hàm lấy người dùng hiện tại
 
           // Kiểm tra mật khẩu cũ
@@ -189,9 +237,6 @@ public class UserController {
           return userRepository.findById(1L).orElseThrow(() -> new RuntimeException("Người dùng không tồn tại"));
      }
 
-     @RequestMapping("/home")
-     public String homePage() {
-          return "admin/home";
-     }
+      */
 
 }

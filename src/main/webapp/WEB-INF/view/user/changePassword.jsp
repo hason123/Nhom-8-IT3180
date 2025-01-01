@@ -56,6 +56,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
           action="${pageContext.request.contextPath}/user/change-password"
           method="post"
         >
+          <input type="hidden" name="userId" value="${user.id}" />
           <div class="form-group">
             <label for="currentPassword" class="form-label">Mật khẩu cũ</label>
             <input
