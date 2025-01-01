@@ -144,29 +144,30 @@ public class UserController {
 
      @RequestMapping(value = "/user/change-password", method = RequestMethod.POST)
      public String changePassword(@ModelAttribute("changePasswordForm") ChangePasswordDto changePasswordDto,
-                                  @RequestParam("userId") Long userId, Model model) {
+                                  @RequestParam("userId") Long userId, RedirectAttributes redirectAttributes) {
           // Lấy thông tin người dùng từ ID
-          User currentUser = getCurrentUser(userId); // Thay đổi getCurrentUser để nhận ID
+          User currentUser = getCurrentUser(userId);
 
           // Kiểm tra mật khẩu cũ
           if (!currentUser.getPassword().equals(changePasswordDto.getCurrentPassword())) {
-               model.addAttribute("error", "Mật khẩu cũ không đúng.");
-               return "user/changePassword";
+               redirectAttributes.addFlashAttribute("error", "Mật khẩu cũ không đúng.");
+               return "redirect:/user/changePassword/" + userId; // Chuyển hướng đến trang changePassword/{userId}
           }
 
           // Kiểm tra xác nhận mật khẩu
           if (!changePasswordDto.getNewPassword().equals(changePasswordDto.getConfirmPassword())) {
-               model.addAttribute("error", "Mật khẩu mới và xác nhận không khớp.");
-               return "user/changePassword";
+               redirectAttributes.addFlashAttribute("error", "Mật khẩu mới và xác nhận không khớp.");
+               return "redirect:/user/changePassword/" + userId; // Chuyển hướng đến trang changePassword/{userId}
           }
 
           // Cập nhật mật khẩu mới
           currentUser.setPassword(changePasswordDto.getNewPassword());
           userRepository.save(currentUser);
 
-          model.addAttribute("successMessage", "Đổi mật khẩu thành công!");
-          return "user/changePassword"; // Trả về trang đổi mật khẩu với thông báo thành công
+          redirectAttributes.addFlashAttribute("successMessage", "Đổi mật khẩu thành công!");
+          return "redirect:/user/changePassword/" + userId; // Chuyển hướng tới trang với ID người dùng
      }
+
 
      @RequestMapping(value = "/user/changePassword/{id}", method = RequestMethod.GET)
      public String changePasswordPage(@PathVariable("id") Long id, Model model) {

@@ -145,6 +145,12 @@
                         placeholder="Nhập địa chỉ thường trú" />
                     </div>
 
+                    <c:if test="${not empty error}">
+                        <div class="alert alert-danger text-center" role="alert">
+                          ${error}
+                      </div>
+                    </c:if>
+
                     <!-- Nút hành động -->
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>

@@ -103,18 +103,31 @@ public class NhanKhauController {
     }
 
     @PostMapping("/edit")
-    public String updateNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau) {
+    public String updateNhanKhau(@ModelAttribute("nhanKhau") NhanKhau nhanKhau, Model model) {
         Optional<NhanKhau> existingNhanKhau = nhanKhauRepository.findById(nhanKhau.getId());
         if (existingNhanKhau.isPresent()) {
             Long oldRoomId = (long) existingNhanKhau.get().getIdRoom(); // Lấy ID phòng cũ
+//test
+            Optional<Room> newRoom = roomRepository.findById((long) nhanKhau.getIdRoom());
+            if (!newRoom.isPresent()) {
+                // Nếu phòng không tồn tại, hiển thị thông báo lỗi
+                model.addAttribute("error", "Phòng không tồn tại. Vui lòng chọn phòng hợp lệ.");
+                List<Room> rooms = (List<Room>) roomRepository.findAll();
+                model.addAttribute("rooms", rooms); // Để hiển thị lại danh sách phòng trong form
+                model.addAttribute("nhanKhau", nhanKhau);
+                return "nhankhau/edit"; // Trả về lại form sửa nhân khẩu
+            }
+//test
             // Cập nhật thông tin nhân khẩu
             nhanKhauRepository.save(nhanKhau);
             // Cập nhật số lượng nhân khẩu cho phòng cũ
             updateSoNguoiInRoom(oldRoomId);
             // Cập nhật số lượng nhân khẩu cho phòng mới
             updateSoNguoiInRoom((long) nhanKhau.getIdRoom());
+
+            return "redirect:/nhankhau";
         }
-        return "redirect:/nhankhau";
+        return "nhankhau/error";
     }
 
     @GetMapping("/delete/{id}")

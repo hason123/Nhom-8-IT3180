@@ -43,6 +43,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
         <h2 class="form-title">Đổi Mật Khẩu</h2>
 
         <!-- Hiển thị thông báo thành công hoặc lỗi -->
+
         <c:if test="${not empty error}">
           <div class="alert alert-danger">${error}</div>
         </c:if>
@@ -50,7 +51,6 @@ contentType="text/html;charset=UTF-8" language="java" %>
         <c:if test="${not empty successMessage}">
           <div class="alert alert-success">${successMessage}</div>
         </c:if>
-
         <!-- Form thay đổi mật khẩu -->
         <form
           action="${pageContext.request.contextPath}/user/change-password"
